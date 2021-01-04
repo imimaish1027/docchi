@@ -29182,7 +29182,7 @@ return jQuery;
      * of the core-js package because core-js circumvents this kind of detection.
      * Despite multiple requests, the core-js maintainer has made it clear: any
      * attempt to fix the detection will be obstructed. As a result, we're left
-     * with little choice but to throw an error. Unfortunately, this also affects
+     * with little docchi but to throw an error. Unfortunately, this also affects
      * packages, like [babel-polyfill](https://www.npmjs.com/package/babel-polyfill),
      * which rely on core-js.
      *
@@ -39642,7 +39642,7 @@ if (typeof Promise !== 'undefined' && isNative(Promise)) {
 } else if (typeof setImmediate !== 'undefined' && isNative(setImmediate)) {
   // Fallback to setImmediate.
   // Technically it leverages the (macro) task queue,
-  // but it is still a better choice than setTimeout.
+  // but it is still a better docchi than setTimeout.
   timerFunc = function () {
     setImmediate(flushCallbacks);
   };
@@ -46154,7 +46154,7 @@ var directive = {
         el.addEventListener('compositionstart', onCompositionStart);
         el.addEventListener('compositionend', onCompositionEnd);
         // Safari < 10.2 & UIWebView doesn't fire compositionend when
-        // switching focus before confirming composition choice
+        // switching focus before confirming composition docchi
         // this also fixes the issue where some browsers e.g. iOS Chrome
         // fires "change" instead of "input" on autocomplete.
         el.addEventListener('change', onCompositionEnd);
@@ -49886,8 +49886,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/imai/Desktop/Choice/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/imai/Desktop/Choice/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/imai/Desktop/docchi/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/imai/Desktop/docchi/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -1,6 +1,6 @@
 <header class="l-header">
   <div class="p-header__container">
-    <div class="c-logo">Choice</div>
+    <div class="c-logo">Docchi</div>
     @guest
     <ul class="p-header__nav">
       <li class="p-header__nav__one">
