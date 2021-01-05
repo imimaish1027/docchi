@@ -1,0 +1,20 @@
+.p-form {
+  width: 600px;
+  margin: 0 auto;
+  border: solid 1px $line-color;
+  border-radius: 5px;
+
+  &__main {
+    padding-top: $space_m;
+    padding-right: $space_xl;
+    padding-bottom: $space_m;
+    padding-left: $space_xl;
+    background: $reset-color;
+  }
+
+  &__title {
+    height: 40px;
+    padding-left: $space_xl;
+    background: $main-color;
+  }
+}

@@ -10903,6 +10903,8 @@ a.text-dark:focus {
   }
 }
 
+/* Foundation */
+
 /* Reset box-model and set borders */
 
 /* ============================================ */
@@ -11453,8 +11455,9 @@ body {
 .content {
   display: flex;
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-top: 32px;
+  padding-right: 16px;
+  padding-left: 16px;
   margin-right: auto;
   margin-left: auto;
   box-sizing: border-box;
@@ -11489,6 +11492,8 @@ a:hover {
   text-decoration: none;
 }
 
+/* Layout */
+
 .l-header {
   height: 80px;
   color: #68699B;
@@ -11501,8 +11506,8 @@ a:hover {
 
 .l-header .p-header__container {
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 16px;
+  padding-left: 16px;
   margin-right: auto;
   margin-left: auto;
   margin: 0 auto;
@@ -11634,5 +11639,39 @@ a:hover {
   align-items: center;
   justify-content: center;
   font-size: 12px;
+}
+
+/* Object */
+
+/* Component */
+
+.c-form__title__text {
+  height: 40px;
+  color: #ffffff;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* Project */
+
+.p-form {
+  width: 600px;
+  margin: 0 auto;
+  border: solid 1px #A2A2A2;
+  border-radius: 5px;
+}
+
+.p-form__main {
+  padding-top: 16px;
+  padding-right: 32px;
+  padding-bottom: 16px;
+  padding-left: 32px;
+  background: #ffffff;
+}
+
+.p-form__title {
+  height: 40px;
+  padding-left: 32px;
+  background: #68699B;
 }
 

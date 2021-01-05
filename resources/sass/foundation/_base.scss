@@ -23,8 +23,9 @@ body {
 .content {
     display: flex;
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-top: $space_xl;
+    padding-right: $space_m;
+    padding-left: $space_m;
     margin-right: auto;
     margin-left: auto;
     box-sizing: border-box;
