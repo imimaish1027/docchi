@@ -68,9 +68,9 @@
     @enderror
     <div class="p-form__one p-form__text ">
       <p class="c-form__one__title">パスワード(確認)</p>
-      <input type="password" name="password_confirm" id="password_confirm" value="" autocomplete="password" autocomplete="new-password" class="c-form__text password @error('password_confirm') is-invalid @enderror">
+      <input type="password" name="confirm" id="confirm" value="" autocomplete="password" autocomplete="new-password" class="c-form__text password @error('confirm') is-invalid @enderror">
     </div>
-    @error('password_confirm')
+    @error('confirm')
     <div class="invalid__feedback" role="alert">
       <strong>{{ $message }}</strong>
     </div>
