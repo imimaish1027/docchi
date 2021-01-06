@@ -49750,6 +49750,11 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 
 var app = new Vue({
   el: '#app'
+}); // チェックボックスの複数選択不可
+
+$(".checkbox").on("click", function () {
+  $('.checkbox').prop('checked', false);
+  $(this).prop('checked', true);
 });
 
 /***/ }),
