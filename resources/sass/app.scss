@@ -4,6 +4,7 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+/* Foundation */
 // Reset
 @import 'foundation/reset';
 // Base
@@ -11,7 +12,17 @@
 // Variables
 @import 'foundation/variables';
 
+/* Layout */
 // Header
 @import 'layout/header';
 // Footer
 @import 'layout/footer';
+
+/* Object */
+/* Component */
+@import 'object/component/button';
+@import 'object/component/input';
+@import 'object/component/title';
+
+/* Project */
+@import 'object/project/form';

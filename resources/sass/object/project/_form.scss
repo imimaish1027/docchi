@@ -1,0 +1,51 @@
+.p-form {
+  width: 600px;
+  margin: 0 auto;
+  border: solid 1px $line-color;
+  border-radius: 5px;
+
+  &__main {
+    padding-top: $space_l;
+    padding-right: $space_xl;
+    padding-bottom: $space_l;
+    padding-left: $space_xl;
+    background: $reset-color;
+  }
+
+  &__title {
+    height: 40px;
+    padding-left: $space_xl;
+    background: $main-color;
+  }
+
+  &__one {
+    width: 100%;
+    margin-bottom: $space_m;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__text {
+  }
+
+  &__check {
+    &__group {
+      display: flex;
+      &__one {
+        margin-left: $space_m;
+      }
+    }
+  }
+
+  &__number {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+      &__group {
+        display: flex;
+        justify-content: space-between;
+      }
+  }
+}

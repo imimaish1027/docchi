@@ -30,3 +30,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+// チェックボックスの複数選択不可
+$(".checkbox").on("click", function(){
+        $('.checkbox').prop('checked', false);
+        $(this).prop('checked', true); 
+});
