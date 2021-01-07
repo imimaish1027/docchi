@@ -11570,6 +11570,16 @@ a:hover {
   color: #ffffff;
 }
 
+.dropdown-menu {
+  margin-top: 0;
+  opacity: 0.7;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background: #68699B;
+  color: #ffffff;
+}
+
 @media (min-width: 576px) {
   .p-header__container {
     max-width: 540px;
