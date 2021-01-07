@@ -48,4 +48,14 @@
         justify-content: space-between;
       }
   }
+
+  &__remember {
+
+    &__group {
+        margin-top: $space_m;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+  }
 }

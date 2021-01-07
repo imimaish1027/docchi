@@ -29,6 +29,11 @@
    }
 }
 
+.c-form__remember__label {
+  padding-left: $space_s / 2;
+  margin-bottom: 0px;
+}
+
 .password {
   transition: border-color 0.15s ease-in-out,
   box-shadow 0.15s ease-in-out;

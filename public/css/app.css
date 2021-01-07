@@ -11694,6 +11694,11 @@ a:hover {
   align-items: center;
 }
 
+.c-form__remember__label {
+  padding-left: 4px;
+  margin-bottom: 0px;
+}
+
 .password {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -11763,5 +11768,12 @@ a:hover {
 .p-form__number__group {
   display: flex;
   justify-content: space-between;
+}
+
+.p-form__remember__group {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
