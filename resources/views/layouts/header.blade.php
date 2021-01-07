@@ -25,7 +25,7 @@
       <li class="p-header__nav__one dropdown">
         <a class="p-header__nav__one--link p-header__nav__mypage dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('images/no-avatar.jpeg') }}" class="c-header__nav__icon avatar"></a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <a class="dropdown-item" href="#">マイページ</a>
+          <a class="dropdown-item" href="#">マイテーマ</a>
           <a class="dropdown-item" href="#">ブックマーク</a>
           <form method="POST" action="{{ route('logout') }}">
             @csrf<button class="dropdown-item" type="submit">ログアウト</button>

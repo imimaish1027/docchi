@@ -11571,6 +11571,7 @@ a:hover {
 }
 
 .dropdown-menu {
+  padding: 0;
   margin-top: 0;
   opacity: 0.7;
 }

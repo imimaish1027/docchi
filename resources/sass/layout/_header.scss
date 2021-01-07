@@ -78,10 +78,12 @@
 }
 
 .dropdown-menu {
+  padding: 0;
   margin-top: 0;
   opacity: 0.7;
 
   .dropdown-item {
+    
     &:hover {
       background: $main-color;
       color: $reset-color;      
