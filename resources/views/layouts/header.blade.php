@@ -7,10 +7,10 @@
         <a class="p-header__nav__one--link"><img src="{{ asset('images/theme_li.png') }}" class="c-header__nav__icon"><span class="c-header__nav__title">テーマ一覧</span></a>
       </li>
       <li class="p-header__nav__one">
-        <a class="p-header__nav__one--link"><img src="{{ asset('images/login.png') }}" class="c-header__nav__icon"><span class="c-header__nav__title">ログイン</span></a>
+        <a class="p-header__nav__one--link" href="{{ route('login') }}"><img src="{{ asset('images/login.png') }}" class="c-header__nav__icon"><span class="c-header__nav__title">ログイン</span></a>
       </li>
       <li class="p-header__nav__one">
-        <a class="p-header__nav__one--link"><img src="{{ asset('images/regist.png') }}" class="c-header__nav__icon i-regist"><span class="c-header__nav__title">新規登録</span></a>
+        <a class="p-header__nav__one--link" href="{{ route('register') }}"><img src="{{ asset('images/regist.png') }}" class="c-header__nav__icon i-regist"><span class="c-header__nav__title">新規登録</span></a>
       </li>
     </ul>
     @endguest

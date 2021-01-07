@@ -11658,7 +11658,7 @@ a:hover {
 
 .c-btn__area {
   width: 100%;
-  margin-top: 24px;
+  margin-top: 32px;
 }
 
 .c-form__btn {
@@ -11735,6 +11735,7 @@ a:hover {
 .p-form {
   width: 600px;
   margin: 0 auto;
+  margin-top: 32px;
   border: solid 1px #A2A2A2;
   border-radius: 5px;
 }
