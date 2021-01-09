@@ -11446,6 +11446,7 @@ body {
 .wrapper {
   position: relative;
   width: 100%;
+  padding-bottom: 96px;
   min-height: 100vh;
   box-sizing: border-box;
   color: #362F2F;
@@ -11710,6 +11711,16 @@ a:hover {
   margin-bottom: 0px;
 }
 
+.c-form__pic {
+  display: none;
+}
+
+.c-area__drop__text {
+  width: 100%;
+  position: absolute;
+  top: 45%;
+}
+
 .password {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -11787,5 +11798,29 @@ a:hover {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+.p-form__pic {
+  width: 100%;
+  height: 200px;
+  align-items: normal;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.p-area__drop {
+  width: 200px;
+  height: 200px;
+  border: solid 1px #A2A2A2;
+  border-radius: 0.25rem;
+  text-align: center;
+  position: absolute;
+  right: 10%;
+  box-sizing: border-box;
+  font-size: 8px;
+}
+
+.p-area__drop:hover {
+  cursor: pointer;
 }
 

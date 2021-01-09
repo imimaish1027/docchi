@@ -20,7 +20,7 @@
         <a class="p-header__nav__one--link"><img src="{{ asset('images/theme_li.png') }}" class="c-header__nav__icon"><span class="c-header__nav__title">テーマ一覧</span></a>
       </li>
       <li class="p-header__nav__one">
-        <a class="p-header__nav__one--link"><img src="{{ asset('images/create_theme.png') }}" class="c-header__nav__icon"><span class="c-header__nav__title">テーマ作成</span></a>
+        <a class="p-header__nav__one--link" href="{{ route('themes.create') }}"><img src="{{ asset('images/create_theme.png') }}" class="c-header__nav__icon"><span class="c-header__nav__title">テーマ作成</span></a>
       </li>
       <li class="p-header__nav__one dropdown">
         <a class="p-header__nav__one--link p-header__nav__mypage dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('images/no-avatar.jpeg') }}" class="c-header__nav__icon avatar"></a>

@@ -34,6 +34,16 @@
   margin-bottom: 0px;
 }
 
+.c-form__pic {
+  display: none;
+}
+
+.c-area__drop__text {
+  width: 100%;
+  position: absolute;
+  top: 45%;
+}
+
 .password {
   transition: border-color 0.15s ease-in-out,
   box-shadow 0.15s ease-in-out;

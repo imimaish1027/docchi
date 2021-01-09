@@ -32,15 +32,15 @@ Route::prefix('users')->name('users.')->group(function () {
 });
 
 Route::prefix('themes')->name('themes.')->group(function () {
-    Route::get('', 'ThemeController@index')->name('index');
+    Route::get('create', 'ThemeController@create')->name('create');
+    Route::get('{id}/result', 'ThemeController@result')->name('result');
     Route::get('{id}', 'ThemeController@show')->name('show');
     Route::post('{id}', 'ThemeController@answer')->name('answer');
-    Route::get('{id}/result', 'ThemeController@result')->name('result');
-    Route::get('create', 'ThemeController@create')->name('create');
     Route::post('store', 'ThemeController@store')->name('store');
     Route::get('{id}/edit', 'ThemeController@edit')->name('edit');
     Route::put('{id}', 'ThemeController@update')->name('update');
     Route::delete('{id}', 'ThemeController@destroy')->name('destroy');
+    Route::get('', 'ThemeController@index')->name('index');
 });
 
 Route::prefix('contact')->name('contact.')->group(function () {
