@@ -11719,6 +11719,11 @@ a:hover {
   width: 100%;
   position: absolute;
   top: 45%;
+  left: 0%;
+}
+
+.c-error__pic__text {
+  padding-right: 48px;
 }
 
 .password {

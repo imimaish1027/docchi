@@ -42,14 +42,14 @@
 
     <div class="p-form__one p-form__pic">
       <p class="c-form__one__title">選択肢Aの画像</p>
-      <label class="p-form__pic__one p-area__drop">
+      <label class="p-form__pic__one p-area__drop  form-control @error('pic_a') is-invalid @enderror">
         <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
-        <input id="pic" type="file" name="pic_a" value="{{ old('pic_a') }}" class="c-form__pic form-control @error('pic_a') is-invalid @enderror">
+        <input id="pic" type="file" name="pic_a" value="{{ old('pic_a') }}" class="c-form__pic">
         <p class="c-area__drop__text">クリックorドラッグ&ドロップで<br>画像をアップロード</p>
       </label>
     </div>
     @error('pic_a')
-    <div class="invalid__feedback" role="alert">
+    <div class="invalid__feedback c-error__pic__text" role="alert">
       <strong>{{ $message }}</strong>
     </div>
     @enderror
@@ -66,14 +66,14 @@
 
     <div class="p-form__one p-form__pic">
       <p class="c-form__one__title">選択肢Bの画像</p>
-      <label class="p-form__pic__one p-area__drop">
+      <label class="p-form__pic__one p-area__drop  form-control @error('pic_b') is-invalid @enderror">
         <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
         <input id="pic" type="file" name="pic_b" value="{{ old('pic_b') }}" class="c-form__pic form-control @error('pic_b') is-invalid @enderror">
         <p class="c-area__drop__text">クリックorドラッグ&ドロップで<br>画像をアップロード</p>
       </label>
     </div>
     @error('pic_b')
-    <div class="invalid__feedback" role="alert">
+    <div class="invalid__feedback c-error__pic__text" role="alert">
       <strong>{{ $message }}</strong>
     </div>
     @enderror

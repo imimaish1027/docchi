@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Theme;
+use App\Tag;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -37,10 +38,11 @@ class ThemeController extends Controller
             'title' => 'required|string|max:255',
             'answer_a' => 'required|string|max:255',
             'pic_a' =>
-            'image|max:1024|mimes:jpeg,png,jpg,gif',
+            'required|file|image|max:1024|mimes:jpeg,png,jpg',
             'answer_b' => 'required|string|max:255',
             'pic_b' =>
-            'image|max:1024|mimes:jpeg,png,jpg,gif',
+            'required|file|image|max:1024|mimes:jpeg,png,jpg',
+            'tag' => 'string|max:10',
         ]);
 
         $theme = new Theme;
@@ -51,6 +53,11 @@ class ThemeController extends Controller
         $theme->answer_b = $request->input('answer_b');
         $theme->pic_b = $request->input('pic_b');
         $theme->save();
+
+        $tag = new Tag;
+        $tag->name = $request->input('tag');
+        $tag->save();
+
         return redirect()->route('home');
     }
 

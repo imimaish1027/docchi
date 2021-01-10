@@ -42,7 +42,7 @@ return [
   'exists'               => '指定された:attributeは存在しません。',
   'file'                 => ':attributeにはファイルを指定してください。',
   'filled'               => ':attributeには空でない値を指定してください。',
-  'image'                => ':attributeには画像ファイルを指定してください。',
+  'image'                => '画像ファイルを指定してください。',
   'in'                   => ':attributeには:valuesのうちいずれかの値を指定してください。',
   'in_array'             => ':attributeが:otherに含まれていません。',
   'integer'              => ':attributeには整数を指定してください。',
@@ -122,6 +122,12 @@ return [
     'age' => '年齢',
     'password' => 'パスワード',
     'confirm' => 'パスワード(確認)',
+    'title' => 'タイトル',
+    'tag' => 'タグ',
+    'answer_a' => 'Aの回答',
+    'pic_a' => 'Aの画像',
+    'answer_b' => 'Bの回答',
+    'pic_b' => 'Bの画像'
   ],
 
 ];

@@ -33,10 +33,10 @@ Route::prefix('users')->name('users.')->group(function () {
 
 Route::prefix('themes')->name('themes.')->group(function () {
     Route::get('create', 'ThemeController@create')->name('create');
+    Route::post('store', 'ThemeController@store')->name('store');
     Route::get('{id}/result', 'ThemeController@result')->name('result');
     Route::get('{id}', 'ThemeController@show')->name('show');
     Route::post('{id}', 'ThemeController@answer')->name('answer');
-    Route::post('store', 'ThemeController@store')->name('store');
     Route::get('{id}/edit', 'ThemeController@edit')->name('edit');
     Route::put('{id}', 'ThemeController@update')->name('update');
     Route::delete('{id}', 'ThemeController@destroy')->name('destroy');
