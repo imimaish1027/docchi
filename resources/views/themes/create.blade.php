@@ -8,7 +8,7 @@
   <div class="p-form__title">
     <p class="c-form__title__text">テーマ作成</p>
   </div>
-  <form method="POST" action="{{ route('themes.store') }}" class="p-form__main">
+  <form method="POST" action="{{ route('themes.store') }}"  enctype='multipart/form-data' class="p-form__main">
     @csrf
     <div class="p-form__one p-form__text">
       <p class="c-form__one__title">テーマ名</p>
@@ -68,7 +68,7 @@
       <p class="c-form__one__title">選択肢Bの画像</p>
       <label class="p-form__pic__one p-area__drop  form-control @error('pic_b') is-invalid @enderror">
         <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
-        <input id="pic" type="file" name="pic_b" value="{{ old('pic_b') }}" class="c-form__pic form-control @error('pic_b') is-invalid @enderror">
+        <input id="pic" type="file" name="pic_b" value="{{ old('pic_b') }}" class="c-form__pic">
         <p class="c-area__drop__text">クリックorドラッグ&ドロップで<br>画像をアップロード</p>
       </label>
     </div>

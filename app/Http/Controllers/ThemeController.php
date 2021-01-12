@@ -29,10 +29,11 @@ class ThemeController extends Controller
 
     public function create()
     {
-        return view('themes.create');
+        $auth = Auth::user();
+        return view('themes.create', ['auth' => $auth]);
     }
 
-    public function store(Request $request, Auth $user)
+    public function store(Request $request)
     {
         $request->validate([
             'title' => 'required|string|max:255',
@@ -46,12 +47,20 @@ class ThemeController extends Controller
         ]);
 
         $theme = new Theme;
-        $theme->user_id = $request->$user->id;
+        $theme->user_id = $request->user()->id;
         $theme->title = $request->input('title');
         $theme->answer_a = $request->input('answer_a');
-        $theme->pic_a = $request->input('pic_a');
+
+        $pic_a = $request->pic_a->store('public/selects');
+        $file_name_a = basename($pic_a);
+        $theme->pic_a = $file_name_a;
+
         $theme->answer_b = $request->input('answer_b');
-        $theme->pic_b = $request->input('pic_b');
+
+        $pic_b = $request->pic_b->store('public/selects');
+        $file_name_b = basename($pic_b);
+        $theme->pic_b = $file_name_b;
+
         $theme->save();
 
         $tag = new Tag;

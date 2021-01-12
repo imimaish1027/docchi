@@ -40,7 +40,7 @@ return [
   'distinct'             => '指定された:attributeは既に存在しています。',
   'email'                => ':attributeには正しい形式のメールアドレスを指定してください。',
   'exists'               => '指定された:attributeは存在しません。',
-  'file'                 => ':attributeにはファイルを指定してください。',
+  'file'                 => 'ファイルを指定してください。',
   'filled'               => ':attributeには空でない値を指定してください。',
   'image'                => '画像ファイルを指定してください。',
   'in'                   => ':attributeには:valuesのうちいずれかの値を指定してください。',
