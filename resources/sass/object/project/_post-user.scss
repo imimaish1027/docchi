@@ -1,0 +1,9 @@
+.p-post__user {
+
+  &--answer{
+    margin-bottom: $space_s;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+  }
+}

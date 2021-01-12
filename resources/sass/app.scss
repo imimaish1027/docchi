@@ -23,6 +23,22 @@
 @import 'object/component/button';
 @import 'object/component/input';
 @import 'object/component/title';
+@import 'object/component/tag';
+@import 'object/component/image';
+@import 'object/component/user';
+@import 'object/component/theme';
+@import 'object/component/icon';
+@import 'object/component/note';
 
 /* Project */
+// フォーム画面(テーマ作成含む)
 @import 'object/project/form';
+// テーマ関連画面共通
+@import 'object/project/main';
+@import 'object/project/theme';
+// テーマ詳細画面
+@import 'object/project/heading-answer';
+@import 'object/project/tag-list';
+@import 'object/project/post-user';
+@import 'object/project/bookmark-count';
+@import 'object/project/theme-answer';

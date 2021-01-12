@@ -15,8 +15,11 @@ class ThemeController extends Controller
     {
     }
 
-    public function show()
+    public function show($id)
     {
+        $theme = Theme::find($id);
+        $post_user = User::where('id', $theme->user_id)->first();
+        return view('themes.show', ['theme' => $theme, 'post_user' => $post_user]);
     }
 
     public function answer()

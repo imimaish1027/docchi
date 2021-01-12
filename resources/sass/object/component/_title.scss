@@ -4,3 +4,29 @@
   display: table-cell;
   vertical-align: middle;
 }
+
+.c-main__title__text {
+  padding-left: $space_s;
+  margin-bottom: $space_m;
+  border-left: solid 5px $main-color;
+  font-size: $font-size_l;
+}
+
+.c-theme__title {
+  width: 100%;
+  margin-bottom: $space_m;
+  text-align: center;
+  font-size: $font-size_xl;
+}
+
+.c-theme__answer__title {
+  text-align: center;
+  font-size: $font-size_xl;
+
+  &--a {
+    color: $answer_a-color;
+  }
+  &--b {
+    color: $answer_b-color;
+  }
+}
