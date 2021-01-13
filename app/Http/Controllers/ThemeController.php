@@ -46,7 +46,7 @@ class ThemeController extends Controller
             'answer_b' => 'required|string|max:255',
             'pic_b' =>
             'required|file|image|max:1024|mimes:jpeg,png,jpg',
-            'tag' => 'string|max:10',
+            'tag' => 'string|max:10|nullable',
         ]);
 
         $theme = new Theme;
@@ -66,22 +66,62 @@ class ThemeController extends Controller
 
         $theme->save();
 
-        $tag = new Tag;
-        $tag->name = $request->input('tag');
-        $tag->save();
+        if($request->input('tag')){
+            $tag = new Tag;
+            $tag->name = $request->input('tag');
+            $tag->save();
+        }
 
         return redirect()->route('home');
     }
 
-    public function edit()
+    public function edit($id)
     {
+        if(!ctype_digit($id)){
+            return redirect('/themes/create');
+        }
+
+        $theme = Theme::find($id);
+        return view('themes.edit', ['theme' => $theme]);
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
+        if(!ctype_digit($id)){
+            return redirect('/themes/create');
+        }
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'answer_a' => 'required|string|max:255',
+            'pic_a' =>
+            'file|image|max:1024|mimes:jpeg,png,jpg',
+            'answer_b' => 'required|string|max:255',
+            'pic_b' =>
+            'file|image|max:1024|mimes:jpeg,png,jpg',
+            'tag' => 'string|max:10|nullable',
+        ]);
+
+        $theme = Theme::find($id);
+        $theme->fill($request->all())->save();
+
+        if($request->input('tag')){
+            $tag = new Tag;
+            $tag->name = $request->input('tag');
+            $tag->save();
+        }
+
+        return redirect('/home');
     }
 
-    public function destroy()
+    public function destroy($id)
     {
+        if(!ctype_digit($id)){
+            return redirect('/themes/create');
+        }
+
+        Theme::find($id)->delete();
+
+        return redirect('/home');
     }
 }
