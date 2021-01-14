@@ -11757,6 +11757,31 @@ a:hover {
   padding-right: 48px;
 }
 
+.c-form__search__box {
+  height: 50px;
+  width: 80%;
+  padding-right: 8px;
+  padding-left: 8px;
+  border-radius: 2px;
+  outline: 0;
+  background: #ffffff;
+}
+
+.c-form__search__btn {
+  height: 50px;
+  width: 30px;
+  position: relative;
+  right: 20px;
+  background: #ffffff;
+  color: #666;
+  border: none;
+  font-size: 20px;
+}
+
+.c-form__search__btn:hover {
+  color: #7fbfff;
+}
+
 .password {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -11792,16 +11817,25 @@ a:hover {
   font-size: 24px;
 }
 
-.c-theme__answer__title {
+.c-answer__title {
   text-align: center;
   font-size: 24px;
 }
 
-.c-theme__answer__title--a {
+.c-theme__one__title {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.c-list__answer__title {
+  text-align: center;
+}
+
+.c-answer--a {
   color: #C9396D;
 }
 
-.c-theme__answer__title--b {
+.c-answer--b {
   color: #0086CC;
 }
 
@@ -11810,6 +11844,7 @@ a:hover {
   margin-right: 16px;
   border: solid 1px #A2A2A2;
   text-align: center;
+  background: #f0f0f0;
 }
 
 .c-avatar {
@@ -11818,12 +11853,27 @@ a:hover {
   border-radius: 20px;
 }
 
-.c-theme__answer__img {
+.c-post__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 20px;
+}
+
+.c-answer__img {
   width: 200px;
   height: 200px;
   margin: 0 auto;
   margin-top: 24px;
   margin-bottom: 16px;
+  display: block;
+}
+
+.c-list__answer__img {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  margin-top: 16px;
+  margin-bottom: 8px;
   display: block;
 }
 
@@ -11835,6 +11885,10 @@ a:hover {
   margin-bottom: 8px;
   display: flex;
   justify-content: flex-end;
+}
+
+.c-list__post__date {
+  padding: 8px;
 }
 
 .c-bookmark__count {
@@ -11851,6 +11905,18 @@ a:hover {
   font-size: 24px;
   display: flex;
   align-items: center;
+}
+
+.c-count__number {
+  padding-left: 8px;
+}
+
+.c-sort {
+  text-align: center;
+}
+
+.c-sort:hover {
+  cursor: pointer;
 }
 
 /* Project */
@@ -11996,6 +12062,7 @@ a:hover {
 
 .p-tag__group {
   display: flex;
+  margin-bottom: 16px;
 }
 
 .p-post__user--answer {
@@ -12020,18 +12087,128 @@ a:hover {
   justify-content: space-between;
 }
 
-.p-theme__answer__area {
+.p-answer__area {
   height: 300px;
   width: 300px;
   margin-bottom: 24px;
   background: #ffffff;
 }
 
-.p-theme__answer--a {
+.p-answer__area--a {
   border: solid 2px #C9396D;
 }
 
-.p-theme__answer--b {
+.p-answer__area--b {
   border: solid 2px #0086CC;
+}
+
+.p-main__heading__down {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.p-form__search {
+  position: relative;
+  max-width: 500px;
+  margin-bottom: 16px;
+}
+
+.p-sort__area {
+  width: 180px;
+  padding-bottom: 4px;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.p-theme__list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.p-theme__one {
+  width: 46%;
+  padding: 24px;
+  margin-bottom: 40px;
+  background: #ffffff;
+  border: solid 1px #A2A2A2;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 575px) {
+  .p-theme__one {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .p-theme__one {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .p-theme__one {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .p-theme__one {
+    width: 48%;
+    margin-right: 2%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .p-theme__one {
+    width: 46%;
+    margin-right: 4%;
+  }
+}
+
+.p-theme__list__answer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.p-list__answer__area {
+  height: 180px;
+  width: 180px;
+  margin-bottom: 16px;
+  background: #ffffff;
+}
+
+.p-theme__info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.p-icon__count {
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.p-icon__count__one {
+  display: flex;
+  align-items: center;
+}
+
+.p-post__info {
+  display: flex;
+  align-items: center;
 }
 

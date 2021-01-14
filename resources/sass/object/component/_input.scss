@@ -49,6 +49,30 @@
   padding-right: $space_l * 2;
 }
 
+.c-form__search__box {
+  height: 50px;
+  width: 80%;
+  padding-right: $space_s;
+  padding-left: $space_s;
+  border-radius: 2px;
+  outline: 0;
+  background: $reset-color;	
+}
+.c-form__search__btn {
+  height: 50px;
+  width: 30px;
+  position: relative;
+  right: 20px;
+  background: $reset-color;
+  color: $item-color;
+  border: none;
+  font-size: $font-size_l;
+
+  &:hover {
+    color: $accent-color;
+  }
+}
+
 .password {
   transition: border-color 0.15s ease-in-out,
   box-shadow 0.15s ease-in-out;

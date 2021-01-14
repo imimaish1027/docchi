@@ -1,0 +1,47 @@
+.p-theme__one {
+    width: 46%;
+    padding: $space_l;
+    margin-bottom: $space_xxl;
+    background: $reset-color;
+    border: solid 1px $line-color;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 575px) {
+    .p-theme__one {
+        width: 100%;
+        margin: 0 auto;
+        margin-bottom: $space_xxl;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .p-theme__one {
+        width: 100%;
+        margin: 0 auto;
+        margin-bottom: $space_xxl;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .p-theme__one {
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: $space_xxl;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .p-theme__one {
+        width: 48%;
+        margin-right: 2%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .p-theme__one {
+        width: 46%;
+        margin-right: 4%;
+    }
+}

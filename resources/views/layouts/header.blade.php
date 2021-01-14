@@ -4,7 +4,7 @@
     @guest
     <ul class="p-header__nav">
       <li class="p-header__nav__one">
-        <a class="p-header__nav__one--link"><img src="{{ asset('images/theme_li.png') }}" class="c-header__nav__icon"><span class="c-header__nav__title">テーマ一覧</span></a>
+        <a class="p-header__nav__one--link" href="{{ route('themes.index') }}"><img src="{{ asset('images/theme_li.png') }}" class="c-header__nav__icon"><span class="c-header__nav__title">テーマ一覧</span></a>
       </li>
       <li class="p-header__nav__one">
         <a class="p-header__nav__one--link" href="{{ route('login') }}"><img src="{{ asset('images/login.png') }}" class="c-header__nav__icon"><span class="c-header__nav__title">ログイン</span></a>
@@ -17,7 +17,7 @@
     @auth
     <ul id="fade-in" class="p-header__nav dropmenu">
       <li class="p-header__nav__one">
-        <a class="p-header__nav__one--link"><img src="{{ asset('images/theme_li.png') }}" class="c-header__nav__icon"><span class="c-header__nav__title">テーマ一覧</span></a>
+        <a class="p-header__nav__one--link" href="{{ route('themes.index') }}"><img src="{{ asset('images/theme_li.png') }}" class="c-header__nav__icon"><span class="c-header__nav__title">テーマ一覧</span></a>
       </li>
       <li class="p-header__nav__one">
         <a class="p-header__nav__one--link" href="{{ route('themes.create') }}"><img src="{{ asset('images/create_theme.png') }}" class="c-header__nav__icon"><span class="c-header__nav__title">テーマ作成</span></a>

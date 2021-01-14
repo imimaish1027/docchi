@@ -19,10 +19,21 @@
   font-size: $font-size_xl;
 }
 
-.c-theme__answer__title {
+.c-answer__title {
   text-align: center;
   font-size: $font-size_xl;
+}
 
+.c-theme__one__title {
+  margin-bottom: $space_s;
+  font-size: $font-size_l;
+}
+
+.c-list__answer__title {
+  text-align: center;
+}
+
+.c-answer {
   &--a {
     color: $answer_a-color;
   }

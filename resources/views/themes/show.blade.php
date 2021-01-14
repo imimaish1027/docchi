@@ -30,10 +30,10 @@
       <p class="c-theme__note--guide">AかBのどちらかを選んでください。</p>
 
       <div class="p-theme__answer">
-        <div class="p-theme__answer__one">
-          <div class="p-theme__answer__area p-theme__answer--a">
-            <img src="{{ asset('/storage/selects/'.$theme->pic_a) }}" class="c-theme__answer__img c-theme__answer__img--a">
-            <p class="c-theme__answer__title c-theme__answer__title--a">A {{ $theme->answer_a }}</p>
+        <div class="p-answer__one">
+          <div class="p-answer__area p-answer__area--a">
+            <img src="{{ asset('/storage/selects/'.$theme->pic_a) }}" class="c-answer__img">
+            <p class="c-answer__title c-answer--a">A {{ $theme->answer_a }}</p>
           </div>
           <button type="submit" class="c-answer__btn c-answer__btn--a btn">
             Aを選ぶ
@@ -42,13 +42,13 @@
 
         <p class="c-theme__note--or">or</p>
 
-        <div class="p-theme__answer__one">
-          <div class="p-theme__answer__area p-theme__answer--b">
-          <img src="{{ asset('/storage/selects/'.$theme->pic_b) }}" class="c-theme__answer__img c-theme__answer__img--b">
-            <p class="c-theme__answer__title c-theme__answer__title--b">B {{ $theme->answer_b }}</p>
+        <div class="p-answer__one">
+          <div class="p-answer__area p-answer__area--b">
+            <img src="{{ asset('/storage/selects/'.$theme->pic_b) }}" class="c-answer__img">
+            <p class="c-answer__title c-answer--b">A {{ $theme->answer_b }}</p>
           </div>
           <button type="submit" class="c-answer__btn c-answer__btn--b btn">
-            Bを選ぶ
+            Aを選ぶ
           </button>
         </div>
       </div>

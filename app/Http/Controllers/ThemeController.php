@@ -13,6 +13,9 @@ class ThemeController extends Controller
 {
     public function index()
     {
+        $themes = Theme::all();
+        $users = User::all();
+        return view('themes.index', ['themes' => $themes, 'users' => $users]);
     }
 
     public function show($id)
@@ -72,7 +75,7 @@ class ThemeController extends Controller
             $tag->save();
         }
 
-        return redirect()->route('home');
+        return redirect()->route('themes.index');
     }
 
     public function edit($id)
@@ -111,7 +114,7 @@ class ThemeController extends Controller
             $tag->save();
         }
 
-        return redirect('/home');
+        return redirect()->route('themes.index');
     }
 
     public function destroy($id)
@@ -122,6 +125,6 @@ class ThemeController extends Controller
 
         Theme::find($id)->delete();
 
-        return redirect('/home');
+        return redirect()->route('themes.index');
     }
 }
