@@ -4,3 +4,40 @@
   display: table-cell;
   vertical-align: middle;
 }
+
+.c-main__title__text {
+  padding-left: $space_s;
+  margin-bottom: $space_m;
+  border-left: solid 5px $main-color;
+  font-size: $font-size_l;
+}
+
+.c-theme__title {
+  width: 100%;
+  margin-bottom: $space_m;
+  text-align: center;
+  font-size: $font-size_xl;
+}
+
+.c-answer__title {
+  text-align: center;
+  font-size: $font-size_xl;
+}
+
+.c-theme__one__title {
+  margin-bottom: $space_s;
+  font-size: $font-size_l;
+}
+
+.c-list__answer__title {
+  text-align: center;
+}
+
+.c-answer {
+  &--a {
+    color: $answer_a-color;
+  }
+  &--b {
+    color: $answer_b-color;
+  }
+}

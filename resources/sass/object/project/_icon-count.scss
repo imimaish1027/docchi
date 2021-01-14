@@ -1,0 +1,11 @@
+.p-icon__count {
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__one {
+  display: flex;
+  align-items: center;
+  }
+}

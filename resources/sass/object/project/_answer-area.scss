@@ -1,0 +1,13 @@
+  .p-answer__area {
+    height: 300px;
+    width: 300px;
+    margin-bottom: $space_l;
+    background: $reset-color;
+
+    &--a {
+      border: solid 2px $answer_a-color;
+    }
+    &--b {
+      border: solid 2px $answer_b-color;
+    }
+  }

@@ -1,8 +1,3 @@
-.c-btn__area {
-  width: 100%;
-  margin-top: $space_xl;
-}
-
 .c-form__btn {
   width: 100px;
   margin: 0 auto;
@@ -14,6 +9,52 @@
   &:hover {
     background: $main-color;
     color: $reset-color;
-    transition: all 0.5s ease;
+    transition: all 0.6s ease;
+  }
+}
+
+.c-result__btn {
+  width: 300px;
+  margin: 0 auto;
+  border: solid 1px $main-color;
+  background: $bg-color;
+  color: $main-color;
+  display: block;
+
+  &:hover {
+    background: $main-color;
+    color: $reset-color;
+    transition: all 0.6s ease;
+  }
+}
+
+.c-answer__btn {
+  width: 300px;
+  margin: 0 auto;
+  display: block;
+  font-size: $font-size_xl;
+
+  &--a {
+      border: solid 1px $answer_a-color;
+      background: $bg-color;
+      color: $answer_a-color;
+
+        &:hover {
+          background: $answer_a-color;
+          color: $reset-color;
+          transition: all 0.6s ease;
+        }
+  }
+
+  &--b {
+      border: solid 1px $answer_b-color;
+      background: $bg-color;
+      color: $answer_b-color;
+
+        &:hover {
+          background: $answer_b-color;
+          color: $reset-color;
+          transition: all 0.6s ease;
+        }
   }
 }

@@ -59,15 +59,6 @@
         }
       }
       &__mypage {
-          .avatar {
-              width: 40px;
-              height: 40px;
-              border-radius: 20px;
-          }
-          .triangle {
-            padding-left: $space_m;
-          }
-
           &:hover {
             opacity: 1;
             color: $reset-color;
@@ -83,7 +74,7 @@
   opacity: 0.7;
 
   .dropdown-item {
-    
+
     &:hover {
       background: $main-color;
       color: $reset-color;      

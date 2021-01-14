@@ -1,0 +1,29 @@
+.c-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.c-post__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 20px;
+}
+
+.c-answer__img {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  margin-top: $space_l;
+  margin-bottom: $space_m;
+  display: block;
+}
+
+.c-list__answer__img {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  margin-top: $space_m;
+  margin-bottom: $space_s;
+  display: block;
+}
