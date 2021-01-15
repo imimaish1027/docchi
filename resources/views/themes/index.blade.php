@@ -57,9 +57,9 @@
         </div>
         <div class="p-theme__info">
           <ul class="p-icon__count">
-            <li class="p-icon__count__one"><img src="{{ asset('images/icon-answer.png') }}" class="c-icon"><span class="c-count__number">10</span></li>
-            <li class="p-icon__count__one"><img src="{{ asset('images/icon-comment.png') }}" class="c-icon"><span class="c-count__number">10</span></li>
-            <li class="p-icon__count__one"><img src="{{ asset('images/icon-bookmark.png') }}" class="c-icon"><span class="c-count__number">10</span></li>
+            <li class="p-icon__count__one"><img src="{{ asset('images/answer-icon.png') }}" class="c-icon"><span class="c-count__number">10</span></li>
+            <li class="p-icon__count__one"><img src="{{ asset('images/comment-icon.png') }}" class="c-icon"><span class="c-count__number">10</span></li>
+            <li class="p-icon__count__one"><img src="{{ asset('images/bookmark-icon.png') }}" class="c-icon"><span class="c-count__number">10</span></li>
           </ul>
           <div class="p-post__info">
             <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-post__avatar">
