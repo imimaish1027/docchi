@@ -11499,8 +11499,8 @@ a:hover {
 .l-header {
   height: 80px;
   color: #68699B;
-  border-bottom: solid 1px #A2A2A2;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+  border-bottom: solid 1px #68699B;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -11895,6 +11895,11 @@ a:hover {
   padding-left: 8px;
 }
 
+.c-icon {
+  height: 24px;
+  width: 24px;
+}
+
 .c-theme__note--guide {
   width: 100%;
   margin-bottom: 24px;
@@ -11922,7 +11927,7 @@ a:hover {
 .c-your__choice {
   height: 40px;
   width: 180px;
-  top: 15px;
+  top: 20px;
   margin: 0 auto;
   border-radius: 80px;
   position: relative;
