@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Theme;
 use App\Tag;
+use App\Answer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -18,19 +20,89 @@ class ThemeController extends Controller
         return view('themes.index', ['themes' => $themes, 'users' => $users]);
     }
 
-    public function show($id)
+    public function show($theme_id)
     {
-        $theme = Theme::find($id);
+        $auth_user = Auth::user();
+        $theme = Theme::find($theme_id);
         $post_user = User::where('id', $theme->user_id)->first();
-        return view('themes.show', ['theme' => $theme, 'post_user' => $post_user]);
+
+        if ($auth_user && DB::table('answers')->where('user_id', $auth_user->id)->where('theme_id', $theme->id)->exists()) {
+            $answer_flg = Answer::where('user_id', $auth_user->id)->where('theme_id', $theme_id)->first();
+
+            $count_answer_a = DB::table('answers')->where('theme_id', $theme->id)->where('answer', 1)->count();
+            $count_answer_b = DB::table('answers')->where('theme_id', $theme->id)->where('answer', 2)->count();
+
+            $auth_user = Auth::user();
+            if ($auth_user) {
+                $user_choice = Answer::where('user_id', $auth_user->id)->where('theme_id', $theme_id)->first();
+                if ($user_choice) {
+                    $choice_number = $user_choice->answer;
+                } else {
+                    $choice_number = 0;
+                }
+            } else {
+                $choice_number = 0;
+            }
+
+            if ($answer_flg) {
+                if ($auth_user->id === $answer_flg->user_id) {
+                    return view('themes.result', [
+                        'theme' => $theme,
+                        'post_user' => $post_user,
+                        'count_answer_a' => $count_answer_a,
+                        'count_answer_b' => $count_answer_b,
+                        'choice_number' => $choice_number
+                    ]);
+                }
+            }
+        } else {
+            return view('themes.show', ['theme' => $theme, 'post_user' => $post_user]);
+        }
     }
 
-    public function answer()
+    public function answer(Request $request, $theme_id)
     {
+        $auth_user = Auth::user();
+
+        $answer = new Answer;
+        $answer->user_id = $auth_user->id;
+        $answer->theme_id = $theme_id;
+        $answer->answer = $request->answer;
+        $answer->save();
+
+        $theme = Theme::find($theme_id);
+        $post_user = User::where('id', $theme->user_id)->first();
+
+        return redirect()->route('themes.result', ['id' => $theme_id]);
     }
 
-    public function result()
+    public function result($theme_id)
     {
+        $theme = Theme::find($theme_id);
+        $post_user = User::where('id', $theme->user_id)->first();
+
+        $count_answer_a = DB::table('answers')->where('theme_id', $theme_id)->where('answer', 1)->count();
+        $count_answer_b = DB::table('answers')->where('theme_id', $theme_id)->where('answer', 2)->count();
+
+        $auth_user = Auth::user();
+        if ($auth_user) {
+            $user_choice = Answer::where('user_id', $auth_user->id)->where('theme_id', $theme_id)->first();
+            if ($user_choice) {
+                $choice_number = $user_choice->answer;
+            } else {
+                $choice_number = 0;
+            }
+        } else {
+            $choice_number = 0;
+        }
+
+        return view('themes.result', [
+            'theme' => $theme,
+            'post_user' => $post_user,
+            'count_answer_a' => $count_answer_a,
+            'count_answer_b' => $count_answer_b,
+            'choice_number' => $choice_number
+        ]);
     }
 
     public function create()
@@ -69,7 +141,7 @@ class ThemeController extends Controller
 
         $theme->save();
 
-        if($request->input('tag')){
+        if ($request->input('tag')) {
             $tag = new Tag;
             $tag->name = $request->input('tag');
             $tag->save();
@@ -80,7 +152,7 @@ class ThemeController extends Controller
 
     public function edit($id)
     {
-        if(!ctype_digit($id)){
+        if (!ctype_digit($id)) {
             return redirect('/themes/create');
         }
 
@@ -90,7 +162,7 @@ class ThemeController extends Controller
 
     public function update(Request $request, $id)
     {
-        if(!ctype_digit($id)){
+        if (!ctype_digit($id)) {
             return redirect('/themes/create');
         }
 
@@ -108,7 +180,7 @@ class ThemeController extends Controller
         $theme = Theme::find($id);
         $theme->fill($request->all())->save();
 
-        if($request->input('tag')){
+        if ($request->input('tag')) {
             $tag = new Tag;
             $tag->name = $request->input('tag');
             $tag->save();
@@ -119,7 +191,7 @@ class ThemeController extends Controller
 
     public function destroy($id)
     {
-        if(!ctype_digit($id)){
+        if (!ctype_digit($id)) {
             return redirect('/themes/create');
         }
 

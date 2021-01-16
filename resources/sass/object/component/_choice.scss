@@ -1,0 +1,22 @@
+.c-your__choice {
+  height: 40px;
+  width: 180px;
+  top: 15px;
+  margin: 0 auto;
+  border-radius: 80px;
+  position: relative;
+  text-align: center;
+  line-height: 40px;
+  font-size: $font-size_l;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+
+  &--this {
+    color: $reset-color;
+    background: $main-color;
+    text-indent: 0%;
+    white-space: normal;
+    overflow: auto;
+  }
+}

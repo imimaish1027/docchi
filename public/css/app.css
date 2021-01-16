@@ -11919,6 +11919,29 @@ a:hover {
   cursor: pointer;
 }
 
+.c-your__choice {
+  height: 40px;
+  width: 180px;
+  top: 15px;
+  margin: 0 auto;
+  border-radius: 80px;
+  position: relative;
+  text-align: center;
+  line-height: 40px;
+  font-size: 20px;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.c-your__choice--this {
+  color: #ffffff;
+  background: #68699B;
+  text-indent: 0%;
+  white-space: normal;
+  overflow: auto;
+}
+
 /* Project */
 
 .p-form {
@@ -12085,6 +12108,10 @@ a:hover {
   margin-bottom: 64px;
   display: flex;
   justify-content: space-between;
+}
+
+.p-answer__one {
+  position: relative;
 }
 
 .p-answer__area {
