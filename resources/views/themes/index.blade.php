@@ -14,23 +14,23 @@
       <div class="p-main__heading__down">
         <div class="p-keyword__search__area">
           <form method="GET" action="" class="p-form__search">
-            <input name="search" type="text" placeholder="キーワードを入力" class="c-form__search__box"/>
+            <input name="search" type="text" placeholder="キーワードを入力" class="c-form__search__box" />
             <button type="submit" class="c-form__search__btn"><i class="fas fa-search"></i></button>
           </form>
         </div>
         <div class="p-sort__area">
           <select name="sort" id="sort" class="c-sort">
             <option value="1" checked>新着順</option>
-            <option value="2" >投票数順</option>
-            <option value="3" >コメント数順</option>
-            <option value="4" >ブックマーク数順</option>
+            <option value="2">投票数順</option>
+            <option value="3">コメント数順</option>
+            <option value="4">ブックマーク数順</option>
           </select>
         </div>
       </div>
     </div>
 
     <ul class="p-theme__list">
-    @foreach($themes as $theme)
+      @foreach($themes as $theme)
 
       <li class="p-theme__one">
         <p class="c-theme__one__title">{{ $theme->title }}</p>
@@ -63,13 +63,14 @@
           </ul>
           <div class="p-post__info">
             <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-post__avatar">
-            <p class="c-list__post__date">{{ $theme['created_at']->format('Y-m-d') }}</p>
+            <p class="c-list__post__date">{{ $theme->created_at->format('Y-m-d') }}</p>
           </div>
         </div>
       </li>
 
-    @endforeach
+      @endforeach
     </ul>
+    {{ $themes->links() }}
   </div>
 </div>
 
