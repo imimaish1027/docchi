@@ -15,7 +15,7 @@ class ThemeController extends Controller
 {
     public function index()
     {
-        $themes = Theme::all();
+        $themes = Theme::paginate(10);
         $users = User::all();
         return view('themes.index', ['themes' => $themes, 'users' => $users]);
     }
