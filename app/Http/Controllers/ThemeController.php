@@ -178,7 +178,21 @@ class ThemeController extends Controller
         ]);
 
         $theme = Theme::find($id);
-        $theme->fill($request->all())->save();
+        $theme->user_id = $request->user()->id;
+        $theme->title = $request->input('title');
+        $theme->answer_a = $request->input('answer_a');
+
+        $pic_a = $request->pic_a->store('public/selects');
+        $file_name_a = basename($pic_a);
+        $theme->pic_a = $file_name_a;
+
+        $theme->answer_b = $request->input('answer_b');
+
+        $pic_b = $request->pic_b->store('public/selects');
+        $file_name_b = basename($pic_b);
+        $theme->pic_b = $file_name_b;
+
+        $theme->save();
 
         if ($request->input('tag')) {
             $tag = new Tag;
