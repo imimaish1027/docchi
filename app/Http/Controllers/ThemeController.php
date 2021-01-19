@@ -8,6 +8,7 @@ use App\User;
 use App\Theme;
 use App\Tag;
 use App\Answer;
+use App\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -96,12 +97,17 @@ class ThemeController extends Controller
             $choice_number = 0;
         }
 
+        $comments = Comment::where('theme_id', $theme_id)->paginate(5);
+        $count_comment = Comment::where('theme_id', $theme_id)->count();
+
         return view('themes.result', [
             'theme' => $theme,
             'post_user' => $post_user,
             'count_answer_a' => $count_answer_a,
             'count_answer_b' => $count_answer_b,
-            'choice_number' => $choice_number
+            'choice_number' => $choice_number,
+            'comments' => $comments,
+            'count_comment' => $count_comment,
         ]);
     }
 
@@ -210,6 +216,23 @@ class ThemeController extends Controller
         }
 
         Theme::find($id)->delete();
+
+        return redirect()->route('themes.index');
+    }
+
+    public function comment(Request $request, $theme_id)
+    {
+        $request->validate([
+            'body' => 'required|string|max:100',
+        ]);
+
+        $auth_user = Auth::user();
+
+        $comment = new Comment;
+        $comment->user_id = $auth_user->id;
+        $comment->theme_id = $theme_id;
+        $comment->body = $request->body;
+        $comment->save();
 
         return redirect()->route('themes.index');
     }
