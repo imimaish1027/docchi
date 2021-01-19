@@ -31,6 +31,9 @@
 @import 'object/component/note';
 @import 'object/component/sort';
 @import 'object/component/choice';
+@import 'object/component/text';
+@import 'object/component/post';
+@import 'object/component/textarea';
 
 /* Project */
 // フォーム画面(テーマ作成含む)
@@ -61,3 +64,9 @@
 @import 'object/project/theme-info';
 @import 'object/project/icon-count';
 @import 'object/project/post-info';
+// コメント
+@import 'object/project/comment-heading';
+@import 'object/project/comment-one';
+@import 'object/project/comment-writing';
+// ページネーション
+@import 'object/project/pagination';

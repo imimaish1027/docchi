@@ -1,0 +1,32 @@
+.p-comment__one {
+  margin-bottom: $space_m;
+}
+
+.p-comment__area {
+  height: 430px;
+  width: 100%;
+  padding: $space_m $space_l;
+  margin-bottom: $space_m;
+  border: solid 1px $line-color;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+.p-post__comment__one {
+  margin-bottom: $space_m;
+}
+
+.p-post__comment__main {
+  margin-bottom: $space_s;
+  display: flex;
+  align-items: center;
+}
+
+.p-post__comment__info {
+  display: flex;
+
+  &__group {
+    display: flex;
+    margin-top: $space_m;
+  }
+}

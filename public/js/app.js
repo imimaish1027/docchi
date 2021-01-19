@@ -49755,6 +49755,12 @@ var app = new Vue({
 $(".checkbox").on("click", function () {
   $('.checkbox').prop('checked', false);
   $(this).prop('checked', true);
+}); // テキストエリアカウント
+
+var $countUp = $('#js-count'),
+    $countView = $('#js-count__view');
+$countUp.on('keyup', function (e) {
+  $countView.html($(this).val().length);
 });
 
 /***/ }),
