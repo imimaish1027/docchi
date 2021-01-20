@@ -62,38 +62,37 @@
     <div class="p-comment">
       <div class="p-comment__heading">
         <p class="c-comment__title">コメント</p>
-        <p class="c-comment__count">{{ $count_comment }}件</p>
+        <p class="c-comment__count">{{ $count_comment ?? 0}}件</p>
       </div>
       <div class="p-comment__area">
+        @forelse($comments as $comment)
         <ul class="p-comment__list">
           @foreach($comments as $comment)
           <li class="p-comment__one">
             <div class="p-post__comment__main">
-              <div>
+              <div class="p-post__comment__user">
                 <div class="c-post__comment__user__img">
                   <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-avatar">
                 </div>
                 <p class="c-post__comment__user__info">
-                  {{ $comment->user->age }}@if($comment->user->age)歳　
-                  @endif
-
-                  @if($comment->user->gender === 1)♂
-                  @elseif($comment->user->gender === 2)♀
-                  @endif
-
+                  @switch($comment->user->age)
+                  @case(9 < $comment->user->age && $comment->user->age < 20) 10代 @break @case(19 < $comment->user->age && $comment->user->age < 30) 20代 @break @case(29 < $comment->user->age && $comment->user->age < 40) 30代 @break @case(39 < $comment->user->age && $comment->user->age < 50) 40代 @break @case(49 < $comment->user->age && $comment->user->age < 60) 50代 @break @case(59 < $comment->user->age && $comment->user->age < 70) 60代 @break @case(69 < $comment->user->age && $comment->user->age < 80) 70代 @break @case(79 < $comment->user->age && $comment->user->age < 90) 80代 @break @case(89 < $comment->user->age && $comment->user->age < 100) 90代 @break @default @endswitch @if($comment->user->gender === 1) ♂
+                                      @elseif($comment->user->gender === 2) ♀
+                                      @endif
                 </p>
               </div>
-
-              <div>
+              <div class="p-post__comment__content">
                 <p class="c-comment__text @if($comment->user->answer['answer'] === 1) c-comment__text--a @elseif($comment->user->answer['answer'] === 2) c-comment__text--b @endif">{{ $comment->body }}</p>
                 <div class="c-post__comment__date">{{ $comment->created_at->format('Y-m-d') }}</div>
               </div>
             </div>
           </li>
-
           @endforeach
         </ul>
         {{ $comments->links() }}
+        @empty
+        <p class="c-comment__note">コメントは投稿されていません。</p>
+        @endforelse
       </div>
 
       <form method="POST" action="{{ route('themes.comment', $theme->id) }}" enctype='multipart/form-data' class="">

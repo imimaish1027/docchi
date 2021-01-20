@@ -13,3 +13,11 @@
 .c-count__number {
   padding-left: $space_s;
 }
+
+.c-comment__note {
+  height: 398px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

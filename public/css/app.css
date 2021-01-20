@@ -11931,6 +11931,14 @@ a:hover {
   padding-left: 8px;
 }
 
+.c-comment__note {
+  height: 398px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .c-sort {
   text-align: center;
 }
@@ -12026,6 +12034,10 @@ a:hover {
 .c-count__text {
   display: flex;
   justify-content: flex-end;
+}
+
+.c-post__comment__user__img {
+  text-align: center;
 }
 
 .c-post__comment__user__info {
