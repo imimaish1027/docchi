@@ -25,8 +25,9 @@
 }
 
 .c-theme__one__title {
-  margin-bottom: $space_s;
+  margin-bottom: $space_m;
   font-size: $font-size_l;
+  text-align: center;
 }
 
 .c-list__answer__title {
@@ -39,5 +40,38 @@
   }
   &--b {
     color: $answer_b-color;
+  }
+}
+
+.c-post__theme__head {
+  height: 40px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-answer__theme__head {
+  height: 40px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-theme__head--yet {
+  color: $main-color;
+
+    &:hover {
+        color: $main-color;
+    }
+}
+
+.c-theme__head--select {
+  background: $main-color;
+  color: $reset-color;
+
+  &:hover {
+    color: $reset-color;
   }
 }

@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('users')->name('users.')->group(function () {
     Route::get('{id}', 'UserController@show')->name('show');
+    Route::get('{id}/answer', 'UserController@answer')->name('answer');
     Route::get('{id}/edit', 'UserController@edit')->name('edit');
     Route::post('{id}', 'UserController@update')->name('update');
     Route::get('{id}/email', 'UserController@emailEdit')->name('emailEdit');

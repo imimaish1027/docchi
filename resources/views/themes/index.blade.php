@@ -32,7 +32,7 @@
     <ul class="p-theme__list">
       @foreach($themes as $theme)
 
-      <li class="p-theme__one">
+      <li class="p-theme__one p-theme__one__index">
         <p class="c-theme__one__title">{{ $theme->title }}</p>
         <ul class="p-tag__group">
           <li class="c-tag__one">タグ1</li>

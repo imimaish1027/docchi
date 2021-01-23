@@ -11644,6 +11644,96 @@ a:hover {
   font-size: 12px;
 }
 
+.l-sidebar {
+  width: 300px;
+  margin-right: 32px;
+}
+
+.l-sidebar .p-user__info {
+  width: 100%;
+  padding: 24px 8px;
+  background: #ffffff;
+  border: solid 1px #A2A2A2;
+}
+
+.l-sidebar .p-user__info .c-user__img {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+  margin-bottom: 16px;
+  display: block;
+  border-radius: 90px;
+  border: solid 1px #A2A2A2;
+}
+
+.l-sidebar .p-user__info .c-user__name {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.l-sidebar .p-user__info .c-user__age__gender {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.l-sidebar .p-user__info .p-count__themes {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.l-sidebar .p-user__info .p-count__post__themes {
+  width: 50%;
+  text-align: center;
+}
+
+.l-sidebar .p-user__info .p-count__answer__themes {
+  width: 50%;
+  text-align: center;
+}
+
+.l-sidebar .p-user__nav {
+  width: 100%;
+  padding: 24px 0;
+  background: #ffffff;
+  border: solid 1px #A2A2A2;
+  box-sizing: border-box;
+}
+
+.l-sidebar .p-user__nav__one {
+  height: 40px;
+  width: 100%;
+  padding-left: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.l-sidebar .p-user__nav__one:hover {
+  cursor: pointer;
+  color: #ffffff;
+  background: #68699B;
+  transition: all 0.8s ease;
+}
+
+.l-sidebar .p-user__nav .c-user__nav__icon__box {
+  height: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.l-sidebar .p-user__nav .c-user__nav__icon--active {
+  position: absolute;
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+.l-sidebar .p-user__nav .p-user__nav__one:hover .c-user__nav__icon--active {
+  opacity: 1;
+}
+
 /* Object */
 
 /* Component */
@@ -11838,8 +11928,9 @@ a:hover {
 }
 
 .c-theme__one__title {
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   font-size: 20px;
+  text-align: center;
 }
 
 .c-list__answer__title {
@@ -11854,8 +11945,42 @@ a:hover {
   color: #0086CC;
 }
 
+.c-post__theme__head {
+  height: 40px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-answer__theme__head {
+  height: 40px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-theme__head--yet {
+  color: #68699B;
+}
+
+.c-theme__head--yet:hover {
+  color: #68699B;
+}
+
+.c-theme__head--select {
+  background: #68699B;
+  color: #ffffff;
+}
+
+.c-theme__head--select:hover {
+  color: #ffffff;
+}
+
 .c-tag__one {
-  padding: 8px;
+  height: 32px;
+  padding: 4px;
   margin-right: 16px;
   border: solid 1px #A2A2A2;
   text-align: center;
@@ -12057,6 +12182,14 @@ a:hover {
   border: solid 1px #A2A2A2;
 }
 
+.c-post__theme__link:hover {
+  color: #362F2F;
+}
+
+.c-answer__theme__link:hover {
+  color: #362F2F;
+}
+
 /* Project */
 
 .p-form {
@@ -12200,7 +12333,7 @@ a:hover {
 
 .p-tag__group {
   display: flex;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .p-post__user--answer {
@@ -12271,18 +12404,30 @@ a:hover {
   box-sizing: border-box;
 }
 
+.p-theme__list__user {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .p-theme__one {
-  width: 46%;
-  padding: 24px;
-  margin-bottom: 40px;
+  padding: 16px 24px;
+  margin-bottom: 24px;
   background: #ffffff;
   border: solid 1px #A2A2A2;
   border-radius: 5px;
   box-sizing: border-box;
 }
 
+.p-theme__one__index {
+  width: 46%;
+}
+
+.p-theme__one__user {
+  width: 100%;
+}
+
 @media (max-width: 575px) {
-  .p-theme__one {
+  .p-theme__one__index {
     width: 100%;
     margin: 0 auto;
     margin-bottom: 40px;
@@ -12290,7 +12435,7 @@ a:hover {
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
-  .p-theme__one {
+  .p-theme__one__index {
     width: 100%;
     margin: 0 auto;
     margin-bottom: 40px;
@@ -12298,7 +12443,7 @@ a:hover {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .p-theme__one {
+  .p-theme__one__index {
     width: 80%;
     margin: 0 auto;
     margin-bottom: 40px;
@@ -12306,14 +12451,14 @@ a:hover {
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  .p-theme__one {
+  .p-theme__one__index {
     width: 48%;
     margin-right: 2%;
   }
 }
 
 @media (min-width: 1200px) {
-  .p-theme__one {
+  .p-theme__one__index {
     width: 46%;
     margin-right: 4%;
   }
@@ -12321,14 +12466,14 @@ a:hover {
 
 .p-theme__list__answer {
   width: 100%;
+  margin-bottom: 16px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .p-list__answer__area {
   height: 180px;
   width: 180px;
-  margin-bottom: 16px;
   background: #ffffff;
 }
 
@@ -12469,5 +12614,23 @@ a:hover {
   /*background-color: #fff;*/
   border-color: #dee2e6;
   display: none;
+}
+
+.p-user {
+  margin-top: 32px;
+  display: flex;
+}
+
+.p-mytheme {
+  width: 80%;
+}
+
+.p-user__head {
+  width: 100%;
+  margin-bottom: 24px;
+  border-bottom: solid 2px #68699B;
+  display: flex;
+  font-size: 20px;
+  color: #68699B;
 }
 

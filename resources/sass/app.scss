@@ -13,10 +13,12 @@
 @import 'foundation/variables';
 
 /* Layout */
-// Header
+// ヘッダー
 @import 'layout/header';
-// Footer
+// フッター
 @import 'layout/footer';
+// サイドバー
+@import 'layout/sidebar';
 
 /* Object */
 /* Component */
@@ -34,6 +36,8 @@
 @import 'object/component/text';
 @import 'object/component/post';
 @import 'object/component/textarea';
+@import 'object/component/link';
+
 
 /* Project */
 // フォーム画面(テーマ作成含む)
@@ -70,3 +74,7 @@
 @import 'object/project/comment-writing';
 // ページネーション
 @import 'object/project/pagination';
+// ユーザーページ
+@import 'object/project/user';
+@import 'object/project/mytheme';
+@import 'object/project/user-head';
