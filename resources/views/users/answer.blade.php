@@ -37,68 +37,38 @@
       @if( Auth::id() === $user->id )
       <div class="p-user__nav">
         <ul class="p-user__nav__list">
-          <li class="p-user__nav__one">
-            <div class="c-user__nav__icon__box">
-              <img src="{{ asset('images/mytheme-icon.png') }}" class="c-user__nav__icon">
-            </div>
-            <img src="{{ asset('images/mytheme_select-icon.png') }}" class="c-user__nav__icon--active">　マイテーマ
-          </li>
-          <li class="p-user__nav__one">
-            <div class="c-user__nav__icon__box">
-              <img src="{{ asset('images/mybookmark-icon.png') }}" class="c-user__nav__icon">
-            </div>
-            <img src="{{ asset('images/mybookmark_select-icon.png') }}" class="c-user__nav__icon--active">　ブックマーク
-          </li>
-          <li class="p-user__nav__one">
-            <div class="c-user__nav__icon__box">
-              <img src="{{ asset('images/prof_edit-icon.png') }}" class="c-user__nav__icon">
-            </div>
-            <img src="{{ asset('images/prof_edit_select-icon.png') }}" class="c-user__nav__icon--active">　プロフィール編集
-          </li>
-          <li class="p-user__nav__one">
-            <div class="c-user__nav__icon__box">
-              <img src="{{ asset('images/email_change-icon.png') }}" class="c-user__nav__icon">
-            </div>
-            <img src="{{ asset('images/email_change_select-icon.png') }}" class="c-user__nav__icon--active">　メールアドレス変更
-          </li>
-          <li class="p-user__nav__one">
-            <div class="c-user__nav__icon__box">
-              <img src="{{ asset('images/pass_change-icon.png') }}" class="c-user__nav__icon">
-            </div>
-            <img src="{{ asset('images/pass_change_select-icon.png') }}" class="c-user__nav__icon--active">　パスワード変更
-          </li>
-          <li class="p-user__nav__one">
-            <div class="c-user__nav__icon__box">
-              <img src="{{ asset('images/withdraw-icon.png') }}" class="c-user__nav__icon">
-            </div>
-            <img src="{{ asset('images/withdraw_select-icon.png') }}" class="c-user__nav__icon--active">　アカウント削除
-          </li>
+          <li class="p-user__nav__one">マイテーマ</li>
+          <li class="p-user__nav__one">ブックマーク</li>
+          <li class="p-user__nav__one">プロフィール編集</li>
+          <li class="p-user__nav__one">メールアドレス変更</li>
+          <li class="p-user__nav__one">パスワード変更</li>
+          <li class="p-user__nav__one">アカウント削除</li>
         </ul>
       </div>
       @endif
 
     </div>
 
-    <div class="p-mytheme ">
+    <div class="p-mytheme">
       <div class="p-user__head">
-        <a class="c-post__theme__head c-theme__head--select" href="{{ route('users.show', ['id' => $user->id]) }}">
+        <a class="c-post__theme__head c-theme__head--yet" href="{{ route('users.show', ['id' => $user->id]) }}">
           投稿したテーマ
         </a>
-        <a class="c-answer__theme__head c-theme__head--yet" href="{{ route('users.answer', ['id' => $user->id]) }}">
+        <a class="c-answer__theme__head c-theme__head--select" href="{{ route('users.answer', ['id' => $user->id]) }}">
           回答したテーマ
         </a>
       </div>
 
       <ul class="p-theme__list__user">
-        @foreach($themes as $theme)
+        @foreach($answers as $answer)
 
         <li class="p-theme__one p-theme__one__user">
-          <p class="c-theme__one__title">{{ $theme->title }}</p>
+          <p class="c-theme__one__title">{{ $answer->theme->title }}</p>
           <div class="p-theme__list__answer">
             <div class="p-theme__list__answer__one">
               <div class="p-list__answer__area p-answer__area--a">
-                <img src="{{ asset('/storage/selects/'.$theme->pic_a) }}" class="c-list__answer__img">
-                <p class="c-list__answer__title c-answer--a">{{ $theme->answer_a }}</p>
+                <img src="{{ asset('/storage/selects/'.$answer->theme->pic_a) }}" class="c-list__answer__img">
+                <p class="c-list__answer__title c-answer--a">{{ $answer->theme->answer_a }}</p>
               </div>
             </div>
 
@@ -106,8 +76,8 @@
 
             <div class="p-theme__list__answer__one">
               <div class="p-list__answer__area p-answer__area--b">
-                <img src="{{ asset('/storage/selects/'.$theme->pic_b) }}" class="c-list__answer__img">
-                <p class="c-list__answer__title c-answer--b">{{ $theme->answer_b }}</p>
+                <img src="{{ asset('/storage/selects/'.$answer->theme->pic_b) }}" class="c-list__answer__img">
+                <p class="c-list__answer__title c-answer--b">{{ $answer->theme->answer_b }}</p>
               </div>
             </div>
           </div>
@@ -123,14 +93,14 @@
             </ul>
             <div class="p-post__info">
               <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-post__avatar">
-              <p class="c-list__post__date">{{ $theme->created_at->format('Y-m-d') }}</p>
+              <p class="c-list__post__date">{{ $answer->theme->created_at->format('Y-m-d') }}</p>
             </div>
           </div>
         </li>
 
         @endforeach
       </ul>
-      {{ $themes->links() }}
+      {{ $answers->links() }}
     </div>
 
   </div>

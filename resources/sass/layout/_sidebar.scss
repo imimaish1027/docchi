@@ -68,5 +68,26 @@
             transition: all 0.8s ease;
           }
       }
+
+      .c-user__nav__icon__box {
+          height: 40px;
+          position: relative;
+          display: flex;
+          align-items: center;
+      }
+
+      .c-user__nav__icon {
+        
+      }
+
+      .c-user__nav__icon--active {
+          position: absolute;
+          opacity: 0;
+          transition: all 0.8s ease;
+      }
+
+      .p-user__nav__one:hover .c-user__nav__icon--active {
+          opacity: 1;
+      }
   }
 }

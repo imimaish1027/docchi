@@ -36,6 +36,8 @@
 @import 'object/component/text';
 @import 'object/component/post';
 @import 'object/component/textarea';
+@import 'object/component/link';
+
 
 /* Project */
 // フォーム画面(テーマ作成含む)
@@ -75,3 +77,4 @@
 // ユーザーページ
 @import 'object/project/user';
 @import 'object/project/mytheme';
+@import 'object/project/user-head';

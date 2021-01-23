@@ -19,6 +19,15 @@ class UserController extends Controller
         return view('users.show', ['user' => $user, 'themes' => $themes]);
     }
 
+    public function answer($user_id)
+    {
+        $user = User::where('id', $user_id)->first();
+        $answers = Answer::where('user_id', $user_id)->paginate(5);
+        //$themes = Theme::where('id', $answer_id)->paginate(5);
+
+        return view('users.answer', ['user' => $user, 'answers' => $answers]);
+    }
+
     public function edit()
     {
     }
