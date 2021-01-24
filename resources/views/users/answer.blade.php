@@ -37,12 +37,44 @@
       @if( Auth::id() === $user->id )
       <div class="p-user__nav">
         <ul class="p-user__nav__list">
-          <li class="p-user__nav__one">マイテーマ</li>
-          <li class="p-user__nav__one">ブックマーク</li>
-          <li class="p-user__nav__one">プロフィール編集</li>
-          <li class="p-user__nav__one">メールアドレス変更</li>
-          <li class="p-user__nav__one">パスワード変更</li>
-          <li class="p-user__nav__one">アカウント削除</li>
+          <li class="p-user__nav__one">
+            <div class="c-user__nav__icon__box">
+              <img src="{{ asset('images/mytheme-icon.png') }}" class="c-user__nav__icon">
+            </div>
+            <img src="{{ asset('images/mytheme_select-icon.png') }}" class="c-user__nav__icon--active">　マイテーマ
+          </li>
+          <a href="{{route('users.bookmark', $user->id)}}">
+            <li class="p-user__nav__one">
+              <div class="c-user__nav__icon__box">
+                <img src="{{ asset('images/mybookmark-icon.png') }}" class="c-user__nav__icon">
+              </div>
+              <img src="{{ asset('images/mybookmark_select-icon.png') }}" class="c-user__nav__icon--active">　ブックマーク
+            </li>
+          </a>
+          <li class="p-user__nav__one">
+            <div class="c-user__nav__icon__box">
+              <img src="{{ asset('images/prof_edit-icon.png') }}" class="c-user__nav__icon">
+            </div>
+            <img src="{{ asset('images/prof_edit_select-icon.png') }}" class="c-user__nav__icon--active">　プロフィール編集
+          </li>
+          <li class="p-user__nav__one">
+            <div class="c-user__nav__icon__box">
+              <img src="{{ asset('images/email_change-icon.png') }}" class="c-user__nav__icon">
+            </div>
+            <img src="{{ asset('images/email_change_select-icon.png') }}" class="c-user__nav__icon--active">　メールアドレス変更
+          </li>
+          <li class="p-user__nav__one">
+            <div class="c-user__nav__icon__box">
+              <img src="{{ asset('images/pass_change-icon.png') }}" class="c-user__nav__icon">
+            </div>
+            <img src="{{ asset('images/pass_change_select-icon.png') }}" class="c-user__nav__icon--active">　パスワード変更
+          </li>
+          <li class="p-user__nav__one">
+            <div class="c-user__nav__icon__box">
+              <img src="{{ asset('images/withdraw-icon.png') }}" class="c-user__nav__icon">
+            </div>
+            <img src="{{ asset('images/withdraw_select-icon.png') }}" class="c-user__nav__icon--active">　アカウント削除
+          </li>
         </ul>
       </div>
       @endif
@@ -89,7 +121,8 @@
             <ul class="p-icon__count">
               <li class="p-icon__count__one"><img src="{{ asset('images/answer-icon.png') }}" class="c-icon"><span class="c-count__number">10</span></li>
               <li class="p-icon__count__one"><img src="{{ asset('images/comment-icon.png') }}" class="c-icon"><span class="c-count__number">10</span></li>
-              <li class="p-icon__count__one"><img src="{{ asset('images/bookmark-icon.png') }}" class="c-icon"><span class="c-count__number">10</span></li>
+              <theme-bookmark :initial-is-bookmarked-by='@json($theme->isBookmarkedBy(Auth::user()))' :initial-count-bookmarks='@json($theme->count_bookmarks)' :authorized='@json(Auth::check())' endpoint="{{ route('themes.bookmark', ['id' => $theme->id]) }}">
+              </theme-bookmark>
             </ul>
             <div class="p-post__info">
               <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-post__avatar">

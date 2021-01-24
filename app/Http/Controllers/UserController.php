@@ -8,6 +8,7 @@ use App\Theme;
 use App\Tag;
 use App\Answer;
 use App\Comment;
+use App\Bookmark;
 
 class UserController extends Controller
 {
@@ -23,7 +24,6 @@ class UserController extends Controller
     {
         $user = User::where('id', $user_id)->first();
         $answers = Answer::where('user_id', $user_id)->paginate(5);
-        //$themes = Theme::where('id', $answer_id)->paginate(5);
 
         return view('users.answer', ['user' => $user, 'answers' => $answers]);
     }
@@ -34,6 +34,14 @@ class UserController extends Controller
 
     public function update()
     {
+    }
+
+    public function bookmark($user_id)
+    {
+        $user = User::where('id', $user_id)->first();
+        $bookmarks = Bookmark::where('user_id', $user_id)->orderBy("created_at", "DESC")->paginate(5);
+
+        return view('users.bookmark', ['user' => $user, 'bookmarks' => $bookmarks]);
     }
 
     public function emailEdit()

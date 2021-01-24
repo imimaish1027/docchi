@@ -24,6 +24,7 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::get('{id}/answer', 'UserController@answer')->name('answer');
     Route::get('{id}/edit', 'UserController@edit')->name('edit');
     Route::post('{id}', 'UserController@update')->name('update');
+    Route::get('{id}/bookmark', 'UserController@bookmark')->name('bookmark');
     Route::get('{id}/email', 'UserController@emailEdit')->name('emailEdit');
     Route::put('{id}/email', 'UserController@emailUpdate')->name('emailUpdate');
     Route::get('{id}/pass', 'UserController@passEdit')->name('passEdit');
@@ -43,6 +44,8 @@ Route::prefix('themes')->name('themes.')->group(function () {
     Route::put('{id}', 'ThemeController@update')->name('update');
     Route::delete('{id}', 'ThemeController@destroy')->name('destroy');
     Route::get('', 'ThemeController@index')->name('index');
+    Route::put('{id}/bookmark', 'ThemeController@bookmark')->name('bookmark')->middleware('auth');
+    Route::delete('{id}/bookmark', 'ThemeController@unbookmark')->name('unbookmark')->middleware('auth');
 });
 
 Route::prefix('contact')->name('contact.')->group(function () {

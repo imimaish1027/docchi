@@ -59,7 +59,8 @@
           <ul class="p-icon__count">
             <li class="p-icon__count__one"><img src="{{ asset('images/answer-icon.png') }}" class="c-icon"><span class="c-count__number">10</span></li>
             <li class="p-icon__count__one"><img src="{{ asset('images/comment-icon.png') }}" class="c-icon"><span class="c-count__number">10</span></li>
-            <li class="p-icon__count__one"><img src="{{ asset('images/bookmark-icon.png') }}" class="c-icon"><span class="c-count__number">10</span></li>
+            <theme-bookmark :initial-is-bookmarked-by='@json($theme->isBookmarkedBy(Auth::user()))' :initial-count-bookmarks='@json($theme->count_bookmarks)' :authorized='@json(Auth::check())' endpoint="{{ route('themes.bookmark', ['id' => $theme->id]) }}">
+            </theme-bookmark>
           </ul>
           <div class="p-post__info">
             <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-post__avatar">

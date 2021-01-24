@@ -236,4 +236,28 @@ class ThemeController extends Controller
 
         return redirect()->route('themes.index');
     }
+
+    public function bookmark(Request $request, Theme $theme)
+    {
+        $path = $request->path();
+        $theme_id = preg_replace('/[^0-9]/', '', $path);
+        $theme = Theme::find($theme_id);
+        $theme->bookmarks()->detach($request->user()->id);
+        $theme->bookmarks()->sync($request->user()->id);
+
+        return [
+            'id' => $theme->id,
+            'countBookmarks' => $theme->count_bookmarks,
+        ];
+    }
+
+    public function unbookmark(Request $request, Theme $theme)
+    {
+        $theme->bookmarks()->detach($request->user()->id);
+
+        return [
+            'id' => $theme->id,
+            'countBookmarks' => $theme->count_bookmarks,
+        ];
+    }
 }

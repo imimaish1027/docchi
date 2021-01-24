@@ -1,8 +1,20 @@
 .p-user__head {
+  height: 48px;
   width: 100%;
   margin-bottom: $space_l;
   border-bottom: solid 2px $main-color;
   display: flex;
   font-size: $font-size_l;
-  color: $main-color
+  color: $main-color;
+}
+
+.p-user__head__bookmark {
+    height: 48px;
+    width: 100%;
+    margin-bottom: $space_l;
+    border-bottom: solid 2px $main-color;
+    display: flex;
+    font-size: $font-size_l;
+    color: $main-color;
+    background: $main-color;
 }
