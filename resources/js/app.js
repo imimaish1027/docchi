@@ -4,7 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+import './bootstrap'
+import Vue from 'vue'
+import ThemeBookmark from './components/ThemeBookmark'
 
 window.Vue = require('vue');
 
@@ -29,6 +31,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    components: {
+        ThemeBookmark,
+    }
 });
 
 // チェックボックスの複数選択不可

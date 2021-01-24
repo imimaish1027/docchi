@@ -52,7 +52,7 @@
 }
 
 .c-answer__theme__head {
-  height: 40px;
+  height: 48px;
   width: 50%;
   display: flex;
   justify-content: center;
@@ -74,4 +74,14 @@
   &:hover {
     color: $reset-color;
   }
+}
+
+.c-bookmark__head {
+  height: 48px;
+  width: 100%;
+  padding-left: $space_l;
+  color: $reset-color;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }

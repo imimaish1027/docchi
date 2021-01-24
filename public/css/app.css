@@ -11954,7 +11954,7 @@ a:hover {
 }
 
 .c-answer__theme__head {
-  height: 40px;
+  height: 48px;
   width: 50%;
   display: flex;
   justify-content: center;
@@ -11976,6 +11976,16 @@ a:hover {
 
 .c-theme__head--select:hover {
   color: #ffffff;
+}
+
+.c-bookmark__head {
+  height: 48px;
+  width: 100%;
+  padding-left: 24px;
+  color: #ffffff;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 
 .c-tag__one {
@@ -12053,6 +12063,7 @@ a:hover {
 }
 
 .c-count__number {
+  min-width: 64px;
   padding-left: 8px;
 }
 
@@ -12483,7 +12494,7 @@ a:hover {
 }
 
 .p-icon__count {
-  width: 250px;
+  width: 340px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12626,11 +12637,23 @@ a:hover {
 }
 
 .p-user__head {
+  height: 48px;
   width: 100%;
   margin-bottom: 24px;
   border-bottom: solid 2px #68699B;
   display: flex;
   font-size: 20px;
   color: #68699B;
+}
+
+.p-user__head__bookmark {
+  height: 48px;
+  width: 100%;
+  margin-bottom: 24px;
+  border-bottom: solid 2px #68699B;
+  display: flex;
+  font-size: 20px;
+  color: #68699B;
+  background: #68699B;
 }
 
