@@ -34,10 +34,6 @@
 
       <li class="p-theme__one p-theme__one__index">
         <p class="c-theme__one__title">{{ $theme->title }}</p>
-        <ul class="p-tag__group">
-          <li class="c-tag__one">タグ1</li>
-          <li class="c-tag__one">タグ2</li>
-        </ul>
         <div class="p-theme__list__answer">
           <div class="p-theme__list__answer__one">
             <div class="p-list__answer__area p-answer__area--a">
@@ -55,6 +51,10 @@
             </div>
           </div>
         </div>
+        <ul class="p-tag__group">
+          <li class="c-tag__one">タグ1</li>
+          <li class="c-tag__one">タグ2</li>
+        </ul>
         <div class="p-theme__info">
           <ul class="p-icon__count">
             <li class="p-icon__count__one"><img src="{{ asset('images/answer-icon.png') }}" class="c-icon"><span class="c-count__number">10</span></li>
