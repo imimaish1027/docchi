@@ -11564,12 +11564,13 @@ a:hover {
 .dropdown-menu {
   padding: 0;
   margin-top: 0;
-  opacity: 0.7;
+  opacity: 1;
 }
 
 .dropdown-menu .dropdown-item:hover {
   background: #68699B;
   color: #ffffff;
+  transition: all 0.5s ease;
 }
 
 @media (min-width: 576px) {
