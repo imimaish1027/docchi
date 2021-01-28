@@ -28,12 +28,35 @@ class UserController extends Controller
         return view('users.answer', ['user' => $user, 'answers' => $answers]);
     }
 
-    public function edit()
+    public function edit($user_id)
     {
+        $user = User::find($user_id);
+
+        return view('users.edit', ['user' => $user]);
     }
 
-    public function update()
+    public function update(Request $request, $user_id)
     {
+        $request->validate([
+            'name' => 'required|string|max:20',
+            'age' => 'required|int|numeric',
+            'pic' =>
+            'file|image|max:1024|mimes:jpeg,png,jpg',
+        ]);
+
+        $user = User::find($user_id);
+        $user->name = $request->input('name');
+        $user->age = $request->input('age');
+
+        if ($request->pic) {
+            $pic = $request->pic->store('public/users');
+            $file_name = basename($pic);
+            $user->pic = $file_name;
+        }
+
+        $user->save();
+
+        return view('users.edit', ['user' => $user]);
     }
 
     public function bookmark($user_id)

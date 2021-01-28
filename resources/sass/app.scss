@@ -37,6 +37,7 @@
 @import 'object/component/post';
 @import 'object/component/textarea';
 @import 'object/component/link';
+@import 'object/component/error';
 
 
 /* Project */
@@ -78,3 +79,6 @@
 @import 'object/project/user';
 @import 'object/project/mytheme';
 @import 'object/project/user-head';
+// プロフィール編集
+@import 'object/project/form-user';
+@import 'object/project/form-input';
