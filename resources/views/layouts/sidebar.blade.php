@@ -1,6 +1,11 @@
 <div class="l-sidebar">
   <div class="p-user__info">
+    @isset( $user->pic )
+    <img src="{{ asset('/storage/users/'.$user->pic) }}" class="c-user__img">
+    @endisset
+    @empty( $user->pic )
     <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-user__img">
+    @endempty
     <p class="c-user__name">{{ $user->name }}</p>
     <p class="c-user__age__gender">20代　♂</p>
 
@@ -42,12 +47,14 @@
           <img src="{{ asset('images/mybookmark_select-icon.png') }}" class="c-user__nav__icon--active">　ブックマーク
         </li>
       </a>
-      <li class="p-user__nav__one">
-        <div class="c-user__nav__icon__box">
-          <img src="{{ asset('images/prof_edit-icon.png') }}" class="c-user__nav__icon">
-        </div>
-        <img src="{{ asset('images/prof_edit_select-icon.png') }}" class="c-user__nav__icon--active">　プロフィール編集
-      </li>
+      <a href="{{route('users.edit', $user->id)}}">
+        <li class="p-user__nav__one">
+          <div class="c-user__nav__icon__box">
+            <img src="{{ asset('images/prof_edit-icon.png') }}" class="c-user__nav__icon">
+          </div>
+          <img src="{{ asset('images/prof_edit_select-icon.png') }}" class="c-user__nav__icon--active">　プロフィール編集
+        </li>
+      </a>
       <li class="p-user__nav__one">
         <div class="c-user__nav__icon__box">
           <img src="{{ asset('images/email_change-icon.png') }}" class="c-user__nav__icon">

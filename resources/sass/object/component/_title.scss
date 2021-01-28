@@ -1,8 +1,11 @@
-.c-form__title__text {
-  height: 40px;
+.c-form__title {
+  height: 48px;
+  padding-left: $space_l;
   color: $reset-color;
-  display: table-cell;
-  vertical-align: middle;
+  background: $main-color;
+  display: flex;
+  align-items: center;
+  font-size: $font-size_l;
 }
 
 .c-main__title__text {
@@ -84,4 +87,8 @@
   display: flex;
   justify-content: start;
   align-items: center;
+}
+
+.c-form__one__title {
+  width: 40%;
 }
