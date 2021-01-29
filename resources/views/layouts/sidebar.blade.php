@@ -55,12 +55,14 @@
           <img src="{{ asset('images/prof_edit_select-icon.png') }}" class="c-user__nav__icon--active">　プロフィール編集
         </li>
       </a>
-      <li class="p-user__nav__one">
-        <div class="c-user__nav__icon__box">
-          <img src="{{ asset('images/email_change-icon.png') }}" class="c-user__nav__icon">
-        </div>
-        <img src="{{ asset('images/email_change_select-icon.png') }}" class="c-user__nav__icon--active">　メールアドレス変更
-      </li>
+      <a href="{{route('users.emailEdit', $user->id)}}">
+        <li class="p-user__nav__one">
+          <div class="c-user__nav__icon__box">
+            <img src="{{ asset('images/email_change-icon.png') }}" class="c-user__nav__icon">
+          </div>
+          <img src="{{ asset('images/email_change_select-icon.png') }}" class="c-user__nav__icon--active">　メールアドレス変更
+        </li>
+      </a>
       <li class="p-user__nav__one">
         <div class="c-user__nav__icon__box">
           <img src="{{ asset('images/pass_change-icon.png') }}" class="c-user__nav__icon">

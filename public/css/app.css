@@ -12180,6 +12180,12 @@ a:hover {
   justify-content: flex-end;
 }
 
+.c-email__text {
+  width: 60%;
+  display: flex;
+  justify-content: flex-start;
+}
+
 .c-post__comment__user__img {
   text-align: center;
 }

@@ -67,12 +67,25 @@ class UserController extends Controller
         return view('users.bookmark', ['user' => $user, 'bookmarks' => $bookmarks]);
     }
 
-    public function emailEdit()
+    public function emailEdit($user_id)
     {
+        $user = User::find($user_id);
+
+        return view('users.emailEdit', ['user' => $user]);
     }
 
-    public function emailUpdate()
+    public function emailUpdate(Request $request, $user_id)
     {
+        $request->validate([
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        ]);
+
+        $user = User::find($user_id);
+        $user->email = $request->input('email');
+
+        $user->save();
+
+        return view('users.emailEdit', ['user' => $user]);
     }
 
     public function passEdit()
