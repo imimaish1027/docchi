@@ -41,6 +41,7 @@
                 <input type="checkbox" name="remember" id="remember" class="c-form__remember checkbox" {{ old('remember') ? 'checked' : '' }}>
                 <label class="c-form__remember__label" for="remember">{{ __('ログイン情報を保持する') }}</label>
             </div>
+            <a href="{{ route('password.request') }}" class="c-login__option">パスワードを忘れた場合</a>
         </div>
     </form>
 </div>
