@@ -113,11 +113,20 @@ class UserController extends Controller
         return view('users.show', ['user' => $user, 'themes' => $themes]);
     }
 
-    public function withdraw()
+    public function withdraw($user_id)
     {
+        $user = User::find($user_id);
+
+        return view('users.withdraw', ['user' => $user]);
     }
 
-    public function destroy()
+    public function destroy($user_id)
     {
+        $user = User::find($user_id);
+        $user->delete();
+
+        $themes = Theme::paginate(10);
+        $users = User::all();
+        return view('themes.index', ['themes' => $themes, 'users' => $users]);
     }
 }

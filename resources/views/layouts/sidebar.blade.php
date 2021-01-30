@@ -15,7 +15,7 @@
           投稿
         </a>
         <br>
-        <a class="c-post__theme__link" href="{{ route('users.show', ['id' => $user->id]) }}">{{ $user->themes->count()}}</a>
+        <a class="c-post__theme__link" href="{{ route('users.show', ['id' => $user->id]) }}">{{ $user->themes->count() ?? 0 }}</a>
 
       </div>
       <div class="p-count__answer__themes">
@@ -24,7 +24,12 @@
         </a>
         <br>
         <a class="c-answer__theme__link" href="{{ route('users.answer', ['id' => $user->id]) }}">
+          @isset($user->answer)
           {{ $user->answer->count() }}
+          @endisset
+          @empty($user->answer)
+          0
+          @endempty
         </a>
       </div>
     </div>
@@ -71,12 +76,14 @@
           <img src="{{ asset('images/pass_change_select-icon.png') }}" class="c-user__nav__icon--active">　パスワード変更
         </li>
       </a>
-      <li class="p-user__nav__one">
-        <div class="c-user__nav__icon__box">
-          <img src="{{ asset('images/withdraw-icon.png') }}" class="c-user__nav__icon">
-        </div>
-        <img src="{{ asset('images/withdraw_select-icon.png') }}" class="c-user__nav__icon--active">　アカウント削除
-      </li>
+      <a href="{{route('users.withdraw', $user->id)}}">
+        <li class="p-user__nav__one">
+          <div class="c-user__nav__icon__box">
+            <img src="{{ asset('images/withdraw-icon.png') }}" class="c-user__nav__icon">
+          </div>
+          <img src="{{ asset('images/withdraw_select-icon.png') }}" class="c-user__nav__icon--active">　アカウント削除
+        </li>
+      </a>
     </ul>
   </div>
   @endif
