@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DeleteColumnsBookmarksTable extends Migration
+class DropForeignKeyToThemesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class DeleteColumnsBookmarksTable extends Migration
      */
     public function up()
     {
-        Schema::table('bookmarks', function (Blueprint $table) {
-            $table->('user_id');
+        Schema::table('themes', function (Blueprint $table) {
+            $table->dropForeign('themes_user_id_foreign');
         });
     }
 
@@ -25,8 +25,8 @@ class DeleteColumnsBookmarksTable extends Migration
      */
     public function down()
     {
-        Schema::table('bookmarks', function (Blueprint $table) {
-            //
+        Schema::table('themes', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 }
