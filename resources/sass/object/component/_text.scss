@@ -69,3 +69,13 @@
   display: flex;
   justify-content: flex-start;
 }
+
+.c-login__option {
+  display: flex;
+  justify-content: flex-end;
+
+  &:hover {
+    color: $default-color;
+    opacity: 0.8;
+  }
+}
