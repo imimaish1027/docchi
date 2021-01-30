@@ -9,6 +9,7 @@ use App\Tag;
 use App\Answer;
 use App\Comment;
 use App\Bookmark;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -67,20 +68,49 @@ class UserController extends Controller
         return view('users.bookmark', ['user' => $user, 'bookmarks' => $bookmarks]);
     }
 
-    public function emailEdit()
+    public function emailEdit($user_id)
     {
+        $user = User::find($user_id);
+
+        return view('users.emailEdit', ['user' => $user]);
     }
 
-    public function emailUpdate()
+    public function emailUpdate(Request $request, $user_id)
     {
+        $request->validate([
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        ]);
+
+        $user = User::find($user_id);
+        $user->email = $request->input('email');
+
+        $user->save();
+
+        return view('users.emailEdit', ['user' => $user]);
     }
 
-    public function passEdit()
+    public function passEdit($user_id)
     {
+        $user = User::find($user_id);
+
+        return view('users.passEdit', ['user' => $user]);
     }
 
-    public function passUpdate()
+    public function passUpdate(Request $request, $user_id)
     {
+        $request->validate([
+            'password' => ['required', 'string', 'min:8'],
+            'confirm' => ['required', 'same:password'],
+        ]);
+
+        $user = User::find($user_id);
+        $user->password = Hash::make($request->password);
+
+        $user->save();
+
+        $themes = Theme::where('user_id', $user->id)->paginate(5);
+
+        return view('users.show', ['user' => $user, 'themes' => $themes]);
     }
 
     public function withdraw()
