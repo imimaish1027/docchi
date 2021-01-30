@@ -12083,6 +12083,10 @@ a:hover {
   align-items: center;
 }
 
+.c-form__note {
+  margin-bottom: 24px;
+}
+
 .c-sort {
   text-align: center;
 }
@@ -12186,6 +12190,16 @@ a:hover {
   justify-content: flex-start;
 }
 
+.c-login__option {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.c-login__option:hover {
+  color: #362F2F;
+  opacity: 0.8;
+}
+
 .c-post__comment__user__img {
   text-align: center;
 }
@@ -12280,6 +12294,7 @@ a:hover {
 
 .p-form__remember__group {
   margin-top: 16px;
+  margin-bottom: 8px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
