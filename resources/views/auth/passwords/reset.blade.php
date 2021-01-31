@@ -5,9 +5,8 @@
 @section('content')
 
 <div class="p-form">
-    <div class="p-form__title">
-        <p class="c-form__title__text">パスワードリセット</p>
-    </div>
+
+    <p class="c-form__title">パスワードリセット</p>
 
     <form method="POST" action="{{ route('password.update') }}" class="p-form__main">
         @csrf

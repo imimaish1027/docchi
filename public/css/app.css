@@ -11930,13 +11930,12 @@ a:hover {
 }
 
 .c-form__title {
-  height: 48px;
-  padding-left: 24px;
+  height: 40px;
+  padding-left: 32px;
   color: #ffffff;
   background: #68699B;
   display: flex;
   align-items: center;
-  font-size: 20px;
 }
 
 .c-main__title__text {

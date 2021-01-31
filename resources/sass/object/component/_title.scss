@@ -1,11 +1,10 @@
 .c-form__title {
-  height: 48px;
-  padding-left: $space_l;
-  color: $reset-color;
-  background: $main-color;
-  display: flex;
-  align-items: center;
-  font-size: $font-size_l;
+    height: 40px;
+    padding-left: $space_xl;
+    color: $reset-color;
+    background: $main-color;
+    display: flex;
+    align-items: center;
 }
 
 .c-main__title__text {

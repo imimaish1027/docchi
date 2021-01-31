@@ -5,11 +5,11 @@
 @section('content')
 
 <div class="p-form">
-  <div class="p-form__title">
-    <p class="c-form__title__text">テーマ編集</p>
-  </div>
+
+  <p class="c-form__title">テーマ編集</p>
+
   <div class="p-form__main">
-    <form method="POST" action="{{ route('themes.update', $theme->id) }}"  enctype='multipart/form-data'>
+    <form method="POST" action="{{ route('themes.update', $theme->id) }}" enctype='multipart/form-data'>
       @csrf
       @method('PUT')
       <div class="p-form__one p-form__text">
@@ -86,17 +86,17 @@
         </button>
       </div>
     </form>
-    <form method="POST" action="{{ route('themes.destroy', $theme->id) }}"  enctype='multipart/form-data'>
+    <form method="POST" action="{{ route('themes.destroy', $theme->id) }}" enctype='multipart/form-data'>
       @csrf
       @method('DELETE')
       <div class="p-btn__area__sub">
         <button type="submit" class="c-form__btn btn">
-            削除
+          削除
         </button>
       </div>
     </form>
   </div>
-  
+
 </div>
 
 @endsection
