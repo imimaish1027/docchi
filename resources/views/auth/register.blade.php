@@ -5,9 +5,9 @@
 @section('content')
 
 <div class="p-form">
-  <div class="p-form__title">
-    <p class="c-form__title__text">新規登録</p>
-  </div>
+
+  <p class="c-form__title">新規登録</p>
+
   <form method="POST" action="{{ route('register') }}" class="p-form__main">
     @csrf
     <div class="p-form__one p-form__text">

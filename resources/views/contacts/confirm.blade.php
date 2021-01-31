@@ -5,9 +5,9 @@
 @section('content')
 
 <div class="p-form">
-  <div class="p-form__title">
-    <p class="c-form__title__text">お問い合わせ確認</p>
-  </div>
+
+  <p class="c-form__title">お問い合わせ確認</p>
+
   <form method="POST" action="{{ route('contact.send') }}" enctype='multipart/form-data' class="p-form__main">
     @csrf
 

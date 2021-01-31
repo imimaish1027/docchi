@@ -5,10 +5,10 @@
 @section('content')
 
 <div class="p-form">
-  <div class="p-form__title">
-    <p class="c-form__title__text">テーマ作成</p>
-  </div>
-  <form method="POST" action="{{ route('themes.store') }}"  enctype='multipart/form-data' class="p-form__main">
+
+  <p class="c-form__title">テーマ作成</p>
+
+  <form method="POST" action="{{ route('themes.store') }}" enctype='multipart/form-data' class="p-form__main">
     @csrf
     <div class="p-form__one p-form__text">
       <p class="c-form__one__title">テーマ名</p>
