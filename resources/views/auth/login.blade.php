@@ -12,7 +12,9 @@
         @csrf
         <div class="p-form__one p-form__text">
             <p class="c-form__one__title">メールアドレス</p>
-            <input id="email" type="text" name="email" value="{{ old('email') }}" autocomplete="email" class="c-form__text form-control @error('email') is-invalid @enderror">
+            <div class="p-form__input">
+                <input id="email" type="text" name="email" value="{{ old('email') }}" autocomplete="email" class="c-form__text form-control @error('email') is-invalid @enderror">
+            </div>
         </div>
         @error('email')
         <div class="invalid__feedback" role="alert">
@@ -22,7 +24,9 @@
 
         <div class="p-form__one p-form__text">
             <p class="c-form__one__title">パスワード</p>
-            <input type="password" name="password" id="password" value="" autocomplete="password" autocomplete="new-password" class="c-form__text password @error('password') is-invalid @enderror">
+            <div class="p-form__input">
+                <input type="password" name="password" id="password" value="" autocomplete="password" autocomplete="new-password" class="c-form__text password @error('password') is-invalid @enderror">
+            </div>
         </div>
         @error('password')
         <div class="invalid__feedback" role="alert">
