@@ -50,5 +50,6 @@ Route::prefix('themes')->name('themes.')->group(function () {
 
 Route::prefix('contact')->name('contact.')->group(function () {
     Route::get('', 'ContactController@index')->name('index');
-    Route::post('', 'ContactController@send')->name('send');
+    Route::post('confirm', 'ContactController@confirm')->name('confirm');
+    Route::post('sent', 'ContactController@send')->name('send');
 });

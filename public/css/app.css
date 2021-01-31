@@ -11815,9 +11815,27 @@ a:hover {
   transition: all 0.6s ease;
 }
 
+.c-contact__btn {
+  margin: 0 auto;
+  border: solid 1px #68699B;
+  background: #f0f0f0;
+  color: #68699B;
+  display: block;
+}
+
+.c-contact__btn:hover {
+  background: #68699B;
+  color: #ffffff;
+  transition: all 0.6s ease;
+}
+
+.c-btn--down {
+  margin-top: 24px;
+}
+
 .c-form__text {
-  width: 300px;
   height: 40px;
+  width: 300px;
   padding: 8px;
   border: solid 1px #A2A2A2;
   border-radius: 0.25rem;
@@ -11841,6 +11859,15 @@ a:hover {
   padding-left: 8px;
   display: flex;
   align-items: center;
+}
+
+.c-form__textarea {
+  height: 120px;
+  width: 100%;
+  padding: 8px;
+  border: solid 1px #A2A2A2;
+  border-radius: 0.25rem;
+  font: initial;
 }
 
 .c-form__remember__label {
@@ -12198,6 +12225,14 @@ a:hover {
 .c-login__option:hover {
   color: #362F2F;
   opacity: 0.8;
+}
+
+.c-sent__text {
+  height: 150x;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
 }
 
 .c-post__comment__user__img {
