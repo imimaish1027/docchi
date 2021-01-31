@@ -73,3 +73,21 @@
         transition: all 0.6s ease;
     }
 }
+
+.c-contact__btn {
+    margin: 0 auto;
+    border: solid 1px $main-color;
+    background: $bg-color;
+    color: $main-color;
+    display: block;
+
+    &:hover {
+        background: $main-color;
+        color: $reset-color;
+        transition: all 0.6s ease;
+    }
+}
+
+.c-btn--down {
+    margin-top: $space_l
+}
