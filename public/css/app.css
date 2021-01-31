@@ -11841,14 +11841,6 @@ a:hover {
   border-radius: 0.25rem;
 }
 
-.c-form__check__label--man {
-  color: #0086CC;
-}
-
-.c-form__check__label--woman {
-  color: #C9396D;
-}
-
 .c-form__number {
   width: 100px;
   padding-left: 8px;
@@ -12276,6 +12268,14 @@ a:hover {
   margin-bottom: 16px;
 }
 
+.c-gender__label--man {
+  color: #0086CC;
+}
+
+.c-gender__label--woman {
+  color: #C9396D;
+}
+
 /* Project */
 
 .p-form {
@@ -12310,10 +12310,6 @@ a:hover {
 
 .p-form__check__group {
   display: flex;
-}
-
-.p-form__check__group__one {
-  margin-left: 16px;
 }
 
 .p-form__number {
@@ -12367,6 +12363,10 @@ a:hover {
   width: 100%;
   margin-top: 32px;
   margin-bottom: 16px;
+}
+
+.p-gender--woman {
+  margin-left: 16px;
 }
 
 .p-main {

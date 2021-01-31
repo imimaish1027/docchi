@@ -1,0 +1,9 @@
+.c-gender__label {
+  &--man {
+    color: $answer_b-color;
+  }
+
+  &--woman {
+    color: $answer_a-color;
+  }
+}

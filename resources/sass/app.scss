@@ -38,12 +38,14 @@
 @import 'object/component/textarea';
 @import 'object/component/link';
 @import 'object/component/error';
+@import 'object/component/label';
 
 
 /* Project */
 // フォーム画面(テーマ作成含む)
 @import 'object/project/form';
 @import 'object/project/btn-area';
+@import 'object/project/gender-check';
 // テーマ関連画面共通
 @import 'object/project/main';
 @import 'object/project/theme';

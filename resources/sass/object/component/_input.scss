@@ -6,17 +6,6 @@
   border-radius: 0.25rem;
 }
 
-.c-form__check {
-  &__label {
-    &--man {
-      color: $answer_b-color;
-    }
-    &--woman {
-      color: $answer_a-color;
-    }
-  }
-}
-
 .c-form__number {
   width: 100px;
   padding-left: $space_s;
