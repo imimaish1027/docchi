@@ -38,7 +38,7 @@
     <div class="p-form__one p-form__text">
       <p class="c-form__one__title">お問い合わせ内容</p>
       <div class="p-form__input">
-        <textarea name="body" class="c-form__textarea">{{ old('body') }}</textarea>
+        <textarea name="body" class="c-contact__textarea">{{ old('body') }}</textarea>
       </div>
     </div>
     @error('subject')

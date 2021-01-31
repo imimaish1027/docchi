@@ -11861,15 +11861,6 @@ a:hover {
   align-items: center;
 }
 
-.c-form__textarea {
-  height: 120px;
-  width: 100%;
-  padding: 8px;
-  border: solid 1px #A2A2A2;
-  border-radius: 0.25rem;
-  font: initial;
-}
-
 .c-form__remember__label {
   padding-left: 4px;
   margin-bottom: 0px;
@@ -12251,8 +12242,18 @@ a:hover {
   height: 38px;
   min-width: 300px;
   width: 600px;
+  padding: 8px;
   background: #ffffff;
   border: solid 1px #A2A2A2;
+}
+
+.c-contact__textarea {
+  height: 120px;
+  width: 100%;
+  padding: 8px;
+  border: solid 1px #A2A2A2;
+  border-radius: 0.25rem;
+  font: initial;
 }
 
 .c-post__theme__link:hover {
