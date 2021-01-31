@@ -79,3 +79,11 @@
     opacity: 0.8;
   }
 }
+
+.c-sent__text {
+  height: 150x;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $reset-color;
+}
