@@ -12437,11 +12437,27 @@ a:hover {
 
 .p-theme__answer {
   width: 100%;
+  display: flex;
+}
+
+.p-theme__answer--index {
+  margin-bottom: 16px;
+  justify-content: space-between;
+}
+
+.p-theme__answer--which,
+.p-theme__answer--result {
+  justify-content: space-between;
   padding-right: 24px;
   padding-left: 24px;
   margin-bottom: 64px;
-  display: flex;
-  justify-content: space-between;
+}
+
+.p-theme__answer--show,
+.p-theme__answer--answer,
+.p-theme__answer--bookmark {
+  margin-bottom: 16px;
+  justify-content: space-around;
 }
 
 .p-answer__one {
@@ -12548,13 +12564,6 @@ a:hover {
     width: 46%;
     margin-right: 4%;
   }
-}
-
-.p-theme__list__answer {
-  width: 100%;
-  margin-bottom: 16px;
-  display: flex;
-  justify-content: space-around;
 }
 
 .p-list__answer__area {

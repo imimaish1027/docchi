@@ -33,7 +33,7 @@
 
       <form method="POST" action="{{ route('themes.answer', $theme->id) }}" enctype='multipart/form-data'>
         @csrf
-        <div class="p-theme__answer">
+        <div class="p-theme__answer p-theme__answer--which">
           <div class="p-answer__one">
             <div class="p-answer__area p-answer__area--a">
               <img src="{{ asset('/storage/selects/'.$theme->pic_a) }}" class="c-answer__img">
