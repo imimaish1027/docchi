@@ -34,7 +34,7 @@
 
       <li class="p-theme__one p-theme__one__index">
         <p class="c-theme__one__title">{{ $theme->title }}</p>
-        <div class="p-theme__list__answer">
+        <div class="p-theme__answer p-theme__answer--index">
           <div class="p-theme__list__answer__one">
             <div class="p-list__answer__area p-answer__area--a">
               <img src="{{ asset('/storage/selects/'.$theme->pic_a) }}" class="c-list__answer__img">

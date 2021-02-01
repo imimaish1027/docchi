@@ -19,7 +19,7 @@
 
         <li class="p-theme__one p-theme__one__user">
           <p class="c-theme__one__title">{{ $bookmark->theme->title }}</p>
-          <div class="p-theme__list__answer">
+          <div class="p-theme__answer p-theme__answer--bookmark">
             <div class="p-theme__list__answer__one">
               <div class="p-list__answer__area p-answer__area--a">
                 <img src="{{ asset('/storage/selects/'.$bookmark->theme->pic_a) }}" class="c-list__answer__img">

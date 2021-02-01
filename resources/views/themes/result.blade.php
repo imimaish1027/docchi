@@ -34,7 +34,7 @@
       <p class="c-theme__note--guide">Aの選択数 {{ $count_answer_a ?? 0}}</p>
       <p class="c-theme__note--guide">Bの選択数 {{ $count_answer_b ?? 0}}</p>
 
-      <div class="p-theme__answer">
+      <div class="p-theme__answer p-theme__answer--result">
         <div class="p-answer__one">
           <div class="c-your__choice @if($choice_number === 1) c-your__choice--this @endif">
             あなたの選択
