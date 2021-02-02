@@ -50706,7 +50706,12 @@ var $countUp = $('#js-count'),
     $countView = $('#js-count__view');
 $countUp.on('keyup', function (e) {
   $countView.html($(this).val().length);
-});
+}); // ソートのセレクトボックス
+
+var select = document.getElementById('sort');
+select.addEventListener('change', function () {
+  this.form.submit();
+}, false);
 
 /***/ }),
 

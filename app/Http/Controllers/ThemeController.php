@@ -14,11 +14,31 @@ use Illuminate\Support\Facades\Validator;
 
 class ThemeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $themes = Theme::paginate(10);
+        $themes = Theme::all();
+
+        switch ($request->sort) {
+            case 'newPost':
+                $themes = Theme::orderBy('created_at', 'desc')->paginate(10);
+                break;
+            case 'countAnswer':
+                $themes = Theme::withCount('answers')->orderBy('answers_count', 'desc')->paginate(10);
+                break;
+            case 'countComment':
+                $themes = Theme::withCount('comments')->orderBy('comments_count', 'desc')->paginate(10);
+                break;
+            case 'countBookmark':
+                $themes = Theme::withCount('bookmarks')->orderBy('bookmarks_count', 'desc')->paginate(10);
+                break;
+            case '':
+                $themes = Theme::orderBy('created_at', 'desc')->paginate(10);
+                break;
+        }
+
         $users = User::all();
-        return view('themes.index', ['themes' => $themes, 'users' => $users]);
+
+        return view('themes.index', ['themes' => $themes, 'users' => $users])->with('sortBy', $request->sort);
     }
 
     public function show($theme_id)

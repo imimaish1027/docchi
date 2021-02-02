@@ -5,9 +5,13 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Kyslik\ColumnSortable\Sortable;
 
 class Theme extends Model
 {
+    use Sortable;
+
+    public $sortable = ['created_at'];
     protected $fillable = ['title', 'answer_a', 'pic_a', 'answer_b', 'pic_b'];
     protected $dates = ['created_at'];
 
