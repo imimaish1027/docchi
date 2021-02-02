@@ -18,14 +18,18 @@
             <button type="submit" class="c-form__search__btn"><i class="fas fa-search"></i></button>
           </form>
         </div>
-        <div class="p-sort__area">
-          <select name="sort" id="sort" class="c-sort">
-            <option value="1" checked>新着順</option>
-            <option value="2">投票数順</option>
-            <option value="3">コメント数順</option>
-            <option value="4">ブックマーク数順</option>
-          </select>
-        </div>
+        <form method="get" name="sort" action="{{ route('themes.index') }}">
+          {{ csrf_field() }}
+          <div class="p-sort__area">
+            <select id="sort" name="sort" class="c-sort">
+              <option value="newPost" {{ $sortBy == 'newPost' ? 'selected' : '' }}>新着順</option>
+              <option value="countAnswer" {{ $sortBy == 'countAnswer' ? 'selected' : '' }}>回答数順</option>
+              <option value="countComment" {{ $sortBy == 'countComment' ? 'selected' : '' }}>コメント数順</option>
+              <option value="countBookmark" {{ $sortBy == 'countBookmark' ? 'selected' : '' }}>ブックマーク数順</option>
+            </select>
+          </div>
+        </form>
+
       </div>
     </div>
 
@@ -57,8 +61,8 @@
         </ul>
         <div class="p-theme__info">
           <ul class="p-icon__count">
-            <li class="p-icon__count__one"><img src="{{ asset('images/answer-icon.png') }}" class="c-icon"><span class="c-count__number">10</span></li>
-            <li class="p-icon__count__one"><img src="{{ asset('images/comment-icon.png') }}" class="c-icon"><span class="c-count__number">10</span></li>
+            <li class="p-icon__count__one"><img src="{{ asset('images/answer-icon.png') }}" class="c-icon"><span class="c-count__number">{{ $theme->answers->count() }}</span></li>
+            <li class="p-icon__count__one"><img src="{{ asset('images/comment-icon.png') }}" class="c-icon"><span class="c-count__number">{{ $theme->comments->count() }}</span></li>
             <theme-bookmark :initial-is-bookmarked-by='@json($theme->isBookmarkedBy(Auth::user()))' :initial-count-bookmarks='@json($theme->count_bookmarks)' :authorized='@json(Auth::check())' endpoint="{{ route('themes.bookmark', ['id' => $theme->id]) }}">
             </theme-bookmark>
           </ul>
@@ -71,7 +75,7 @@
 
       @endforeach
     </ul>
-    {{ $themes->links() }}
+    {{ $themes->appends(request()->query())->links() }}
   </div>
 </div>
 

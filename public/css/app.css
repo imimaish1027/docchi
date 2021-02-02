@@ -12496,7 +12496,9 @@ a:hover {
   width: 180px;
   padding-bottom: 4px;
   border-bottom: 4px solid rgba(0, 0, 0, 0.3);
-  text-align: center;
+  -moz-text-align-last: center;
+       text-align-last: center;
+  direction: rtl;
 }
 
 .p-theme__list {
