@@ -1,0 +1,58 @@
+.p-imgDrop__container {
+    width: 100%;
+    height: 200px;
+    margin-bottom: $space_l;
+    box-sizing: border-box;
+    position: relative;
+
+    .p-area__drop {        
+      width: 200px;
+      height: 200px;
+      border: solid 1px $line-color;
+      border-radius: 0.25rem;
+      text-align: center;
+      position: absolute;
+      box-sizing: border-box;
+      font-size: $font-size_s;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .c-form__pic {
+        opacity: 0;
+        width: 100%;
+        height: 200px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: 99999;
+        
+    }
+
+    .prev-img {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+
+}
+
+   .commonStyle {
+       padding: 30px;
+       text-align: center;
+       margin: 30px;
+       width: 400px;
+   }
+
+   .styleA {
+       border: 3px dotted gray;
+   }
+
+   .styleB {
+       border: 3px dotted rgba(0, 200, 0, 0.7);
+   }
