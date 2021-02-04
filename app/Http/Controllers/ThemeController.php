@@ -16,29 +16,52 @@ class ThemeController extends Controller
 {
     public function index(Request $request)
     {
-        $themes = Theme::all();
+        //dd($request);
+        $keyword = $request->input('keyword');
+
+        /*
+        if (!empty($input_keyword)) {
+            $keyword = $request->input('keyword');
+        } elseif (empty($input_keyword)) {
+            $keyword = '';
+        }*/
 
         switch ($request->sort) {
             case 'newPost':
-                $themes = Theme::orderBy('created_at', 'desc')->paginate(10);
+                $themes = Theme::query()
+                    ->when($request->has('keyword'), function ($query) use ($keyword) {
+                        $query->where('title', 'like', '%' . $keyword . '%');
+                    })->orderBy('created_at', 'desc')->paginate(10);
                 break;
             case 'countAnswer':
-                $themes = Theme::withCount('answers')->orderBy('answers_count', 'desc')->paginate(10);
+                $themes = Theme::query()
+                    ->when($request->has('keyword'), function ($query) use ($keyword) {
+                        $query->where('title', 'like', '%' . $keyword . '%');
+                    })->withCount('answers')->orderBy('answers_count', 'desc')->paginate(10);
                 break;
             case 'countComment':
-                $themes = Theme::withCount('comments')->orderBy('comments_count', 'desc')->paginate(10);
+                $themes = Theme::query()
+                    ->when($request->has('keyword'), function ($query) use ($keyword) {
+                        $query->where('title', 'like', '%' . $keyword . '%');
+                    })->withCount('comments')->orderBy('comments_count', 'desc')->paginate(10);
                 break;
             case 'countBookmark':
-                $themes = Theme::withCount('bookmarks')->orderBy('bookmarks_count', 'desc')->paginate(10);
+                $themes = Theme::query()
+                    ->when($request->has('keyword'), function ($query) use ($keyword) {
+                        $query->where('title', 'like', '%' . $keyword . '%');
+                    })->withCount('bookmarks')->orderBy('bookmarks_count', 'desc')->paginate(10);
                 break;
             case '':
-                $themes = Theme::orderBy('created_at', 'desc')->paginate(10);
+                $themes = Theme::query()
+                    ->when($request->has('keyword'), function ($query) use ($keyword) {
+                        $query->where('title', 'like', '%' . $keyword . '%');
+                    })->orderBy('created_at', 'desc')->paginate(10);
                 break;
         }
 
         $users = User::all();
 
-        return view('themes.index', ['themes' => $themes, 'users' => $users])->with('sortBy', $request->sort);
+        return view('themes.index', ['themes' => $themes, 'users' => $users, 'keyword' => $keyword])->with('sortBy', $request->sort);
     }
 
     public function show($theme_id)
