@@ -8,18 +8,19 @@
   <div class="p-main__container">
     <div class="p-main__heading__list">
       <div class="p-main__heading__up">
-        <p class="c-main__title__text">すべてのテーマ一覧</p>
+        <p class="c-main__title__text">
+          @isset($keyword) 『 {{ $keyword }} 』@endisset @empty($keyword) すべて@endemptyのテーマ一覧
+        </p>
       </div>
 
-      <div class="p-main__heading__down">
-        <div class="p-keyword__search__area">
-          <form method="GET" action="" class="p-form__search">
-            <input name="search" type="text" placeholder="キーワードを入力" class="c-form__search__box" />
+      <form method="GET" action="{{ route('themes.index') }}">
+        <div class="p-main__heading__down">
+          <div class="p-form__search p-keyword__search__area">
+            {{ csrf_field() }}
+            <input name="keyword" type="text" value="{{ $keyword }}" placeholder="キーワードを入力" class="c-form__search__box" autocomplete="off" />
             <button type="submit" class="c-form__search__btn"><i class="fas fa-search"></i></button>
-          </form>
-        </div>
-        <form method="get" name="sort" action="{{ route('themes.index') }}">
-          {{ csrf_field() }}
+
+          </div>
           <div class="p-sort__area">
             <select id="sort" name="sort" class="c-sort">
               <option value="newPost" {{ $sortBy == 'newPost' ? 'selected' : '' }}>新着順</option>
@@ -28,9 +29,8 @@
               <option value="countBookmark" {{ $sortBy == 'countBookmark' ? 'selected' : '' }}>ブックマーク数順</option>
             </select>
           </div>
-        </form>
-
-      </div>
+        </div>
+      </form>
     </div>
 
     <ul class="p-theme__list">
