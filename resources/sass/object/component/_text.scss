@@ -87,3 +87,9 @@
   align-items: center;
   background: $reset-color;
 }
+
+.c-danger__text {
+  margin-bottom: $space_xl;
+  color: $danger-color;
+  text-align: center;
+}

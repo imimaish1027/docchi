@@ -7,7 +7,10 @@
     <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-user__img">
     @endempty
     <p class="c-user__name">{{ $user->name }}</p>
-    <p class="c-user__age__gender">20代　♂</p>
+    <p class="c-user__age__gender">@switch($user->age)
+      @case(9 < $user->age && $user->age < 20) 10代 @break @case(19 < $user->age && $user->age < 30) 20代 @break @case(29 < $user->age && $user->age < 40) 30代 @break @case(39 < $user->age && $user->age < 50) 40代 @break @case(49 < $user->age && $user->age < 60) 50代 @break @case(59 < $user->age && $user->age < 70) 60代 @break @case(69 < $user->age && $user->age < 80) 70代 @break @case(79 < $user->age && $user->age < 90) 80代 @break @case(89 < $user->age && $user->age < 100) 90代 @break @default @endswitch 　@if($user->gender === 1) ♂
+                          @elseif($user->gender === 2) ♀
+                          @endif</p>
 
     <div class="p-count__themes">
       <div class="p-count__post__themes">

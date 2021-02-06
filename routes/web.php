@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
+
 Route::prefix('users')->name('users.')->group(function () {
     Route::get('{id}', 'UserController@show')->name('show');
     Route::get('{id}/answer', 'UserController@answer')->name('answer');

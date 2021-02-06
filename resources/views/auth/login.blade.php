@@ -34,9 +34,17 @@
         </div>
         @enderror
 
-        <div class="c-btn__area">
+        <div class="p-btn__area">
             <button type="submit" class="c-form__btn btn">
-                {{ __('ログイン') }}
+                ログイン
+            </button>
+        </div>
+
+        <div class="p-btn__area p-btn__area--guest">
+            <button type="submit" class="c-form__btn btn">
+                <a href="{{ route('login.guest') }}" class="c-guest__link">
+                    ゲストログイン
+                </a>
             </button>
         </div>
 

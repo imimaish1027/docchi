@@ -58,7 +58,10 @@ body {
 }
 
 // リンクのマウスホバー時
-a:hover {
-  cursor: pointer;
-  text-decoration: none;
+a:link,
+a:visited,
+a:hover,
+a:active {
+    cursor: pointer;
+    text-decoration: none;
 }

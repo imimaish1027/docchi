@@ -11489,7 +11489,10 @@ body {
   }
 }
 
-a:hover {
+a:link,
+a:visited,
+a:hover,
+a:active {
   cursor: pointer;
   text-decoration: none;
 }
@@ -11740,7 +11743,7 @@ a:hover {
 /* Component */
 
 .c-form__btn {
-  width: 100px;
+  width: 140px;
   margin: 0 auto;
   border: solid 1px #68699B;
   background: #f0f0f0;
@@ -12216,6 +12219,12 @@ a:hover {
   background: #ffffff;
 }
 
+.c-danger__text {
+  margin-bottom: 32px;
+  color: #F06060;
+  text-align: center;
+}
+
 .c-post__comment__user__img {
   text-align: center;
 }
@@ -12253,6 +12262,10 @@ a:hover {
 
 .c-answer__theme__link:hover {
   color: #362F2F;
+}
+
+.c-guest__link:hover {
+  color: #ffffff;
 }
 
 .c-error__empty__area {
@@ -12362,6 +12375,10 @@ a:hover {
   width: 100%;
   margin-top: 32px;
   margin-bottom: 16px;
+}
+
+.p-btn__area--guest {
+  margin-top: 24px;
 }
 
 .p-gender--woman {
