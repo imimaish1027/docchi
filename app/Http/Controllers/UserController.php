@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\EmailRequest;
 use App\User;
 use App\Theme;
 use App\Tag;
@@ -36,18 +38,12 @@ class UserController extends Controller
         return view('users.edit', ['user' => $user]);
     }
 
-    public function update(Request $request, $user_id)
+    public function update(UserRequest $request, $user_id)
     {
-        $request->validate([
-            'name' => 'required|string|max:20',
-            'age' => 'required|int|numeric',
-            'pic' =>
-            'file|image|max:1024|mimes:jpeg,png,jpg',
-        ]);
 
         $user = User::find($user_id);
-        $user->name = $request->input('name');
-        $user->age = $request->input('age');
+        //$user->name = $request->input('name');
+        //$user->age = $request->input('age');
 
         if ($request->pic) {
             $pic = $request->pic->store('public/users');
@@ -55,7 +51,7 @@ class UserController extends Controller
             $user->pic = $file_name;
         }
 
-        $user->save();
+        $user->fill($request->validated())->save();
 
         return view('users.edit', ['user' => $user]);
     }
@@ -75,16 +71,11 @@ class UserController extends Controller
         return view('users.emailEdit', ['user' => $user]);
     }
 
-    public function emailUpdate(Request $request, $user_id)
+    public function emailUpdate(EmailRequest $request, $user_id)
     {
-        $request->validate([
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        ]);
-
         $user = User::find($user_id);
-        $user->email = $request->input('email');
 
-        $user->save();
+        $user->fill($request->validated())->save();
 
         return view('users.emailEdit', ['user' => $user]);
     }

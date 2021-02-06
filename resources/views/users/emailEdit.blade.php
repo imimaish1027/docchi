@@ -15,6 +15,9 @@
       <form method="POST" action="{{ route('users.emailUpdate', $user->id) }}" enctype='multipart/form-data' class="p-form__main">
         @csrf
         @method('PUT')
+        @if (Auth::id() == 1)
+        <p class="c-danger__text">※ゲストユーザーではメールアドレスを編集できません。</p>
+        @endif
         <div class="p-form__one p-form__text">
           <p class="c-form__one__title">現在のメールアドレス</p>
           <p class="c-email__text">{{ $user->email }}</p>
@@ -23,7 +26,11 @@
         <div class="p-form__one p-form__text">
           <p class="c-form__one__title">新しいメールアドレス</p>
           <div class="p-form__input">
+            @if (Auth::id() == 1)
+            <input id="email" type="text" name="email" value="{{ old('email') }}" autocomplete="email" class="c-form__text form-control @error('email') is-invalid @enderror" readonly>
+            @else
             <input id="email" type="text" name="email" value="{{ old('email') }}" autocomplete="email" class="c-form__text form-control @error('email') is-invalid @enderror">
+            @endif
           </div>
         </div>
         @error('email')

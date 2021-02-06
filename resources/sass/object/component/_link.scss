@@ -9,3 +9,9 @@
       color: $default-color;
   }
 }
+
+.c-guest__link {
+  &:hover {
+    color: $reset-color;
+  }
+}
