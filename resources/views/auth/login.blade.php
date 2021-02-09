@@ -48,6 +48,12 @@
             </button>
         </div>
 
+        <div class="p-btn__area">
+            <a href="{{ route('login.{provider}', ['provider' => 'google']) }}" class="c-provider__btn btn">
+                <i class="fab fa-google mr-1"></i>Googleでログイン
+            </a>
+        </div>
+
         <div class="p-form__remember">
             <div class="p-form__remember__group">
                 <input type="checkbox" name="remember" id="remember" class="c-form__remember checkbox" {{ old('remember') ? 'checked' : '' }}>
