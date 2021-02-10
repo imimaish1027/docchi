@@ -12318,9 +12318,9 @@ a:active {
 }
 
 .p-form__main {
-  padding-top: 24px;
+  padding-top: 32px;
   padding-right: 80px;
-  padding-bottom: 24px;
+  padding-bottom: 32px;
   padding-left: 80px;
   background: #ffffff;
 }
@@ -12333,10 +12333,14 @@ a:active {
 
 .p-form__one {
   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.p-form__one--bottom {
+  margin-bottom: 16px;
 }
 
 .p-form__check__group {
@@ -12394,10 +12398,6 @@ a:active {
   width: 100%;
   margin-top: 32px;
   margin-bottom: 16px;
-}
-
-.p-btn__area--guest {
-  margin-top: 24px;
 }
 
 .p-gender--woman {

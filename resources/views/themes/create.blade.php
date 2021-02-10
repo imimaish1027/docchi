@@ -90,7 +90,7 @@
     </div>
     @enderror
 
-    <div class="c-btn__area">
+    <div class="p-btn__area">
       <button type="submit" class="c-form__btn btn">
         {{ __('投稿') }}
       </button>

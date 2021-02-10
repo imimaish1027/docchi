@@ -6,9 +6,9 @@
   border-radius: 5px;
 
   &__main {
-    padding-top: $space_l;
+    padding-top: $space_xl;
     padding-right: $space_xxl * 2;
-    padding-bottom: $space_l;
+    padding-bottom: $space_xl;
     padding-left: $space_xxl * 2;
     background: $reset-color;
   }
@@ -21,13 +21,13 @@
 
   &__one {
     width: 100%;
-    margin-bottom: $space_m;
+    margin-bottom: $space_l;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    &--pic {
-
+    &--bottom {
+      margin-bottom: $space_m;
     }
   }
 
