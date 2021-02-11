@@ -9,6 +9,7 @@ use App\Theme;
 use App\Tag;
 use App\Answer;
 use App\Comment;
+use App\Http\Requests\ThemeRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -16,15 +17,7 @@ class ThemeController extends Controller
 {
     public function index(Request $request)
     {
-        //dd($request);
         $keyword = $request->input('keyword');
-
-        /*
-        if (!empty($input_keyword)) {
-            $keyword = $request->input('keyword');
-        } elseif (empty($input_keyword)) {
-            $keyword = '';
-        }*/
 
         switch ($request->sort) {
             case 'newPost':
@@ -157,85 +150,69 @@ class ThemeController extends Controller
     public function create()
     {
         $auth = Auth::user();
-        return view('themes.create', ['auth' => $auth]);
+
+        return view('themes.create', ['auth' => $auth,]);
     }
 
-    public function store(Request $request)
+    public function store(ThemeRequest $request, Theme $theme)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'answer_a' => 'required|string|max:255',
-            'pic_a' =>
-            'required|file|image|max:1024|mimes:jpeg,png,jpg',
-            'answer_b' => 'required|string|max:255',
-            'pic_b' =>
-            'required|file|image|max:1024|mimes:jpeg,png,jpg',
-            'tag' => 'string|max:10|nullable',
-        ]);
-
-        $theme = new Theme;
         $theme->user_id = $request->user()->id;
-        $theme->title = $request->input('title');
-        $theme->answer_a = $request->input('answer_a');
+
+        $theme->fill($request->validated())->save();
 
         $pic_a = $request->pic_a->store('public/selects');
         $file_name_a = basename($pic_a);
         $theme->pic_a = $file_name_a;
-
-        $theme->answer_b = $request->input('answer_b');
 
         $pic_b = $request->pic_b->store('public/selects');
         $file_name_b = basename($pic_b);
         $theme->pic_b = $file_name_b;
 
-        $theme->save();
+        $request->tags->each(function ($tagName) use ($theme) {
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $theme->tags()->attach($tag);
+        });
 
-        if ($request->input('tag')) {
-            $tag = new Tag;
-            $tag->name = $request->input('tag');
-            $tag->save();
-        }
+        $theme->save();
 
         return redirect()->route('themes.index');
     }
 
-    public function edit($id)
+    public function edit(Theme $theme, $id)
     {
         if (!ctype_digit($id)) {
             return redirect('/themes/create');
         }
 
         $theme = Theme::find($id);
-        return view('themes.edit', ['theme' => $theme]);
+        $tagNames = $theme->tags->map(function ($tag) {
+            return ['text' => $tag->name];
+        });
+
+        return view('themes.edit', ['theme' => $theme, 'tagNames' => $tagNames,]);
     }
 
-    public function update(Request $request, $id)
+    public function update(ThemeRequest $request, $id)
     {
         if (!ctype_digit($id)) {
             return redirect('/themes/create');
         }
 
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'answer_a' => 'required|string|max:255',
-            'pic_a' =>
-            'file|image|max:1024|mimes:jpeg,png,jpg',
-            'answer_b' => 'required|string|max:255',
-            'pic_b' =>
-            'file|image|max:1024|mimes:jpeg,png,jpg',
-            'tag' => 'string|max:10|nullable',
-        ]);
-
         $theme = Theme::find($id);
+
+        $theme->tags()->detach();
+        $request->tags->each(function ($tagName) use ($theme) {
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $theme->tags()->attach($tag);
+        });
+
         $theme->user_id = $request->user()->id;
-        $theme->title = $request->input('title');
-        $theme->answer_a = $request->input('answer_a');
+
+        $theme->fill($request->validated())->save();
 
         $pic_a = $request->pic_a->store('public/selects');
         $file_name_a = basename($pic_a);
         $theme->pic_a = $file_name_a;
-
-        $theme->answer_b = $request->input('answer_b');
 
         $pic_b = $request->pic_b->store('public/selects');
         $file_name_b = basename($pic_b);

@@ -56,8 +56,13 @@
           </div>
         </div>
         <ul class="p-tag__group">
-          <li class="c-tag__one">タグ1</li>
-          <li class="c-tag__one">タグ2</li>
+          @foreach($theme->tags as $tag)
+          <li class="c-tag__one">
+            <a href="" class="">
+              {{ $tag->name }}
+            </a>
+          </li>
+          @endforeach
         </ul>
         <div class="p-theme__info">
           <ul class="p-icon__count">
