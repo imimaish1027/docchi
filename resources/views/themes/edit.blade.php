@@ -26,9 +26,8 @@
 
       <div class="p-form__one p-form__text">
         <p class="c-form__one__title">タグ</p>
-        <div class="p-form__input">
-          <input id="tag" type="text" name="tag" value="{{ old('tag') }}" autocomplete="tag" class="c-form__text form-control @error('tag') is-invalid @enderror">
-        </div>
+        <theme-tags-input :initial-tags='@json($tagNames)'>
+        </theme-tags-input>
       </div>
       @error('tag')
       <div class="invalid__feedback" role="alert">

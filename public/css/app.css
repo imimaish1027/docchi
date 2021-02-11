@@ -11857,7 +11857,7 @@ a:active {
 
 .c-form__text {
   height: 40px;
-  width: 300px;
+  width: 100%;
   padding: 8px;
   border: solid 1px #A2A2A2;
   border-radius: 0.25rem;

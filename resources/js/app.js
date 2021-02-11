@@ -7,6 +7,7 @@
 import './bootstrap'
 import Vue from 'vue'
 import ThemeBookmark from './components/ThemeBookmark'
+import ThemeTagsInput from './components/ThemeTagsInput'
 
 window.Vue = require('vue');
 
@@ -33,6 +34,7 @@ const app = new Vue({
     el: '#app',
     components: {
         ThemeBookmark,
+        ThemeTagsInput,
     }
 });
 

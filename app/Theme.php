@@ -46,6 +46,6 @@ class Theme extends Model
 
     public function tags(): BelongsToMany
     {
-        return $this->belongsToMany('App\Tag')->withTimestamps();
+        return $this->belongsToMany('App\Tag', 'theme_tag')->withTimestamps();
     }
 }
