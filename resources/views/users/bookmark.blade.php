@@ -18,7 +18,20 @@
         @foreach($bookmarks as $bookmark)
 
         <li class="p-theme__one p-theme__one__user">
-          <p class="c-theme__one__title">{{ $bookmark->theme->title }}</p>
+          @if(auth()->user() && $bookmark->theme->answers->contains('user_id', auth()->user()->id))
+          <div class="c-theme__one__title">
+            <a href="{{ route('themes.result', ['id' => $bookmark->theme->id]) }}" class="c-theme__link">
+              {{ $bookmark->theme->title }}
+            </a>
+          </div>
+          @else
+          <div class="c-theme__one__title">
+            <a href="{{ route('themes.show', ['id' => $bookmark->theme->id]) }}" class="c-theme__link">
+              {{ $bookmark->theme->title }}
+            </a>
+          </div>
+          @endif
+
           <div class="p-theme__answer p-theme__answer--bookmark">
             <div class="p-theme__list__answer__one">
               <div class="p-list__answer__area p-answer__area--a">
@@ -37,9 +50,9 @@
             </div>
           </div>
           <ul class="p-tag__group">
-            @foreach($theme->tags as $tag)
+            @foreach($bookmark->theme->tags as $tag)
             <li class="c-tag__one">
-              <a href="" class="">
+              <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="c-tag__link">
                 {{ $tag->name }}
               </a>
             </li>
@@ -47,8 +60,8 @@
           </ul>
           <div class="p-theme__info">
             <ul class="p-icon__count">
-              <li class="p-icon__count__one"><img src="{{ asset('images/answer-icon.png') }}" class="c-icon"><span class="c-count__number">10</span></li>
-              <li class="p-icon__count__one"><img src="{{ asset('images/comment-icon.png') }}" class="c-icon"><span class="c-count__number">10</span></li>
+              <li class="p-icon__count__one"><img src="{{ asset('images/answer-icon.png') }}" class="c-icon"><span class="c-count__number">{{ $bookmark->theme->answers->count() }}</span></li>
+              <li class="p-icon__count__one"><img src="{{ asset('images/comment-icon.png') }}" class="c-icon"><span class="c-count__number">{{ $bookmark->theme->comments->count() }}</span></li>
               <theme-bookmark :initial-is-bookmarked-by='@json($bookmark->theme->isBookmarkedBy(Auth::user()))' :initial-count-bookmarks='@json($bookmark->theme->count_bookmarks)' :authorized='@json(Auth::check())' endpoint="{{ route('themes.bookmark', ['id' => $bookmark->theme->id]) }}">
               </theme-bookmark>
             </ul>

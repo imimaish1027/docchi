@@ -9,15 +9,15 @@
     <div class="p-main__heading__list">
       <div class="p-main__heading__up">
         <p class="c-main__title__text">
-          @isset($keyword) 『 {{ $keyword }} 』@endisset @empty($keyword) すべて@endemptyのテーマ一覧
+          『 {{ $selected_tag->name }} 』タグのテーマ一覧
         </p>
       </div>
 
-      <form method="GET" action="{{ route('themes.index') }}">
+      <form method="GET" action="{{ route('tags.show', ['name' => $selected_tag->name]) }}">
         <div class="p-main__heading__down">
           <div class="p-form__search p-keyword__search__area">
             {{ csrf_field() }}
-            <input name="keyword" type="text" value="{{ $keyword }}" placeholder="キーワードを入力" class="c-form__search__box" autocomplete="off" />
+            <input name="keyword" type="text" value="" placeholder="キーワードを入力" class="c-form__search__box" autocomplete="off" />
             <button type="submit" class="c-form__search__btn"><i class="fas fa-search"></i></button>
 
           </div>
@@ -37,21 +37,10 @@
       @foreach($themes as $theme)
 
       <li class="p-theme__one p-theme__one__index">
-        @if(auth()->user() && $theme->answers->contains('user_id', auth()->user()->id))
-        <div class="c-theme__one__title">
-          <a href="{{ route('themes.result', ['id' => $theme->id]) }}" class="c-theme__link">
-            {{ $theme->title }}
-          </a>
-        </div>
-        @else
-        <div class="c-theme__one__title">
-          <a href="{{ route('themes.show', ['id' => $theme->id]) }}" class="c-theme__link">
-            {{ $theme->title }}
-          </a>
-        </div>
-        @endif
-
-        <div class="p-theme__answer p-theme__answer--index">
+        <a href="{{ route('themes.show', ['id' => $theme->id]) }}" class="c-theme__link">
+          <p class="c-theme__one__title">{{ $theme->title }}</p>
+        </a>
+        <a href="{{ route('themes.show', ['id' => $theme->id]) }}" class="p-theme__answer p-theme__answer--index">
           <div class="p-theme__list__answer__one">
             <div class="p-list__answer__area p-answer__area--a">
               <img src="{{ asset('/storage/selects/'.$theme->pic_a) }}" class="c-list__answer__img">
@@ -67,15 +56,16 @@
               <p class="c-list__answer__title c-answer--b">{{ $theme->answer_b }}</p>
             </div>
           </div>
-        </div>
-
+        </a>
         <ul class="p-tag__group">
           @foreach($theme->tags as $tag)
+
           <li class="c-tag__one">
             <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="c-tag__link">
               {{ $tag->name }}
             </a>
           </li>
+
           @endforeach
         </ul>
         <div class="p-theme__info">

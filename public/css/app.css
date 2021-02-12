@@ -12291,6 +12291,16 @@ a:active {
   color: #ffffff;
 }
 
+.c-tag__link:hover {
+  color: #362F2F;
+  opacity: 0.8;
+}
+
+.c-theme__link:hover {
+  color: #362F2F;
+  opacity: 0.8;
+}
+
 .c-error__empty__area {
   width: 40%;
 }
@@ -12497,6 +12507,10 @@ a:active {
 .p-theme__answer--bookmark {
   margin-bottom: 16px;
   justify-content: space-around;
+}
+
+.p-theme__answer:hover {
+  color: #362F2F;
 }
 
 .p-answer__one {
