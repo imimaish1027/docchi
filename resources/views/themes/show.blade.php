@@ -66,7 +66,7 @@
             </div>
             @auth
             <button type="submit" name="answer" value="2" class="c-answer__btn c-answer__btn--b btn">
-              input type="hidden" name="post_user" value="{{ $post_user }}">
+              <input type="hidden" name="post_user" value="{{ $post_user }}">
               @endauth
               @guest
               <button type="submit" name="answer" value="2" class="c-answer__btn c-answer__btn--b btn" disabled style="cursor:not-allowed;">
@@ -80,7 +80,9 @@
 
       <div class="c-btn__area">
         <button type="submit" class="c-result__btn btn">
-          回答せず結果を見る
+          <a href="{{ route('themes.result', ['id' => $theme->id]) }}" class="c-theme__result__link">
+            回答せず結果を見る
+          </a>
         </button>
       </div>
     </div>
