@@ -21,4 +21,8 @@
       margin-bottom: $space_m;
       justify-content: space-around;
     }
+
+    &:hover {
+      color: $default-color;
+    }
 }

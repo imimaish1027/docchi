@@ -10,9 +10,15 @@
       <div class="p-main__heading__left">
         <p class="c-main__title__text">テーマの回答結果</p>
 
-        <div class="p-tag__group">
-          <div class="c-tag__one">朝食</div>
-        </div>
+        <ul class="p-tag__group">
+          @foreach($theme->tags as $tag)
+          <li class="c-tag__one">
+            <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="c-tag__link">
+              {{ $tag->name }}
+            </a>
+          </li>
+          @endforeach
+        </ul>
       </div>
 
       <div class="p-main__heading__right">

@@ -15,3 +15,17 @@
     color: $reset-color;
   }
 }
+
+.c-tag__link {
+  &:hover {
+    color: $default-color;
+    opacity: 0.8;
+  }
+}
+
+.c-theme__link {
+  &:hover {
+      color: $default-color;
+      opacity: 0.8;
+  }
+}

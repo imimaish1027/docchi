@@ -61,6 +61,8 @@ Route::prefix('themes')->name('themes.')->group(function () {
     Route::delete('{id}/bookmark', 'ThemeController@unbookmark')->name('unbookmark')->middleware('auth');
 });
 
+Route::get('tags/{name}', 'TagController@show')->name('tags.show');
+
 Route::prefix('contact')->name('contact.')->group(function () {
     Route::get('', 'ContactController@index')->name('index');
     Route::post('confirm', 'ContactController@confirm')->name('confirm');
