@@ -45,10 +45,16 @@
               <img src="{{ asset('/storage/selects/'.$theme->pic_a) }}" class="c-answer__img">
               <p class="c-answer__title c-answer--a">A {{ $theme->answer_a }}</p>
             </div>
+            @auth
             <button type="submit" name="answer" value="1" class="c-answer__btn c-answer__btn--a btn">
               <input type="hidden" name="post_user" value="{{ $post_user }}">
-              Aを選ぶ
-            </button>
+              @endauth
+              @guest
+              <button type="submit" name="answer" value="1" class="c-answer__btn c-answer__btn--a btn" disabled style="cursor:not-allowed;">
+                <input type="hidden" name="post_user" value="{{ $post_user }}">
+                @endguest
+                Aを選ぶ
+              </button>
           </div>
 
           <p class="c-theme__note--or">or</p>
@@ -58,10 +64,16 @@
               <img src="{{ asset('/storage/selects/'.$theme->pic_b) }}" class="c-answer__img">
               <p class="c-answer__title c-answer--b">A {{ $theme->answer_b }}</p>
             </div>
+            @auth
             <button type="submit" name="answer" value="2" class="c-answer__btn c-answer__btn--b btn">
-              <input type="hidden" name="post_user" value="{{ $post_user }}">
-              Bを選ぶ
-            </button>
+              input type="hidden" name="post_user" value="{{ $post_user }}">
+              @endauth
+              @guest
+              <button type="submit" name="answer" value="2" class="c-answer__btn c-answer__btn--b btn" disabled style="cursor:not-allowed;">
+                <input type="hidden" name="post_user" value="{{ $post_user }}">
+                @endguest
+                Bを選ぶ
+              </button>
           </div>
         </div>
       </form>
