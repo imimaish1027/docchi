@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'ユーザーページ')
+@section('title', 'マイテーマ')
 
 @section('content')
 
