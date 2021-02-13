@@ -43,9 +43,9 @@ class User extends Authenticatable
     }
 
 
-    public function answer()
+    public function answers()
     {
-        return $this->hasOne('App\Answer');
+        return $this->hasMany('App\Answer');
     }
 
     public function comments()

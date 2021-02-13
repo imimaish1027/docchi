@@ -27,10 +27,10 @@
         </a>
         <br>
         <a class="c-answer__theme__link" href="{{ route('users.answer', ['id' => $user->id]) }}">
-          @isset($user->answer)
-          {{ $user->answer->count() }}
+          @isset($user->answers)
+          {{ $user->answers->count() }}
           @endisset
-          @empty($user->answer)
+          @empty($user->answers)
           0
           @endempty
         </a>
