@@ -51538,7 +51538,15 @@ $countUp.on('keyup', function (e) {
 var select = document.getElementById('sort');
 select.addEventListener('change', function () {
   this.form.submit();
-}, false);
+}, false); // フラッシュメッセージ
+
+(function () {
+  'use strict';
+
+  $(function () {
+    $('.flash_message').fadeOut(8000);
+  });
+})();
 
 /***/ }),
 

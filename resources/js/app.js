@@ -59,3 +59,12 @@ select.addEventListener('change', function () {
     this.form.submit();
 }, false);
 
+// フラッシュメッセージ
+(function() {
+    'use strict';
+
+    $(function(){
+        $('.flash_message').fadeOut(8000);
+    });
+
+})();

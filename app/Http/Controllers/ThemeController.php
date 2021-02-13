@@ -12,6 +12,7 @@ use App\Comment;
 use App\Http\Requests\ThemeRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 class ThemeController extends Controller
 {
@@ -175,7 +176,7 @@ class ThemeController extends Controller
 
         $theme->save();
 
-        return redirect()->route('themes.index');
+        return redirect()->route('themes.index')->with('success_message', 'テーマを作成しました。');
     }
 
     public function edit(Theme $theme, $id)
@@ -226,7 +227,7 @@ class ThemeController extends Controller
             $tag->save();
         }
 
-        return redirect()->route('themes.index');
+        return redirect()->route('themes.index')->with('success_message', 'テーマを編集しました。');
     }
 
     public function destroy($id)
@@ -237,7 +238,7 @@ class ThemeController extends Controller
 
         Theme::find($id)->delete();
 
-        return redirect()->route('themes.index');
+        return redirect()->route('themes.index')->with('success_message', 'テーマを削除しました。');
     }
 
     public function comment(Request $request, $theme_id)
