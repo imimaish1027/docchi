@@ -12051,7 +12051,7 @@ a:active {
   width: 200px;
   height: 200px;
   margin: 0 auto;
-  margin-top: 24px;
+  margin-top: 40px;
   margin-bottom: 16px;
   display: block;
 }
@@ -12527,8 +12527,8 @@ a:active {
 .p-theme__answer--which,
 .p-theme__answer--result {
   justify-content: space-between;
-  padding-right: 24px;
-  padding-left: 24px;
+  padding-right: 40px;
+  padding-left: 40px;
   margin-bottom: 64px;
 }
 
