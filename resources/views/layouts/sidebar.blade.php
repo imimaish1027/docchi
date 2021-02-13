@@ -41,12 +41,16 @@
   @if( Auth::id() === $user->id )
   <div class="p-user__nav">
     <ul class="p-user__nav__list">
-      <li class="p-user__nav__one">
-        <div class="c-user__nav__icon__box">
-          <img src="{{ asset('images/mytheme-icon.png') }}" class="c-user__nav__icon">
-        </div>
-        <img src="{{ asset('images/mytheme_select-icon.png') }}" class="c-user__nav__icon--active">　マイテーマ
-      </li>
+
+      <a href="{{ route('users.show', ['id' => $user->id]) }}">
+        <li class="p-user__nav__one">
+          <div class="c-user__nav__icon__box">
+            <img src="{{ asset('images/mytheme-icon.png') }}" class="c-user__nav__icon">
+          </div>
+          <img src="{{ asset('images/mytheme_select-icon.png') }}" class="c-user__nav__icon--active">　マイテーマ
+        </li>
+      </a>
+
       <a href="{{route('users.bookmark', $user->id)}}">
         <li class="p-user__nav__one">
           <div class="c-user__nav__icon__box">
@@ -55,6 +59,7 @@
           <img src="{{ asset('images/mybookmark_select-icon.png') }}" class="c-user__nav__icon--active">　ブックマーク
         </li>
       </a>
+
       <a href="{{route('users.edit', $user->id)}}">
         <li class="p-user__nav__one">
           <div class="c-user__nav__icon__box">

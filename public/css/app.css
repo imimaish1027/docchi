@@ -11713,7 +11713,7 @@ a:active {
 .l-sidebar .p-user__nav__one {
   height: 40px;
   width: 100%;
-  padding-left: 32px;
+  padding-left: 40px;
   display: flex;
   align-items: center;
 }
@@ -12808,7 +12808,7 @@ a:active {
 }
 
 .p-mytheme {
-  width: 80%;
+  width: 700px;
 }
 
 .p-user__head {
@@ -12833,6 +12833,9 @@ a:active {
 }
 
 .p-form__user {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   width: 700px;
   border: solid 1px #A2A2A2;
   border-radius: 5px;
