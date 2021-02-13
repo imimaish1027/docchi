@@ -12567,6 +12567,7 @@ a:active {
 .p-sort__area {
   width: 180px;
   padding-bottom: 4px;
+  margin-right: 48px;
   border-bottom: 4px solid rgba(0, 0, 0, 0.3);
   -moz-text-align-last: center;
        text-align-last: center;
