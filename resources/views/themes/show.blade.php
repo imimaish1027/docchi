@@ -24,11 +24,21 @@
       <div class="p-main__heading__right">
         <div class="c-post__date">{{ $theme['created_at']->format('Y-m-d') }}</div>
         <div class="p-post__user--answer">
-          <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-post__user__img c-avatar">
-          <div class="c-post__user__name">{{ $post_user->name }}</div>
+          <a href="{{ route('users.show', ['id' => $theme->user->id]) }}" class="c-post__user__img c-avatar">
+            @isset( $theme->user->pic )
+            <img src="{{ asset('/storage/users/'.$theme->user->pic) }}" class="c-post__user__img c-avatar">
+            @endisset
+            @empty( $theme->user->pic )
+            <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-post__avatar">
+            @endempty
+          </a>
+          <a href="{{ route('users.show', ['id' => $theme->user->id]) }}" class="c-user__link">
+            <div class="c-post__user__name">{{ $post_user->name }}</div>
+          </a>
         </div>
-        <div class="p-bookmark__area"><i class="fas fa-star fa-lg"></i>
-          <p class="c-bookmark__count">100</p>
+        <div class="p-bookmark__area">
+          <theme-bookmark :initial-is-bookmarked-by='@json($theme->isBookmarkedBy(Auth::user()))' :initial-count-bookmarks='@json($theme->count_bookmarks)' :authorized='@json(Auth::check())' endpoint="{{ route('themes.bookmark', ['id' => $theme->id]) }}">
+          </theme-bookmark>
         </div>
       </div>
     </div>

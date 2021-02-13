@@ -1,8 +1,22 @@
 .c-post__user {
-  &__img { 
-  }
-
   &__name {
     margin-left: $space_s;
   }
+}
+
+.c-user__name__balloon {
+    min-width: 148px;
+    position: absolute;
+    top: 36px;
+    left: -60px;
+    display: none;
+    padding: 4px;
+    text-align: center;
+    color: white;
+    background-color: $default-color;
+    opacity: 0.8;
+}
+
+.p-post__info__user:hover .c-user__name__balloon {
+    display: inline-block;
 }

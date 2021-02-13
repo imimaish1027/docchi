@@ -35,3 +35,9 @@
       color: $reset-color;
   }
 }
+
+.c-user__link {
+    &:hover {
+        color: $default-color;
+    }
+}

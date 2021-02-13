@@ -1,4 +1,9 @@
 .p-post__info {
   display: flex;
   align-items: center;
+
+  &__user {
+    text-decoration: none;
+    position: relative;
+  }
 }

@@ -66,7 +66,15 @@
               </theme-bookmark>
             </ul>
             <div class="p-post__info">
-              <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-post__avatar">
+              <a href="{{ route('users.show', ['id' => $bookmark->theme->user->id]) }}" class="p-post__info__user">
+                @isset( $bookmark->theme->user->pic )
+                <img src="{{ asset('/storage/users/'.$bookmark->theme->user->pic) }}" class="c-post__avatar">
+                @endisset
+                @empty( $bookmark->theme->user->pic )
+                <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-post__avatar">
+                @endempty
+                <span class="c-user__name__balloon">{{ $bookmark->theme->user->name }}</span>
+              </a>
               <p class="c-list__post__date">{{ $bookmark->theme->created_at->format('Y-m-d') }}</p>
             </div>
           </div>
