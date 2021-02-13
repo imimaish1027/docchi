@@ -23,7 +23,14 @@
         <a class="p-header__nav__one--link" href="{{ route('themes.create') }}"><img src="{{ asset('images/create-theme-icon.png') }}" class="c-header__nav__icon"><span class="c-header__nav__title">テーマ作成</span></a>
       </li>
       <li class="p-header__nav__one dropdown">
-        <a class="p-header__nav__one--link p-header__nav__mypage dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('images/no-avatar.jpeg') }}" class="c-header__nav__icon c-avatar"></a>
+        <a class="p-header__nav__one--link p-header__nav__mypage dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          @isset(auth()->user()->pic)
+          <img src="{{ asset('/storage/users/'.auth()->user()->pic) }}" class="c-header__nav__icon c-avatar">
+          @endisset
+          @empty(auth()->user()->pic)
+          <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-header__nav__icon c-avatar">
+          @endempty
+        </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <a href="{{ route('users.show', ['id' => auth()->user()->id]) }}" class="dropdown-item">マイテーマ</a>
           <a href="{{ route('users.bookmark', ['id' => auth()->user()->id]) }}" class="dropdown-item">ブックマーク</a>
