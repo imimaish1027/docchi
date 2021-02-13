@@ -42,13 +42,19 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    protected function redirectTo()
+    {
+        session()->flash('success_message', 'ログインしました');
+        return '/themes';
+    }
+
     private const GUEST_USER_ID = 1;
 
     // ゲストログイン
     public function guestLogin()
     {
         if (Auth::loginUsingId(self::GUEST_USER_ID)) {
-            return redirect('/themes');
+            return redirect('/themes')->with('success_message', 'ログインしました。');
         }
 
         return redirect('/login');
@@ -78,5 +84,13 @@ class LoginController extends Controller
             'email' => $providerUser->getEmail(),
             'token' => $providerUser->token,
         ]);
+    }
+
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+        $request->session()->invalidate();
+
+        return $this->loggedOut($request) ?: redirect('/themes')->with('success_message','ログアウトしました。');
     }
 }

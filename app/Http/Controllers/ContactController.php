@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mail\ContactSendmail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class ContactController extends Controller
 {
@@ -44,11 +46,11 @@ class ContactController extends Controller
                 ->route('contact.index')
                 ->withInput($inputs);
         } else {
-            \Mail::to($inputs['email'])->send(new ContactSendmail($inputs));
+            Mail::to($inputs['email'])->send(new ContactSendmail($inputs));
 
             $request->session()->regenerateToken();
 
-
+            Session::flash('success_message', 'お問い合わせの送信が完了しました。');
             return view('contacts.sent');
         }
     }

@@ -12341,6 +12341,12 @@ a:active {
   color: #C9396D;
 }
 
+.toast {
+  position: absolute;
+  top: 68px;
+  right: 344px;
+}
+
 /* Project */
 
 .p-form {

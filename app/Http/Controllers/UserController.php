@@ -12,6 +12,7 @@ use App\Answer;
 use App\Comment;
 use App\Bookmark;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -42,8 +43,6 @@ class UserController extends Controller
     {
 
         $user = User::find($user_id);
-        //$user->name = $request->input('name');
-        //$user->age = $request->input('age');
 
         if ($request->pic) {
             $pic = $request->pic->store('public/users');
@@ -52,8 +51,9 @@ class UserController extends Controller
         }
 
         $user->fill($request->validated())->save();
-
-        return view('users.edit', ['user' => $user]);
+        
+        return redirect()->route('users.edit', ['id' => $user->id])->with('success_message', 'プロフィールを更新しました。');
+ 
     }
 
     public function bookmark($user_id)
@@ -77,7 +77,7 @@ class UserController extends Controller
 
         $user->fill($request->validated())->save();
 
-        return view('users.emailEdit', ['user' => $user]);
+        return redirect()->route('users.emailEdit',['id' => $user->id])->with('success_message', 'メールアドレスを変更しました。');
     }
 
     public function passEdit($user_id)
@@ -101,7 +101,7 @@ class UserController extends Controller
 
         $themes = Theme::where('user_id', $user->id)->paginate(5);
 
-        return view('users.show', ['user' => $user, 'themes' => $themes]);
+        return redirect()->route('users.passEdit', ['id' => $user->id])->with('success_message', 'パスワードを変更しました。');
     }
 
     public function withdraw($user_id)
@@ -116,8 +116,6 @@ class UserController extends Controller
         $user = User::find($user_id);
         $user->delete();
 
-        $themes = Theme::paginate(10);
-        $users = User::all();
-        return view('themes.index', ['themes' => $themes, 'users' => $users]);
+        return redirect()->route('themes.index')->with('success_message', '退会が完了しました。');
     }
 }
