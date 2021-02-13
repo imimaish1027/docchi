@@ -81,9 +81,9 @@
         <p class="c-comment__count">{{ $count_comment ?? 0}}件</p>
       </div>
       <div class="p-comment__area">
-        @forelse($comments as $comment)
         <ul class="p-comment__list">
-          @foreach($comments as $comment)
+          @forelse($comments as $comment)
+
           <li class="p-comment__one">
             <div class="p-post__comment__main">
               <div class="p-post__comment__user">
@@ -103,12 +103,11 @@
               </div>
             </div>
           </li>
-          @endforeach
+          @empty
+          <p class="c-comment__note">コメントは投稿されていません。</p>
+          @endforelse
+          {{ $comments->links() }}
         </ul>
-        {{ $comments->links() }}
-        @empty
-        <p class="c-comment__note">コメントは投稿されていません。</p>
-        @endforelse
       </div>
 
       <form method="POST" action="{{ route('themes.comment', $theme->id) }}" enctype='multipart/form-data' class="">
