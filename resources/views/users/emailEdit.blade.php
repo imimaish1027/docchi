@@ -35,8 +35,7 @@
         </div>
         @error('email')
         <div class="invalid__feedback" role="alert">
-          <div class="c-error__empty__area"></div>
-          <strong class="c-error__text__area">{{ $message }}</strong>
+          {{ $message }}
         </div>
         @enderror
 
