@@ -16,7 +16,7 @@
         @csrf
         @method('PUT')
         @if (Auth::id() == 1)
-        <p class="c-danger__text">※ゲストユーザーではメールアドレスを編集できません。</p>
+        <p class="c-danger__text">※ゲストユーザーではメールアドレスを変更できません。</p>
         @endif
         <div class="p-form__one p-form__text">
           <p class="c-form__one__title">現在のメールアドレス</p>
@@ -27,7 +27,7 @@
           <p class="c-form__one__title">新しいメールアドレス</p>
           <div class="p-form__input">
             @if (Auth::id() == 1)
-            <input id="email" type="text" name="email" value="{{ old('email') }}" autocomplete="email" class="c-form__text form-control @error('email') is-invalid @enderror" readonly>
+            <input id="email" type="text" name="email" value="{{ old('email') }}" autocomplete="email" class="c-form__text form-control" disabled>
             @else
             <input id="email" type="text" name="email" value="{{ old('email') }}" autocomplete="email" class="c-form__text form-control @error('email') is-invalid @enderror">
             @endif
@@ -41,9 +41,15 @@
         @enderror
 
         <div class="p-btn__area">
+          @if (Auth::id() == 1)
+          <button type="submit" class="c-form__btn btn" disabled>
+            {{ __('変更') }}
+          </button>
+          @else
           <button type="submit" class="c-form__btn btn">
             {{ __('変更') }}
           </button>
+          @endif
         </div>
       </form>
     </div>
