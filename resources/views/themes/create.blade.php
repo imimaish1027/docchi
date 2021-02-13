@@ -25,7 +25,7 @@
     <div class="p-form__one p-form__text">
       <p class="c-form__one__title">タグ</p>
       <theme-tags-input>
-      </theme-tags-input>      
+      </theme-tags-input>
     </div>
     @error('tag')
     <div class="invalid__feedback" role="alert">

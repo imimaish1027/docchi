@@ -11891,10 +11891,6 @@ a:active {
   left: 0%;
 }
 
-.c-error__pic__text {
-  padding-right: 48px;
-}
-
 .c-form__search__box {
   height: 48px;
   width: 80%;
@@ -12835,6 +12831,6 @@ a:active {
 .p-form__input {
   width: 60%;
   display: flex;
-  justify-content: start;
+  justify-content: flex-end;
 }
 
