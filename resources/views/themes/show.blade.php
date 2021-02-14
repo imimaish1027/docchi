@@ -72,7 +72,7 @@
           <div class="p-answer__one">
             <div class="p-answer__area p-answer__area--b">
               <img src="{{ asset('/storage/selects/'.$theme->pic_b) }}" class="c-answer__img">
-              <p class="c-answer__title c-answer--b">A {{ $theme->answer_b }}</p>
+              <p class="c-answer__title c-answer--b">B {{ $theme->answer_b }}</p>
             </div>
             @auth
             <button type="submit" name="answer" value="2" class="c-answer__btn c-answer__btn--b btn">
