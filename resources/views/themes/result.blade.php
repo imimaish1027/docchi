@@ -119,9 +119,17 @@
             <p class="c-count__text"><span id="js-count__view">0</span>/100字</p>
           </div>
           <div class="c-btn__area--comment">
+            @auth
             <button type="submit" class="c-comment__btn btn">
-              {{ __('送信') }}
+              送信
             </button>
+            @endauth
+            @guest
+            <button type="submit" class="c-comment__btn btn" disabled>
+              送信
+            </button>
+            @endguest
+
           </div>
         </div>
       </form>
