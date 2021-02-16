@@ -255,7 +255,7 @@ class ThemeController extends Controller
         $comment->body = $request->body;
         $comment->save();
 
-        return redirect()->route('themes.index');
+        return redirect()->back();
     }
 
     public function bookmark(Request $request, Theme $theme)

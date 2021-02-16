@@ -87,9 +87,14 @@
           <li class="p-comment__one">
             <div class="p-post__comment__main">
               <div class="p-post__comment__user">
-                <div class="c-post__comment__user__img">
+                <a href="{{ route('users.show', ['id' => $theme->user->id]) }}" class="c-post__comment__user__img">
+                  @isset( $comment->user->pic )
+                  <img src="{{ asset('/storage/users/'.$comment->user->pic) }}" class="c-avatar">
+                  @endisset
+                  @empty( $comment->user->pic )
                   <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-avatar">
-                </div>
+                  @endempty
+                </a>
                 <p class="c-post__comment__user__info">
                   @switch($comment->user->age)
                   @case(9 < $comment->user->age && $comment->user->age < 20) 10代 @break @case(19 < $comment->user->age && $comment->user->age < 30) 20代 @break @case(29 < $comment->user->age && $comment->user->age < 40) 30代 @break @case(39 < $comment->user->age && $comment->user->age < 50) 40代 @break @case(49 < $comment->user->age && $comment->user->age < 60) 50代 @break @case(59 < $comment->user->age && $comment->user->age < 70) 60代 @break @case(69 < $comment->user->age && $comment->user->age < 80) 70代 @break @case(79 < $comment->user->age && $comment->user->age < 90) 80代 @break @case(89 < $comment->user->age && $comment->user->age < 100) 90代 @break @default @endswitch @if($comment->user->gender === 1) ♂
@@ -98,7 +103,12 @@
                 </p>
               </div>
               <div class="p-post__comment__content">
-                <p class="c-comment__text @if($comment->user->answer['answer'] === 1) c-comment__text--a @elseif($comment->user->answer['answer'] === 2) c-comment__text--b @endif">{{ $comment->body }}</p>
+                <p class="c-comment__text 
+                @if(!empty($comment->user->answers['answer']))
+                @if($comment->user->answers['answer'] === 1) c-comment__text--a 
+                @elseif($comment->user->answers['answer'] === 2) c-comment__text--b 
+                @endif
+                @endif">{{ $comment->body }}</p>
                 <div class="c-post__comment__date">{{ $comment->created_at->format('Y-m-d') }}</div>
               </div>
             </div>
@@ -110,6 +120,7 @@
         </ul>
       </div>
 
+      @if(auth()->user() && $theme->answers->contains('user_id', auth()->user()->id))
       <form method="POST" action="{{ route('themes.comment', $theme->id) }}" enctype='multipart/form-data' class="">
         @csrf
         <div class="p-comment__writing">
@@ -119,20 +130,13 @@
             <p class="c-count__text"><span id="js-count__view">0</span>/100字</p>
           </div>
           <div class="c-btn__area--comment">
-            @auth
             <button type="submit" class="c-comment__btn btn">
               送信
             </button>
-            @endauth
-            @guest
-            <button type="submit" class="c-comment__btn btn" disabled>
-              送信
-            </button>
-            @endguest
-
           </div>
         </div>
       </form>
+      @endif
     </div>
   </div>
 </div>
