@@ -134,7 +134,7 @@ class ThemeController extends Controller
             $choice_number = 0;
         }
 
-        $comments = Comment::where('theme_id', $theme_id)->paginate(5);
+        $comments = Comment::where('theme_id', $theme_id)->orderBy('created_at', 'desc')->paginate(5);
         $count_comment = Comment::where('theme_id', $theme_id)->count();
 
         return view('themes.result', [

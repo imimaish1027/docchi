@@ -103,12 +103,7 @@
                 </p>
               </div>
               <div class="p-post__comment__content">
-                <p class="c-comment__text 
-                @if(!empty($comment->user->answers['answer']))
-                @if($comment->user->answers['answer'] === 1) c-comment__text--a 
-                @elseif($comment->user->answers['answer'] === 2) c-comment__text--b 
-                @endif
-                @endif">{{ $comment->body }}</p>
+                <p class="c-comment__text @if($comment->user->answers[0]['answer'] === 1) c-comment__text--a @elseif($comment->user->answers[0]['answer'] === 2) c-comment__text--b @endif">{{ $comment->body }}</p>
                 <div class="c-post__comment__date">{{ $comment->created_at->format('Y-m-d') }}</div>
               </div>
             </div>
