@@ -45,32 +45,33 @@
 
     <div class="p-theme">
       <p class="c-theme__title">{{ $theme->title }}</p>
-      <p class="c-theme__note--guide">回答数 50</p>
 
-      <p class="c-theme__note--guide">Aの選択数 {{ $count_answer_a ?? 0}}</p>
-      <p class="c-theme__note--guide">Bの選択数 {{ $count_answer_b ?? 0}}</p>
+      <page-pie :answer-subjects="{{ $answer_subject }}" :count-answers="{{ $count_answer }}"></page-pie>
+      <p class="c-answer__count c-answer__count--total">総回答数　{{ $total_count_answer ?? 0}}件</p>
 
       <div class="p-theme__answer p-theme__answer--result">
         <div class="p-answer__one">
           <div class="c-your__choice @if($choice_number === 1) c-your__choice--this @endif">
-            あなたの選択
+            あなたの回答
           </div>
           <div class="p-answer__area p-answer__area--a">
             <img src="{{ asset('/storage/selects/'.$theme->pic_a) }}" class="c-answer__img">
             <p class="c-answer__title c-answer--a">A {{ $theme->answer_a }}</p>
           </div>
+          <p class="c-answer__count c-answer__count--a">{{ $percentage_answer_a ?? 0}}％</p>
         </div>
 
         <p class="c-theme__note--or">or</p>
 
         <div class="p-answer__one">
           <div class="c-your__choice @if($choice_number === 2) c-your__choice--this @endif">
-            あなたの選択
+            あなたの回答
           </div>
           <div class="p-answer__area p-answer__area--b">
             <img src="{{ asset('/storage/selects/'.$theme->pic_b) }}" class="c-answer__img">
             <p class="c-answer__title c-answer--b">B {{ $theme->answer_b }}</p>
           </div>
+          <p class="c-answer__count c-answer__count--b">{{ $percentage_answer_b ?? 0}}％</p>
         </div>
       </div>
 

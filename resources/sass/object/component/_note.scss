@@ -1,7 +1,27 @@
-.c-theme__note--guide {
+.c-answer__count {
   width: 100%;
-  margin-bottom: $space_l;
   text-align: center;
+
+  &--total {
+    margin-top: $space_m;
+    font-size: $font-size_l;
+  }
+
+  &--a {
+    color: $answer_a-color;
+    font-size: $font-size_xl;
+  }
+
+  &--b {
+      color: $answer_b-color;
+      font-size: $font-size_xl;
+  }
+}
+
+.c-theme__note--guide {
+    width: 100%;
+    margin-bottom: $space_l;
+    text-align: center;
 }
 
 .c-theme__note--or {

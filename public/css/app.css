@@ -12109,6 +12109,26 @@ a:active {
   padding-left: 8px;
 }
 
+.c-answer__count {
+  width: 100%;
+  text-align: center;
+}
+
+.c-answer__count--total {
+  margin-top: 16px;
+  font-size: 20px;
+}
+
+.c-answer__count--a {
+  color: #C9396D;
+  font-size: 24px;
+}
+
+.c-answer__count--b {
+  color: #0086CC;
+  font-size: 24px;
+}
+
 .c-theme__note--guide {
   width: 100%;
   margin-bottom: 24px;
@@ -12269,6 +12289,7 @@ a:active {
 }
 
 .c-post__comment__user__info {
+  min-width: 56px;
   padding-top: 4px;
 }
 
@@ -12550,7 +12571,7 @@ a:active {
 .p-answer__area {
   height: 300px;
   width: 300px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   background: #ffffff;
 }
 
@@ -12727,6 +12748,10 @@ a:active {
 
 .p-comment__writing {
   display: flex;
+}
+
+.p-post__comment__user {
+  text-align: center;
 }
 
 .pagination {
