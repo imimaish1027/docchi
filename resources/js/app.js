@@ -8,6 +8,8 @@ import './bootstrap'
 import Vue from 'vue'
 import ThemeBookmark from './components/ThemeBookmark'
 import ThemeTagsInput from './components/ThemeTagsInput'
+import PieChart from "./components/PieChart";
+import PagePie from "./views/PagePie"
 
 window.Vue = require('vue');
 
@@ -31,10 +33,12 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: '#app',
+    el: "#app",
     components: {
         ThemeBookmark,
         ThemeTagsInput,
+        PieChart,
+        PagePie
     }
 });
 

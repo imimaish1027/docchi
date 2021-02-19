@@ -119,8 +119,18 @@ class ThemeController extends Controller
         $theme = Theme::find($theme_id);
         $post_user = User::where('id', $theme->user_id)->first();
 
-        $count_answer_a = DB::table('answers')->where('theme_id', $theme_id)->where('answer', 1)->count();
-        $count_answer_b = DB::table('answers')->where('theme_id', $theme_id)->where('answer', 2)->count();
+        $answer_a_subject = $theme->answer_a;
+        $answer_b_subject = $theme->answer_b;
+        $answer_subject = json_encode([$answer_b_subject, $answer_a_subject]);
+
+        $count_answer_a = Answer::where('theme_id', $theme_id)->where('answer', 1)->count();
+        $count_answer_b = Answer::where('theme_id', $theme_id)->where('answer', 2)->count();
+        $count_answer = json_encode([$count_answer_b, $count_answer_a]);
+        $total_count_answer = $count_answer_a + $count_answer_b;
+
+        $percentage_answer_a = ($count_answer_a / $total_count_answer) * 100;
+        $percentage_answer_b = ($count_answer_b / $total_count_answer) * 100;
+        $percentage_answer = json_encode([$percentage_answer_b, $percentage_answer_a]);
 
         $auth_user = Auth::user();
         if ($auth_user) {
@@ -140,8 +150,14 @@ class ThemeController extends Controller
         return view('themes.result', [
             'theme' => $theme,
             'post_user' => $post_user,
+            'answer_subject' => $answer_subject,
             'count_answer_a' => $count_answer_a,
             'count_answer_b' => $count_answer_b,
+            'count_answer' => $count_answer,
+            'total_count_answer' => $total_count_answer,
+            'percentage_answer_a' => $percentage_answer_a,
+            'percentage_answer_b' => $percentage_answer_b,
+            'percentage_answer' => $percentage_answer,
             'choice_number' => $choice_number,
             'comments' => $comments,
             'count_comment' => $count_comment,
