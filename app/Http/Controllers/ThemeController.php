@@ -127,8 +127,10 @@ class ThemeController extends Controller
         $count_answer_b = Answer::where('theme_id', $theme_id)->where('answer', 2)->count();
         $count_answer = json_encode([$count_answer_b, $count_answer_a]);
         $total_count_answer = $count_answer_a + $count_answer_b;
+
         $percentage_answer_a = ($count_answer_a / $total_count_answer) * 100;
         $percentage_answer_b = ($count_answer_b / $total_count_answer) * 100;
+        $percentage_answer = json_encode([$percentage_answer_b, $percentage_answer_a]);
 
         $auth_user = Auth::user();
         if ($auth_user) {
@@ -155,6 +157,7 @@ class ThemeController extends Controller
             'total_count_answer' => $total_count_answer,
             'percentage_answer_a' => $percentage_answer_a,
             'percentage_answer_b' => $percentage_answer_b,
+            'percentage_answer' => $percentage_answer,
             'choice_number' => $choice_number,
             'comments' => $comments,
             'count_comment' => $count_comment,

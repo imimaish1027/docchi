@@ -2193,7 +2193,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     answerSubjects: String,
-    countAnswers: String
+    countAnswers: String,
+    percentageAnswers: String
   },
   data: function data() {
     return {
@@ -2202,6 +2203,7 @@ __webpack_require__.r(__webpack_exports__);
         datasets: [{
           label: 'Answer',
           data: this.countAnswers,
+          percentage: this.percentageAnswers,
           backgroundColor: ['#0086CC', '#C9396D']
         }]
       },
@@ -2229,13 +2231,16 @@ Chart.plugins.register({
           var fontFamily = 'Helvetica Neue';
           ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
           var dataString = chart.data.labels[index];
-          var dataStringNumber = dataset.data[index].toString();
+          var dataStringNumber = dataset.percentage[index].toString() + "％";
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           var padding = 5;
           var position = element.tooltipPosition();
-          ctx.fillText(dataString, position.x, position.y - fontSize / 2 - padding);
-          ctx.fillText(dataStringNumber, position.x, position.y + fontSize * 1.5 - padding);
+
+          if (dataset.percentage[index].toString() > 1) {
+            ctx.fillText(dataString, position.x, position.y - fontSize / 2 - padding);
+            ctx.fillText(dataStringNumber, position.x, position.y + fontSize * 1.5 - padding);
+          }
         });
       }
     });

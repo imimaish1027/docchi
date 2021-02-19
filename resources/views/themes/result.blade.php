@@ -46,7 +46,7 @@
     <div class="p-theme">
       <p class="c-theme__title">{{ $theme->title }}</p>
 
-      <page-pie :answer-subjects="{{ $answer_subject }}" :count-answers="{{ $count_answer }}"></page-pie>
+      <page-pie :answer-subjects="{{ $answer_subject }}" :count-answers="{{ $count_answer }}" :percentage-answers="{{ $percentage_answer }}"></page-pie>
       <p class="c-answer__count c-answer__count--total">総回答数　{{ $total_count_answer ?? 0}}件</p>
 
       <div class="p-theme__answer p-theme__answer--result">
