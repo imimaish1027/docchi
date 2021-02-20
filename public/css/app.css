@@ -12065,6 +12065,14 @@ a:active {
   display: block;
 }
 
+.c-prev__img {
+  width: 198px;
+  height: 198px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .c-post__user__name {
   margin-left: 8px;
 }
@@ -12452,6 +12460,14 @@ a:active {
 
 .p-area__drop:hover {
   cursor: pointer;
+}
+
+.c-drop__border--a {
+  border: solid 1px #A2A2A2;
+}
+
+.c-drop__border--b {
+  border: 1px dotted gray;
 }
 
 .p-btn__area {

@@ -49,10 +49,12 @@
         <div class="p-form__one p-form__pic">
           <p class="c-form__one__title">プロフィール画像</p>
           <div class="p-form__input">
-            <label class="p-form__pic__one p-area__drop  form-control @error('pic') is-invalid @enderror">
+            <label class="p-form__pic__one p-area__drop  form-control @error('pic') is-invalid @enderror" :class="{'c-drop__border--a':styleA, 'c-drop__border--b':styleB}" @dragover.prevent="changeStyleA($event,'ok')" @dragleave.prevent="changeStyleA($event,'no')" @drop.prevent="uploadFileA($event)">
               <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
-              <input id="pic" type="file" name="pic" value="{{ old('pic') }}" class="c-form__pic">
+              <input type="file" name="pic" id="uploadImageA" class="c-form__pic" accept="image/*" @change="onFileChangeA($event)" @change="uploadFileA($event)">
               <p class="c-area__drop__text">クリックorドラッグ&ドロップで<br>画像をアップロード</p>
+              <img class="c-prev__img" src="{{ asset('/storage/users/'.$user->pic) }}">
+              <img class="c-prev__img" :src="imageDataA" v-if="imageDataA">
             </label>
           </div>
         </div>

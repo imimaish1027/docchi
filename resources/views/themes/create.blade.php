@@ -48,10 +48,11 @@
     <div class="p-form__one p-form__pic">
       <p class="c-form__one__title">選択肢Aの画像</p>
       <div class="p-form__input">
-        <label class="p-form__pic__one p-area__drop  form-control @error('pic_a') is-invalid @enderror">
+        <label class="p-form__pic__one p-area__drop  form-control @error('pic_a') is-invalid @enderror" :class="{'c-drop__border--a':styleA, 'c-drop__border--b':styleB}" @dragover.prevent="changeStyleA($event,'ok')" @dragleave.prevent="changeStyleA($event,'no')" @drop.prevent="uploadFileA($event)">
           <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
-          <input id="pic" type="file" name="pic_a" value="{{ old('pic_a') }}" class="c-form__pic">
+          <input type="file" name="pic_a" id="uploadImageA" class="c-form__pic" accept="image/*" @change="onFileChangeA($event)" @change="uploadFileA($event)">
           <p class="c-area__drop__text">クリックorドラッグ&ドロップで<br>画像をアップロード</p>
+          <img class="c-prev__img" :src="imageDataA" v-if="imageDataA">
         </label>
       </div>
     </div>
@@ -76,10 +77,11 @@
     <div class="p-form__one p-form__pic">
       <p class="c-form__one__title">選択肢Bの画像</p>
       <div class="p-form__input">
-        <label class="p-form__pic__one p-area__drop  form-control @error('pic_b') is-invalid @enderror">
+        <label class="p-form__pic__one p-area__drop  form-control @error('pic_b') is-invalid @enderror" :class="{'c-drop__border--a':styleC, 'c-drop__border--b':styleD}" @dragover.prevent="changeStyleB($event,'ok')" @dragleave.prevent="changeStyleB($event,'no')" @drop.prevent="uploadFileB($event)">
           <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
-          <input id="pic" type="file" name="pic_b" value="{{ old('pic_b') }}" class="c-form__pic">
+          <input type="file" name="pic_b" id="uploadImageB" class="c-form__pic" accept="image/*" @change="onFileChangeB($event)" @change="uploadFileB($event)">
           <p class="c-area__drop__text">クリックorドラッグ&ドロップで<br>画像をアップロード</p>
+          <img class="c-prev__img" :src="imageDataB" v-if="imageDataB">
         </label>
       </div>
     </div>
