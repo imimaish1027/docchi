@@ -5,6 +5,10 @@
   padding: $space_s;
   background: $reset-color;
   border: solid 1px $line-color;
+
+  &--block {
+    color: $item-color;
+  }
 }
 
 .c-contact__textarea {

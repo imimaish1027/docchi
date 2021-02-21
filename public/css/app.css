@@ -12253,7 +12253,7 @@ a:active {
 }
 
 .c-comment__writing__text {
-  padding-top: 6px;
+  padding-top: 8px;
   margin-right: 16px;
 }
 
@@ -12313,6 +12313,10 @@ a:active {
   padding: 8px;
   background: #ffffff;
   border: solid 1px #A2A2A2;
+}
+
+.c-comment__textarea--block {
+  color: #666;
 }
 
 .c-contact__textarea {

@@ -116,11 +116,11 @@
         </ul>
       </div>
 
-      @if(auth()->user() && $theme->answers->contains('user_id', auth()->user()->id))
       <form method="POST" action="{{ route('themes.comment', $theme->id) }}" enctype='multipart/form-data' class="">
         @csrf
         <div class="p-comment__writing">
           <p class="c-comment__writing__text">コメントを書く</p>
+          @if(auth()->user() && $theme->answers->contains('user_id', auth()->user()->id))
           <div class="p-counter__text">
             <textarea name="body" id="js-count" maxlength="100" class="c-comment__textarea"></textarea>
             <p class="c-count__text"><span id="js-count__view">0</span>/100字</p>
@@ -130,9 +130,19 @@
               送信
             </button>
           </div>
+          @else
+          <div class="p-counter__text">
+            <textarea name="body" id="js-count" maxlength="100" class="c-comment__textarea c-comment__textarea--block" disabled>回答したユーザーのみコメントできます。</textarea>
+            <p class="c-count__text"><span id="js-count__view">0</span>/100字</p>
+          </div>
+          <div class="c-btn__area--comment">
+            <button type="submit" class="c-comment__btn btn" disabled>
+              送信
+            </button>
+          </div>
+          @endif
         </div>
       </form>
-      @endif
     </div>
   </div>
 </div>
