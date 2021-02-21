@@ -60,7 +60,14 @@
           </ul>
           <div class="p-theme__info">
             <ul class="p-icon__count">
-              <li class="p-icon__count__one"><img src="{{ asset('images/answer-icon.png') }}" class="c-icon"><span class="c-count__number">{{ $bookmark->theme->answers->count() }}</span></li>
+              <li class="p-icon__count__one">
+                @if(auth()->user() && $bookmark->theme->answers->contains('user_id', auth()->user()->id))
+                <img src="{{ asset('images/answered-icon.png') }}" class="c-icon">
+                @else
+                <img src="{{ asset('images/answer-icon.png') }}" class="c-icon">
+                @endif
+                <span class="c-count__number">{{ $bookmark->theme->answers->count() }}</span>
+              </li>
               <li class="p-icon__count__one"><img src="{{ asset('images/comment-icon.png') }}" class="c-icon"><span class="c-count__number">{{ $bookmark->theme->comments->count() }}</span></li>
               <theme-bookmark :initial-is-bookmarked-by='@json($bookmark->theme->isBookmarkedBy(Auth::user()))' :initial-count-bookmarks='@json($bookmark->theme->count_bookmarks)' :authorized='@json(Auth::check())' endpoint="{{ route('themes.bookmark', ['id' => $bookmark->theme->id]) }}">
               </theme-bookmark>
