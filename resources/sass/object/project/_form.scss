@@ -88,3 +88,11 @@
       cursor: pointer;
     }
 }
+
+  .c-drop__border--a {
+      border: solid 1px $line-color;
+  }
+
+  .c-drop__border--b {
+      border: 1px dotted gray;
+  }

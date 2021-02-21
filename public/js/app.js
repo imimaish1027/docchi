@@ -90953,6 +90953,108 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
     ThemeTagsInput: _components_ThemeTagsInput__WEBPACK_IMPORTED_MODULE_3__["default"],
     PieChart: _components_PieChart__WEBPACK_IMPORTED_MODULE_4__["default"],
     PagePie: _views_PagePie__WEBPACK_IMPORTED_MODULE_5__["default"]
+  },
+  data: {
+    imageDataA: "",
+    imageDataB: "",
+    pic_a: "",
+    pic_b: "",
+    styleA: true,
+    styleB: false,
+    styleC: true,
+    styleD: false
+  },
+  methods: {
+    onFileChangeA: function onFileChangeA(e) {
+      var _this = this;
+
+      var files = e.target.files;
+
+      if (files.length > 0) {
+        var file = files[0];
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          _this.imageDataA = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
+    onFileChangeB: function onFileChangeB(e) {
+      var _this2 = this;
+
+      var files = e.target.files;
+
+      if (files.length > 0) {
+        var file = files[0];
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          _this2.imageDataB = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+      }
+    },
+    uploadFileA: function uploadFileA(e) {
+      var _this3 = this;
+
+      this.styleA = true;
+      this.styleB = false;
+      var files = e.target.files ? e.target.files : e.dataTransfer.files;
+
+      if (files.length > 0) {
+        var file = files[0];
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          _this3.imageDataA = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+        this.pic_a = files[0].pic_a;
+        document.getElementById("uploadImageA").files = files;
+      }
+    },
+    uploadFileB: function uploadFileB(e) {
+      var _this4 = this;
+
+      this.styleC = true;
+      this.styleD = false;
+      var files = e.target.files ? e.target.files : e.dataTransfer.files;
+
+      if (files.length > 0) {
+        var file = files[0];
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          _this4.imageDataB = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+        this.pic_b = files[0].pic_b;
+        document.getElementById("uploadImageB").files = files;
+      }
+    },
+    changeStyleA: function changeStyleA(e, flag) {
+      if (flag == "ok") {
+        this.styleA = false;
+        this.styleB = true;
+      } else {
+        this.styleA = true;
+        this.styleB = false;
+      }
+    },
+    changeStyleB: function changeStyleB(e, flag) {
+      if (flag == "ok") {
+        this.styleC = false;
+        this.styleD = true;
+      } else {
+        this.styleC = true;
+        this.styleD = false;
+      }
+    }
   }
 }); // チェックボックスの複数選択不可
 

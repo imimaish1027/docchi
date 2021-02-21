@@ -10,6 +10,7 @@ use App\Tag;
 use App\Answer;
 use App\Comment;
 use App\Http\Requests\ThemeRequest;
+use App\Http\Requests\ThemeEditRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
@@ -209,7 +210,7 @@ class ThemeController extends Controller
         return view('themes.edit', ['theme' => $theme, 'tagNames' => $tagNames,]);
     }
 
-    public function update(ThemeRequest $request, $id)
+    public function update(ThemeEditRequest $request, $id)
     {
         if (!ctype_digit($id)) {
             return redirect('/themes/create');
@@ -227,13 +228,17 @@ class ThemeController extends Controller
 
         $theme->fill($request->validated())->save();
 
-        $pic_a = $request->pic_a->store('public/selects');
-        $file_name_a = basename($pic_a);
-        $theme->pic_a = $file_name_a;
+        if (isset($request->pic_a)) {
+            $pic_a = $request->pic_a->store('public/selects');
+            $file_name_a = basename($pic_a);
+            $theme->pic_a = $file_name_a;
+        }
 
-        $pic_b = $request->pic_b->store('public/selects');
-        $file_name_b = basename($pic_b);
-        $theme->pic_b = $file_name_b;
+        if (isset($request->pic_b)) {
+            $pic_b = $request->pic_b->store('public/selects');
+            $file_name_b = basename($pic_b);
+            $theme->pic_b = $file_name_b;
+        }
 
         $theme->save();
 
