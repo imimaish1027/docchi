@@ -150,9 +150,15 @@ class ThemeController extends Controller
         $count_answer = json_encode([$count_answer_b, $count_answer_a]);
         $total_count_answer = $count_answer_a + $count_answer_b;
 
-        $percentage_answer_a = round(($count_answer_a / $total_count_answer) * 100);
-        $percentage_answer_b = round(($count_answer_b / $total_count_answer) * 100);
-        $percentage_answer = json_encode([$percentage_answer_b, $percentage_answer_a]);
+        if($total_count_answer === 0) {
+            $percentage_answer_a = 0;
+            $percentage_answer_b = 0;
+            $percentage_answer = json_encode([0, 0]);
+        } else {
+            $percentage_answer_a = round(($count_answer_a / $total_count_answer) * 100);
+            $percentage_answer_b = round(($count_answer_b / $total_count_answer) * 100);
+            $percentage_answer = json_encode([$percentage_answer_b, $percentage_answer_a]);
+        }
 
         $auth_user = Auth::user();
         if ($auth_user) {
