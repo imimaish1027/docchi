@@ -14,17 +14,10 @@
 
       <form method="POST" action="{{ route('users.update', $user->id) }}" enctype='multipart/form-data' class="p-form__main">
         @csrf
-        @if (Auth::id() == 1)
-        <p class="c-danger__text">※ゲストユーザーでは名前を編集できません。</p>
-        @endif
         <div class="p-form__one p-form__text">
           <p class="c-form__one__title">ユーザー名</p>
           <div class="p-form__input">
-            @if (Auth::id() == 1)
-            <input id="name" type="text" name="name" value="{{ $user->name }}" autocomplete="name" class="c-form__text form-control @error('name') is-invalid @enderror" readonly>
-            @else
             <input id="name" type="text" name="name" value="{{ $user->name }}" autocomplete="name" class="c-form__text form-control @error('name') is-invalid @enderror">
-            @endif
           </div>
         </div>
         @error('name')
