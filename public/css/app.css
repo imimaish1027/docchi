@@ -12350,6 +12350,10 @@ a:active {
   opacity: 0.8;
 }
 
+.c-theme__edit__link {
+  margin-right: 16px;
+}
+
 .c-theme__result__link:hover {
   color: #ffffff;
 }

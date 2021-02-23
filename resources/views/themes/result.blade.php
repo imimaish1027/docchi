@@ -37,6 +37,9 @@
           </a>
         </div>
         <div class="p-bookmark__area">
+          @if(auth()->user()->id === $theme->user->id)
+          <a href="{{ route('themes.edit', ['id' => $theme->id]) }}" class="c-theme__link c-theme__edit__link">編集</a>
+          @endif
           <theme-bookmark :initial-is-bookmarked-by='@json($theme->isBookmarkedBy(Auth::user()))' :initial-count-bookmarks='@json($theme->count_bookmarks)' :authorized='@json(Auth::check())' endpoint="{{ route('themes.bookmark', ['id' => $theme->id]) }}">
           </theme-bookmark>
         </div>
