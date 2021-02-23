@@ -56,7 +56,7 @@
           </div>
           <div class="p-answer__area p-answer__area--a">
             <img src="{{ asset('/storage/selects/'.$theme->pic_a) }}" class="c-answer__img">
-            <p class="c-answer__title c-answer--a">A {{ $theme->answer_a }}</p>
+            <p class="c-answer__title c-answer--a">A. {{ $theme->answer_a }}</p>
           </div>
           <p class="c-answer__count c-answer__count--a">{{ $percentage_answer_a ?? 0}}％</p>
         </div>
@@ -69,7 +69,7 @@
           </div>
           <div class="p-answer__area p-answer__area--b">
             <img src="{{ asset('/storage/selects/'.$theme->pic_b) }}" class="c-answer__img">
-            <p class="c-answer__title c-answer--b">B {{ $theme->answer_b }}</p>
+            <p class="c-answer__title c-answer--b">B. {{ $theme->answer_b }}</p>
           </div>
           <p class="c-answer__count c-answer__count--b">{{ $percentage_answer_b ?? 0}}％</p>
         </div>
