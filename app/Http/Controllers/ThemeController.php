@@ -312,7 +312,7 @@ class ThemeController extends Controller
         $theme_id = preg_replace('/[^0-9]/', '', $path);
         $theme = Theme::find($theme_id);
         $theme->bookmarks()->detach($request->user()->id);
-        $theme->bookmarks()->sync($request->user()->id);
+        $theme->bookmarks()->attach($request->user()->id);
 
         return [
             'id' => $theme->id,

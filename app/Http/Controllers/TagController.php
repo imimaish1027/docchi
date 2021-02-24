@@ -12,8 +12,20 @@ class TagController extends Controller
 
     public function show(Request $request, string $name)
     {
+        $users = User::all();
+
         $selected_tag = Tag::where('name', $name)->first();
         $selected_tag_name = $selected_tag->name;
+
+        $keyword = $request->input('keyword');
+
+        if($keyword) {
+            $themes = Theme::query()
+                ->when($request->has('keyword'), function ($query) use ($keyword) {
+                    $query->where('title', 'like', '%' . $keyword . '%');
+                })->orderBy('created_at', 'desc')->paginate(10);
+            return view('themes.index', ['themes' => $themes, 'users' => $users, 'keyword' => $keyword])->with('sortBy', 'newPost');
+        }
 
         switch ($request->sort) {
             case 'newPost':
@@ -47,8 +59,6 @@ class TagController extends Controller
                     })->withCount('tags')->orderBy('themes.created_at', 'desc')->paginate(10);
                 break;
         }
-
-        $users = User::all();
 
         return view('tags.show', ['themes' => $themes, 'users' => $users, 'selected_tag' => $selected_tag])->with('sortBy', $request->sort);
     }
