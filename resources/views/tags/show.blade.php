@@ -70,13 +70,28 @@
         </ul>
         <div class="p-theme__info">
           <ul class="p-icon__count">
-            <li class="p-icon__count__one"><img src="{{ asset('images/answer-icon.png') }}" class="c-icon"><span class="c-count__number">{{ $theme->answers->count() }}</span></li>
+            <li class="p-icon__count__one">
+              @if(auth()->user() && $theme->answers->contains('user_id', auth()->user()->id))
+              <img src="{{ asset('images/answered-icon.png') }}" class="c-icon">
+              @else
+              <img src="{{ asset('images/answer-icon.png') }}" class="c-icon">
+              @endif
+              <span class="c-count__number">{{ $theme->answers->count() }}</span>
+            </li>
             <li class="p-icon__count__one"><img src="{{ asset('images/comment-icon.png') }}" class="c-icon"><span class="c-count__number">{{ $theme->comments->count() }}</span></li>
             <theme-bookmark :initial-is-bookmarked-by='@json($theme->isBookmarkedBy(Auth::user()))' :initial-count-bookmarks='@json($theme->count_bookmarks)' :authorized='@json(Auth::check())' endpoint="{{ route('themes.bookmark', ['id' => $theme->id]) }}">
             </theme-bookmark>
           </ul>
           <div class="p-post__info">
-            <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-post__avatar">
+            <a href="{{ route('users.show', ['id' => $theme->user->id]) }}" class="p-post__info__user">
+              @isset( $theme->user->pic )
+              <img src="{{ asset('/storage/users/'.$theme->user->pic) }}" class="c-post__avatar">
+              @endisset
+              @empty( $theme->user->pic )
+              <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-post__avatar">
+              @endempty
+              <span class="c-user__name__balloon">{{ $theme->user->name }}</span>
+            </a>
             <p class="c-list__post__date">{{ $theme->created_at->format('Y-m-d') }}</p>
           </div>
         </div>
