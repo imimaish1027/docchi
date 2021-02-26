@@ -11454,9 +11454,7 @@ body {
 }
 
 .content {
-  display: flex;
   width: 100%;
-  padding-top: 32px;
   padding-right: 16px;
   padding-left: 16px;
   margin-right: auto;
@@ -11524,6 +11522,12 @@ a:active {
 
 .l-header .p-header__container .c-logo {
   font-size: 28px;
+}
+
+.l-header .p-header__container .c-logo:hover {
+  opacity: 0.6;
+  color: #68699B;
+  transition: all 0.5s ease;
 }
 
 .l-header .p-header__container .p-header__nav {
@@ -12033,6 +12037,13 @@ a:active {
   border: solid 1px #A2A2A2;
   text-align: center;
   background: #f0f0f0;
+  font-weight: normal;
+}
+
+.c-top__features__img {
+  width: 500px;
+  height: auto;
+  border: solid 1px #A2A2A2;
 }
 
 .c-avatar {
@@ -12292,6 +12303,16 @@ a:active {
   text-align: center;
 }
 
+.c-top__body__text {
+  display: flex;
+  justify-content: center;
+  font-weight: normal;
+}
+
+.c-top__features__body {
+  font-weight: normal;
+}
+
 .c-post__comment__user__img {
   text-align: center;
 }
@@ -12388,7 +12409,77 @@ a:active {
   right: 344px;
 }
 
+.c-top__body__head {
+  margin-bottom: 8px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.c-top__body__head__sub {
+  margin-bottom: 32px;
+  text-align: center;
+  color: #68699B;
+  font-size: 20px;
+}
+
+.c-top__features__head {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  font-size: 20px;
+  border-bottom: solid 3px #68699B;
+  display: flex;
+}
+
 /* Project */
+
+.p-top__body__section {
+  margin-bottom: 80px;
+}
+
+.p-top__list__one {
+  margin-bottom: 48px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.p-purpose {
+  margin-top: 40px;
+}
+
+.p-jumbotron {
+  position: relative;
+}
+
+.p-jumbotron__inner {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+}
+
+.c-jumbotron__text {
+  margin-bottom: 64px;
+  text-align: center;
+  color: #68699B;
+  font-size: 28px;
+  font-family: "Work Sans", sans-serif;
+}
+
+.c-jumbotron__note {
+  text-align: center;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.c-jumbotron__img {
+  height: 684px;
+  width: 100%;
+}
 
 .p-form {
   width: 600px;
@@ -12489,12 +12580,27 @@ a:active {
   margin-bottom: 16px;
 }
 
+.p-btn__area__double {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.p-btn__area__top--regiter {
+  margin-right: 32px;
+}
+
+.p-btn__area__top--guest {
+  margin-bottom: 8px;
+}
+
 .p-gender--woman {
   margin-left: 16px;
 }
 
 .p-main {
   width: 100%;
+  padding-top: 40px;
 }
 
 .p-main__container {

@@ -1,6 +1,6 @@
 <header class="l-header">
   <div class="p-header__container">
-    <div class="c-logo">Docchi</div>
+    <a href="{{ route('themes.index') }}" class="c-logo">Docchi</a>
     @guest
     <ul class="p-header__nav">
       <li class="p-header__nav__one">

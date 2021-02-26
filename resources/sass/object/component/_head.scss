@@ -1,0 +1,21 @@
+.c-top__body__head {
+  margin-bottom: $space_s;
+  text-align: center;
+  font-size: $font-size_xl;
+
+  &__sub {
+    margin-bottom: $space_xl;
+    text-align: center;
+    color: $main-color;
+    font-size: $font-size_l;
+  }
+}
+
+.c-top__features__head {
+  width: fit-content;
+  padding-bottom: $space_s;
+  margin-bottom: $space_s;
+  font-size: $font-size_l;
+  border-bottom: solid 3px $main-color;
+  display: flex;
+}

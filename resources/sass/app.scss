@@ -40,8 +40,12 @@
 @import 'object/component/error';
 @import 'object/component/label';
 @import 'object/component/message';
+@import 'object/component/head';
 
 /* Project */
+// トップ画面
+@import 'object/project/top';
+@import 'object/project/jumbotron';
 // フォーム画面(テーマ作成含む)
 @import 'object/project/form';
 @import 'object/project/btn-area';

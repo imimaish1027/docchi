@@ -8,3 +8,19 @@
   margin-top: $space_xl;
   margin-bottom: $space_m;
 }
+
+.p-btn__area__double {
+  margin-bottom: $space_xxl;
+  display: flex;
+  justify-content: space-around;
+}
+
+.p-btn__area__top {
+  &--regiter{
+    margin-right: $space_xl;
+  }
+
+  &--guest {
+    margin-bottom: $space_s;
+  }
+}

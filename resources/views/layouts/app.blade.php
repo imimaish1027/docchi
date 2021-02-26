@@ -8,11 +8,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title') | {{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title') | {{ config('app.name') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Bootstrap core CSS -->
@@ -27,8 +30,6 @@
 
 <body>
     <div class="wrapper">
-
-        @include('layouts.header')
 
         <div class="content" id="app">
 
@@ -51,13 +52,15 @@
             toastr.options = {
                 "closeButton": true,
             }
-            toastr.success('{{ session('success_message')}}');
+            toastr.success('{{ session('
+                success_message ')}}');
         });
         @endif
 
         @if(session('error_message'))
         $(function() {
-            toastr.error('{{ session('error_message')}}');
+            toastr.error('{{ session('
+                error_message ')}}');
         });
         @endif
     </script>

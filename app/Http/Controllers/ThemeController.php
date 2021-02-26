@@ -322,6 +322,9 @@ class ThemeController extends Controller
 
     public function unbookmark(Request $request, Theme $theme)
     {
+        $path = $request->path();
+        $theme_id = preg_replace('/[^0-9]/', '', $path);
+        $theme = Theme::find($theme_id);
         $theme->bookmarks()->detach($request->user()->id);
 
         return [

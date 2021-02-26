@@ -28,7 +28,7 @@ Route::prefix('register')->name('register.')->group(function () {
     Route::post('/{provider}', 'Auth\RegisterController@registerProviderUser')->name('{provider}');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'TopController@index')->name('top');
 
 Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 
