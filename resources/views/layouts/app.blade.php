@@ -31,6 +31,8 @@
 <body>
     <div class="wrapper">
 
+        @include('layouts.header')
+
         <div class="content" id="app">
 
             @yield('content')

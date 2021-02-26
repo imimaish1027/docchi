@@ -2,7 +2,7 @@
 
 @section('title', 'TOP')
 
-@include('layouts.header')
+@section('content')
 
 <div class="p-jumbotron">
     <img src="{{ asset('images/two_doors.jpg') }}" class="c-jumbotron__img">
@@ -34,8 +34,6 @@
         </div>
     </div>
 </div>
-
-@section('content')
 
 <div class="p-main">
     <div class="p-top__body__section p-purpose">

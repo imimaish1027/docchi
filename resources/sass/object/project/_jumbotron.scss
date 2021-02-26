@@ -1,4 +1,6 @@
 .p-jumbotron {
+  margin-right: calc(50% - 50vw);
+  margin-left: calc(50% - 50vw);
   position: relative;
 
   &__inner {
