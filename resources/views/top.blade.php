@@ -50,47 +50,47 @@
         <p class="c-top__body__head__sub">FEATURES</p>
         <ul class="p-top__list">
             <li class="p-top__list__one">
-                <div class="p-top__features__text">
-                    <h3 class="c-top__features__head">1.テーマを探す</h3>
-                    <div class="c-top__features__body">
+                <div class="p-features__text">
+                    <h3 class="c-features__head">1.テーマを探す</h3>
+                    <div class="c-features__body">
                         テーマ一覧からタイトルのフリーワード検索ができます。<br>
                         また、テーマ内のタグをクリックすることで、<br>
                         そのタグが登録されている他のテーマの一覧を見ることができます。
                     </div>
                 </div>
-                <img src="{{ asset('images/search_theme.jpg') }}" class="c-top__features__img">
+                <img src="{{ asset('images/search_theme.jpg') }}" class="c-features__img">
             </li>
             <li class="p-top__list__one">
-                <div class="p-top__features__text">
-                    <h3 class="c-top__features__head">2.テーマをブックマークする</h3>
-                    <div class="c-top__features__body">
+                <div class="p-features__text">
+                    <h3 class="c-features__head">2.テーマをブックマークする</h3>
+                    <div class="c-features__body">
                         ログインすると、テーマをブックマークできます。<br>
-                        ブックマークしたテーマはマイページのブックマーク一覧画面で確認でき、<br>
+                        ブックマークしたテーマはブックマーク一覧画面で確認でき、<br>
                         回答やコメントが気になるテーマはすぐに見れるので便利です。
                     </div>
                 </div>
-                <img src="{{ asset('images/bookmark_theme.jpg') }}" class="c-top__features__img">
+                <img src="{{ asset('images/bookmark_theme.jpg') }}" class="c-features__img">
             </li>
             <li class="p-top__list__one">
-                <div class="p-top__features__text">
-                    <h3 class="c-top__features__head">3.テーマに回答する</h3>
-                    <div class="c-top__features__body">
+                <div class="p-features__text">
+                    <h3 class="c-features__head">3.テーマに回答する</h3>
+                    <div class="c-features__body">
                         自分が2択のどちらに当てはまるのか、選択し回答することができます。<br>
                         回答したテーマはコメントができるようになっています。<br>
                         ユーザーのコメントにより、両者の良い点を参考にすることができます。
                     </div>
                 </div>
-                <img src="{{ asset('images/answer_theme.jpg') }}" class="c-top__features__img">
+                <img src="{{ asset('images/answer_theme.jpg') }}" class="c-features__img">
             </li>
             <li class="p-top__list__one">
-                <div class="p-top__features__text">
-                    <h3 class="c-top__features__head">4.テーマを作る</h3>
-                    <div class="c-top__features__body">
+                <div class="p-features__text">
+                    <h3 class="c-features__head">4.テーマを作る</h3>
+                    <div class="c-features__body">
                         ログインすると、新しいテーマを作成できます。<br>
                         自分が気になる2択をテーマにし、回答を集計することが可能です。
                     </div>
                 </div>
-                <img src="{{ asset('images/create_theme.jpg') }}" class="c-top__features__img">
+                <img src="{{ asset('images/create_theme.jpg') }}" class="c-features__img">
             </li>
         </ul>
     </div>

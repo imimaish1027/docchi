@@ -57,6 +57,10 @@
 .c-comment__writing__text {
   padding-top: $space_s;
   margin-right: $space_m;
+
+  @include mq-down(lg) {
+    margin-bottom: $space_s;
+  }
 }
 
 .c-count__text {
@@ -92,14 +96,4 @@
   margin-bottom: $space_xl;
   color: $danger-color;
   text-align: center;
-}
-
-.c-top__body__text {
-  display: flex;
-  justify-content: center;
-  font-weight: normal;
-}
-
-.c-top__features__body {
-  font-weight: normal;
 }

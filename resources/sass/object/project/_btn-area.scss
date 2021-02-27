@@ -24,3 +24,10 @@
     margin-bottom: $space_s;
   }
 }
+
+.p-btn__area--comment {
+  @include mq-down(lg) {
+    display: flex;
+    justify-content: center;
+  }
+}

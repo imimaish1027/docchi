@@ -8,6 +8,10 @@
     .p-area__drop {        
       width: 200px;
       height: 200px;
+      @include mq-down(md) {
+        width: 180px;
+        height: 180px;
+      }
       border: solid 1px $line-color;
       border-radius: 0.25rem;
       text-align: center;

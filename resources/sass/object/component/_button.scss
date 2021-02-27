@@ -30,6 +30,12 @@
 
 .c-answer__btn {
   width: 300px;
+  @include mq-down(lg) {
+    width: 240px;
+  }
+  @include mq-down(md) {
+    width: 180px;
+  }
   margin: 0 auto;
   display: block;
   font-size: $font-size_xl;

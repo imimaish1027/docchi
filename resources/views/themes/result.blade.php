@@ -130,7 +130,7 @@
             <textarea name="body" id="js-count" maxlength="100" class="c-comment__textarea"></textarea>
             <p class="c-count__text"><span id="js-count__view">0</span>/100字</p>
           </div>
-          <div class="c-btn__area--comment">
+          <div class="p-btn__area--comment">
             <button type="submit" class="c-comment__btn btn">
               送信
             </button>

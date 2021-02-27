@@ -1,6 +1,12 @@
 .l-sidebar {
-  width: 300px;
-  margin-right: $space_xl;
+    @include mq-up(lg) {
+        width: 300px;
+        margin-right: $space_xl;
+    }
+    @include mq-down(lg) {
+        width: 100%;
+        margin-bottom: $space_xl;
+    }
 
   .p-user__info {
     width: 100%;
@@ -58,6 +64,10 @@
           height: 40px;
           width: 100%;
           padding-left: $space_xxl;
+          @include mq-down(lg) {
+              padding-right: $space_xxl * 3;
+              padding-left: $space_xxl * 3;
+          }
           display: flex;
           align-items: center;
 

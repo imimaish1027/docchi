@@ -91056,9 +91056,14 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
       }
     }
   }
+}); // SPメニュー
+
+$('#js-toggle-sp-menu').on('click', function () {
+  $(this).toggleClass('active');
+  $('#js-toggle-sp-menu-target').toggleClass('active');
 }); // チェックボックスの複数選択不可
 
-$(".checkbox").on("click", function () {
+$(".checkbox").on('click', function () {
   $('.checkbox').prop('checked', false);
   $(this).prop('checked', true);
 }); // テキストエリアカウント

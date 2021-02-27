@@ -1,6 +1,14 @@
   .p-answer__area {
     height: 300px;
     width: 300px;
+    @include mq-down(lg) {
+      height: 240px;
+      width: 240px;
+    }
+    @include mq-down(md) {
+      height: 200px;
+      width: 180px;
+    }
     margin-bottom: $space_m;
     background: $reset-color;
 

@@ -1,3 +1,8 @@
 .p-mytheme {
-  width: 700px;
+  @include mq-up(lg) {
+    width: 700px;
+  }
+  @include mq-down(lg) {
+    width: 100%;
+  }
 }

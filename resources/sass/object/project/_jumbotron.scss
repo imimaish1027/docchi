@@ -12,6 +12,10 @@
       transform: translate(-50%, -50%);
       margin:0;
       padding:0;
+
+      @include mq-down(md) {
+        top: 45%;
+      }
   }
 }
 
@@ -21,6 +25,11 @@
   color: $main-color;
   font-size: $font-size_xxl;
   font-family: 'Work Sans',sans-serif;
+
+  @include mq-down(md) {
+    margin-bottom: $space_l;
+    font-size: $font-size_l;
+  }
 }
 
 .c-jumbotron__note {
@@ -30,7 +39,12 @@
 }
 
 .c-jumbotron__img {
-  height: 684px;
   width: 100%;
-}
 
+  @include mq-up(xl) {
+    height: 684px;
+  }
+  @include mq-up(xxl) {
+    height: 856px;
+  }
+}

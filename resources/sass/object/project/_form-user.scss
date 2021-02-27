@@ -1,6 +1,12 @@
 .p-form__user {
     height: fit-content;
-    width: 700px;
+    @include mq-up(lg) {
+        width: 700px;
+    }
+    @include mq-down(lg) {
+        width: 100%;
+    }
+
     border: solid 1px $line-color;
     border-radius: 5px;
     align-items: flex-start;
