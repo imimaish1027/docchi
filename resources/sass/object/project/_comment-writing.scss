@@ -1,3 +1,5 @@
 .p-comment__writing {
-  display: flex;
+  @include mq-up(lg) {
+    display: flex;
+  }
 }

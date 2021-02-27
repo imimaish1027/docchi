@@ -54,15 +54,13 @@
             toastr.options = {
                 "closeButton": true,
             }
-            toastr.success('{{ session('
-                success_message ')}}');
+            toastr.success('{{ session('success_message')}}');
         });
         @endif
 
         @if(session('error_message'))
         $(function() {
-            toastr.error('{{ session('
-                error_message ')}}');
+            toastr.error('{{ session('error_message')}}');
         });
         @endif
     </script>

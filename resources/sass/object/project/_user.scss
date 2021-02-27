@@ -1,4 +1,6 @@
 .p-user {
   margin-top: $space_xl;
-  display: flex;
+  @include mq-up(lg) {
+    display: flex;
+  }
 }

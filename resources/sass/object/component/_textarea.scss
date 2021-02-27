@@ -2,6 +2,10 @@
   height: 38px;
   min-width: 300px;
   width: 600px;
+  @include mq-down(lg) {
+    width: -webkit-fill-available;
+  }
+
   padding: $space_s;
   background: $reset-color;
   border: solid 1px $line-color;
@@ -13,7 +17,7 @@
 
 .c-contact__textarea {
     height: 120px;
-    width: 100%;
+    max-width: 100%;
     padding: $space_s;
     border: solid 1px $line-color;
     border-radius: 0.25rem;

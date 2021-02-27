@@ -11,6 +11,10 @@
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
+  @include mq-down(md) {
+    height: 40px;
+    width: 140px;
+  }
 
   &--this {
     color: $reset-color;

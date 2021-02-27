@@ -138,10 +138,16 @@ const app = new Vue({
     }
 });
 
+// SPメニュー
+$('#js-toggle-sp-menu').on('click',function () {
+    $(this).toggleClass('active');
+    $('#js-toggle-sp-menu-target').toggleClass('active');
+});
+
 // チェックボックスの複数選択不可
-$(".checkbox").on("click", function(){
-        $('.checkbox').prop('checked', false);
-        $(this).prop('checked', true); 
+$(".checkbox").on('click', function(){
+    $('.checkbox').prop('checked', false);
+    $(this).prop('checked', true); 
 });
 
 
@@ -162,9 +168,7 @@ select.addEventListener('change', function () {
 // フラッシュメッセージ
 (function() {
     'use strict';
-
     $(function(){
         $('.flash_message').fadeOut(8000);
     });
-
 })();
