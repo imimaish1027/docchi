@@ -12,48 +12,35 @@ use App\Comment;
 use App\Http\Requests\ThemeRequest;
 use App\Http\Requests\ThemeEditRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Session;
 
 class ThemeController extends Controller
 {
     public function index(Request $request)
     {
         $keyword = $request->input('keyword');
+        $themes = Theme::with('user', 'answers', 'comments', 'bookmarks', 'tags')->when($request->has('keyword'), function ($query) use ($keyword) {
+                        $query->where('title', 'like', '%' . $keyword . '%');
+                    });
 
         switch ($request->sort) {
             case 'newPost':
-                $themes = Theme::query()
-                    ->when($request->has('keyword'), function ($query) use ($keyword) {
-                        $query->where('title', 'like', '%' . $keyword . '%');
-                    })->orderBy('created_at', 'desc')->paginate(10);
+                $themes = $themes->orderBy('created_at', 'desc');
                 break;
             case 'countAnswer':
-                $themes = Theme::query()
-                    ->when($request->has('keyword'), function ($query) use ($keyword) {
-                        $query->where('title', 'like', '%' . $keyword . '%');
-                    })->withCount('answers')->orderBy('answers_count', 'desc')->paginate(10);
+                $themes = $themes->withCount('answers')->orderBy('answers_count', 'desc');
                 break;
             case 'countComment':
-                $themes = Theme::query()
-                    ->when($request->has('keyword'), function ($query) use ($keyword) {
-                        $query->where('title', 'like', '%' . $keyword . '%');
-                    })->withCount('comments')->orderBy('comments_count', 'desc')->paginate(10);
+                $themes = $themes->withCount('comments')->orderBy('comments_count', 'desc');
                 break;
             case 'countBookmark':
-                $themes = Theme::query()
-                    ->when($request->has('keyword'), function ($query) use ($keyword) {
-                        $query->where('title', 'like', '%' . $keyword . '%');
-                    })->withCount('bookmarks')->orderBy('bookmarks_count', 'desc')->paginate(10);
+                $themes = $themes->withCount('bookmarks')->orderBy('bookmarks_count', 'desc');
                 break;
             case '':
-                $themes = Theme::query()
-                    ->when($request->has('keyword'), function ($query) use ($keyword) {
-                        $query->where('title', 'like', '%' . $keyword . '%');
-                    })->orderBy('created_at', 'desc')->paginate(10);
+                $themes = $themes->orderBy('created_at', 'desc');
                 break;
         }
-
+ 
+        $themes = $themes->paginate(10);
         $users = User::all();
 
         return view('themes.index', ['themes' => $themes, 'users' => $users, 'keyword' => $keyword])->with('sortBy', $request->sort);

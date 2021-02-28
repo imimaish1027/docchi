@@ -21,8 +21,8 @@ class UserController extends Controller
         if (!ctype_digit($user_id)) {
             return redirect('/themes');
         }
-        $user = User::find($user_id);
-        $themes = Theme::where('user_id', $user->id)->paginate(5);
+        $user = User::where('id', $user_id)->first();
+        $themes = Theme::with('user', 'answers', 'comments', 'bookmarks', 'tags')->where('user_id', $user_id)->paginate(5);
 
         return view('users.show', ['user' => $user, 'themes' => $themes]);
     }
@@ -30,7 +30,7 @@ class UserController extends Controller
     public function answer($user_id)
     {
         $user = User::where('id', $user_id)->first();
-        $answers = Answer::where('user_id', $user_id)->paginate(5);
+        $answers = Answer::with('theme.user', 'theme.answers', 'theme.comments', 'theme.bookmarks', 'theme.tags')->where('user_id', $user_id)->paginate(5);
 
         return view('users.answer', ['user' => $user, 'answers' => $answers]);
     }
@@ -72,7 +72,7 @@ class UserController extends Controller
         }
         $user = User::where('id', $user_id)->first();
         $this->authorize('view', $user);
-        $bookmarks = Bookmark::where('user_id', $user_id)->orderBy("created_at", "DESC")->paginate(5);
+        $bookmarks = Bookmark::with('theme.user', 'theme.answers', 'theme.comments', 'theme.bookmarks', 'theme.tags')->where('user_id', $user_id)->orderBy("created_at", "DESC")->paginate(5);
 
         return view('users.bookmark', ['user' => $user, 'bookmarks' => $bookmarks]);
     }
