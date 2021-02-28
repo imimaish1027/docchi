@@ -11555,6 +11555,11 @@ a:active {
   transition: all 0.5s ease;
 }
 
+.l-header .p-header__container .c-logo__img {
+  height: 40px;
+  width: 40px;
+}
+
 .l-header .p-header__container .p-header__nav {
   height: 80px;
   display: flex;

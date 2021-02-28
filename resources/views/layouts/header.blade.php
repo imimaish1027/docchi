@@ -1,6 +1,6 @@
 <header class="l-header js-float-menu">
   <div class="p-header__container">
-    <a href="{{ route('themes.index') }}" class="c-logo">Docchi</a>
+    <a href="{{ route('themes.index') }}" class="c-logo"><img src="{{ asset('images/docchi_logo.png') }}" class="c-logo__img">Docchi</a>
 
       <div id="js-toggle-sp-menu" class="p-menu__trigger">
         <span></span>
