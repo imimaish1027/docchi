@@ -35,27 +35,29 @@ Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 Route::prefix('users')->name('users.')->group(function () {
     Route::get('{id}', 'UserController@show')->name('show');
     Route::get('{id}/answer', 'UserController@answer')->name('answer');
-    Route::get('{id}/edit', 'UserController@edit')->name('edit');
-    Route::post('{id}', 'UserController@update')->name('update');
-    Route::get('{id}/bookmark', 'UserController@bookmark')->name('bookmark');
-    Route::get('{id}/email', 'UserController@emailEdit')->name('emailEdit');
-    Route::put('{id}/email', 'UserController@emailUpdate')->name('emailUpdate');
-    Route::get('{id}/pass', 'UserController@passEdit')->name('passEdit');
-    Route::put('{id}/pass', 'UserController@passUpdate')->name('passUpdate');
-    Route::get('{id}/withdraw', 'UserController@withdraw')->name('withdraw');
-    Route::delete('{id}/delete', 'UserController@destroy')->name('destroy');
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('{id}/edit', 'UserController@edit')->name('edit');
+        Route::post('{id}', 'UserController@update')->name('update');
+        Route::get('{id}/bookmark', 'UserController@bookmark')->name('bookmark');
+        Route::get('{id}/email', 'UserController@emailEdit')->name('emailEdit');
+        Route::put('{id}/email', 'UserController@emailUpdate')->name('emailUpdate');
+        Route::get('{id}/pass', 'UserController@passEdit')->name('passEdit');
+        Route::put('{id}/pass', 'UserController@passUpdate')->name('passUpdate');
+        Route::get('{id}/withdraw', 'UserController@withdraw')->name('withdraw');
+        Route::delete('{id}/delete', 'UserController@destroy')->name('destroy');
+    });
 });
 
 Route::prefix('themes')->name('themes.')->group(function () {
-    Route::get('create', 'ThemeController@create')->name('create');
-    Route::post('store', 'ThemeController@store')->name('store');
+    Route::get('create', 'ThemeController@create')->name('create')->middleware('auth');
+    Route::post('store', 'ThemeController@store')->name('store')->middleware('auth');
     Route::get('{id}/result', 'ThemeController@result')->name('result');
-    Route::post('{id}/comment', 'ThemeController@comment')->name('comment');
+    Route::post('{id}/comment', 'ThemeController@comment')->name('comment')->middleware('auth');
     Route::get('{id}', 'ThemeController@show')->name('show');
-    Route::post('{id}', 'ThemeController@answer')->name('answer');
-    Route::get('{id}/edit', 'ThemeController@edit')->name('edit');
-    Route::put('{id}', 'ThemeController@update')->name('update');
-    Route::delete('{id}', 'ThemeController@destroy')->name('destroy');
+    Route::post('{id}', 'ThemeController@answer')->name('answer')->middleware('auth');
+    Route::get('{id}/edit', 'ThemeController@edit')->name('edit')->middleware('auth');
+    Route::put('{id}', 'ThemeController@update')->name('update')->middleware('auth');
+    Route::delete('{id}', 'ThemeController@destroy')->name('destroy')->middleware('auth');
     Route::get('', 'ThemeController@index')->name('index');
     Route::put('{id}/bookmark', 'ThemeController@bookmark')->name('bookmark')->middleware('auth');
     Route::delete('{id}/bookmark', 'ThemeController@unbookmark')->name('unbookmark')->middleware('auth');

@@ -18,6 +18,9 @@ class UserController extends Controller
 {
     public function show($user_id)
     {
+        if (!ctype_digit($user_id)) {
+            return redirect('/themes');
+        }
         $user = User::find($user_id);
         $themes = Theme::where('user_id', $user->id)->paginate(5);
 
@@ -34,14 +37,20 @@ class UserController extends Controller
 
     public function edit($user_id)
     {
+        if (!ctype_digit($user_id)) {
+            return redirect('/themes');
+        }
         $user = User::find($user_id);
+        $this->authorize('view', $user);
 
         return view('users.edit', ['user' => $user]);
     }
 
     public function update(UserRequest $request, $user_id)
     {
-
+        if (!ctype_digit($user_id)) {
+            return redirect('/themes');
+        }
         $user = User::find($user_id);
 
         if ($request->pic) {
@@ -58,7 +67,11 @@ class UserController extends Controller
 
     public function bookmark($user_id)
     {
+        if (!ctype_digit($user_id)) {
+            return redirect('/themes');
+        }
         $user = User::where('id', $user_id)->first();
+        $this->authorize('view', $user);
         $bookmarks = Bookmark::where('user_id', $user_id)->orderBy("created_at", "DESC")->paginate(5);
 
         return view('users.bookmark', ['user' => $user, 'bookmarks' => $bookmarks]);
@@ -66,7 +79,11 @@ class UserController extends Controller
 
     public function emailEdit($user_id)
     {
+        if (!ctype_digit($user_id)) {
+            return redirect('/themes');
+        }
         $user = User::find($user_id);
+        $this->authorize('view', $user);
 
         return view('users.emailEdit', ['user' => $user]);
     }
@@ -82,7 +99,11 @@ class UserController extends Controller
 
     public function passEdit($user_id)
     {
+        if (!ctype_digit($user_id)) {
+            return redirect('/themes');
+        }
         $user = User::find($user_id);
+        $this->authorize('view', $user);
 
         return view('users.passEdit', ['user' => $user]);
     }
@@ -106,7 +127,11 @@ class UserController extends Controller
 
     public function withdraw($user_id)
     {
+        if (!ctype_digit($user_id)) {
+            return redirect('/themes');
+        }
         $user = User::find($user_id);
+        $this->authorize('view', $user);
 
         return view('users.withdraw', ['user' => $user]);
     }

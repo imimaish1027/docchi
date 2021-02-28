@@ -230,6 +230,7 @@ class ThemeController extends Controller
         }
 
         $theme = Theme::find($id);
+        $this->authorize('edit', $theme);
         $tagNames = $theme->tags->map(function ($tag) {
             return ['text' => $tag->name];
         });
@@ -244,6 +245,7 @@ class ThemeController extends Controller
         }
 
         $theme = Theme::find($id);
+        $this->authorize('update', $theme);
 
         $theme->tags()->detach();
         $request->tags->each(function ($tagName) use ($theme) {
@@ -285,6 +287,7 @@ class ThemeController extends Controller
         }
 
         Theme::find($id)->delete();
+        $this->authorize('destroy', $theme);
 
         return redirect()->route('themes.index')->with('success_message', 'テーマを削除しました。');
     }
