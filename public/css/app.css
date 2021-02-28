@@ -11655,6 +11655,10 @@ a:active {
     padding-right: 0;
   }
 
+  .p-menu .p-header__nav .p-header__nav__one:last-child {
+    width: auto;
+  }
+
   .p-menu .p-header__nav .p-header__nav__one .p-header__nav__one__link {
     font-size: 20px;
     color: #68699B;

@@ -143,6 +143,9 @@
               &:first-child {
                 padding-right: 0;
               }
+              &:last-child {
+                width: auto;
+              }
               
               .p-header__nav__one__link {
                   font-size: 20px;
