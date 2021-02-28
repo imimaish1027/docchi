@@ -144,13 +144,6 @@ $('#js-toggle-sp-menu').on('click',function () {
     $('#js-toggle-sp-menu-target').toggleClass('active');
 });
 
-// チェックボックスの複数選択不可
-$(".checkbox").on('click', function(){
-    $('.checkbox').prop('checked', false);
-    $(this).prop('checked', true); 
-});
-
-
 // テキストエリアカウント
 var $countUp = $('#js-count'),
     $countView = $('#js-count__view');
