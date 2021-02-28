@@ -50,8 +50,7 @@ class ContactController extends Controller
 
             $request->session()->regenerateToken();
 
-            Session::flash('success_message', 'お問い合わせの送信が完了しました。');
-            return view('contacts.sent');
+            return redirect()->route('themes.index')->with('success_message', 'お問い合わせを送信しました。');
         }
     }
 }
