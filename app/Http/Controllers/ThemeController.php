@@ -286,10 +286,12 @@ class ThemeController extends Controller
         ]);
 
         $auth_user = Auth::user();
+        $answer = Answer::where('user_id', $auth_user->id)->where('theme_id', $theme_id)->first();
 
         $comment = new Comment;
         $comment->user_id = $auth_user->id;
         $comment->theme_id = $theme_id;
+        $comment->answer_id = $answer->id;
         $comment->body = $request->body;
         $comment->save();
 

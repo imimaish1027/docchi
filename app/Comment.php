@@ -17,4 +17,9 @@ class Comment extends Model
     {
         return $this->belongsTo('App\Theme');
     }
+
+    public function answer()
+    {
+        return $this->belongsTo('App\Answer');
+    }
 }

@@ -38,9 +38,9 @@
         </div>
         <div class="p-bookmark__area">
           @Auth
-            @can('edit', $theme)
-            <a href="{{ route('themes.edit', ['id' => $theme->id]) }}" class="c-theme__link c-theme__edit__link">編集</a>
-            @endcan
+          @can('edit', $theme)
+          <a href="{{ route('themes.edit', ['id' => $theme->id]) }}" class="c-theme__link c-theme__edit__link">編集</a>
+          @endcan
           @endauth
           <theme-bookmark :initial-is-bookmarked-by='@json($theme->isBookmarkedBy(Auth::user()))' :initial-count-bookmarks='@json($theme->count_bookmarks)' :authorized='@json(Auth::check())' endpoint="{{ route('themes.bookmark', ['id' => $theme->id]) }}">
           </theme-bookmark>
@@ -109,7 +109,7 @@
                 </p>
               </div>
               <div class="p-post__comment__content">
-                <p class="c-comment__text @if($comment->user->answers[0]['answer'] === 1) c-comment__text--a @elseif($comment->user->answers[0]['answer'] === 2) c-comment__text--b @endif">{{ $comment->body }}</p>
+                <p class="c-comment__text @if($comment->answer->answer === 1) c-comment__text--a @elseif($comment->answer->answer === 2) c-comment__text--b @endif">{{ $comment->body }}</p>
                 <div class="c-post__comment__date">{{ $comment->created_at->format('Y-m-d') }}</div>
               </div>
             </div>
