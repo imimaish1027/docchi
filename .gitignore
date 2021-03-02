@@ -1,3 +1,4 @@
+*.gitignore
 /node_modules
 /public/css
 /public/hot
@@ -14,3 +15,6 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 docchi.drawio
+docker/mysql
+config/database.php
+storage
