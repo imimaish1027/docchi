@@ -13,7 +13,7 @@ use App\Comment;
 use App\Bookmark;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-
+use Storage;
 class UserController extends Controller
 {
     public function show($user_id)
@@ -54,9 +54,9 @@ class UserController extends Controller
         $user = User::find($user_id);
 
         if ($request->pic) {
-            $pic = $request->pic->store('public/users');
-            $file_name = basename($pic);
-            $user->pic = $file_name;
+            $image = $request->file('pic');
+            $path = Storage::disk('s3')->put('/users', $image, 'public');
+            $user->pic = Storage::disk('s3')->url($path);
         }
 
         $user->fill($request->validated())->save();

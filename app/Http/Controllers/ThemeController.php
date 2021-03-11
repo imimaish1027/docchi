@@ -12,6 +12,7 @@ use App\Comment;
 use App\Http\Requests\ThemeRequest;
 use App\Http\Requests\ThemeEditRequest;
 use Illuminate\Support\Facades\Auth;
+use Storage;
 
 class ThemeController extends Controller
 {
@@ -192,13 +193,13 @@ class ThemeController extends Controller
 
         $theme->fill($request->validated())->save();
 
-        $pic_a = $request->pic_a->store('public/selects');
-        $file_name_a = basename($pic_a);
-        $theme->pic_a = $file_name_a;
+        $image_a = $request->file('pic_a');
+        $path = Storage::disk('s3')->put('/themes', $image_a, 'public/selects');
+        $theme->pic_a = Storage::disk('s3')->url($path);
 
-        $pic_b = $request->pic_b->store('public/selects');
-        $file_name_b = basename($pic_b);
-        $theme->pic_b = $file_name_b;
+        $image_b = $request->file('pic_b');
+        $path = Storage::disk('s3')->put('/themes', $image_b, 'public/selects');
+        $theme->pic_b = Storage::disk('s3')->url($path);
 
         $request->tags->each(function ($tagName) use ($theme) {
             $tag = Tag::firstOrCreate(['name' => $tagName]);
@@ -245,15 +246,15 @@ class ThemeController extends Controller
         $theme->fill($request->validated())->save();
 
         if (isset($request->pic_a)) {
-            $pic_a = $request->pic_a->store('public/selects');
-            $file_name_a = basename($pic_a);
-            $theme->pic_a = $file_name_a;
+            $image_a = $request->file('pic_a');
+            $path = Storage::disk('s3')->put('/themes', $image_a, 'public/selects');
+            $theme->pic_a = Storage::disk('s3')->url($path);
         }
 
         if (isset($request->pic_b)) {
-            $pic_b = $request->pic_b->store('public/selects');
-            $file_name_b = basename($pic_b);
-            $theme->pic_b = $file_name_b;
+            $image_b = $request->file('pic_b');
+            $path = Storage::disk('s3')->put('/themes', $image_b, 'public/selects');
+            $theme->pic_b = Storage::disk('s3')->url($path);
         }
 
         $theme->save();
