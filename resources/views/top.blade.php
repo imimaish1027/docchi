@@ -41,7 +41,8 @@
         <p class="c-top__body__head__sub">PURPOSE</p>
         <div class="c-top__body__text">
             Docchi(どっち)は、世の中の対になっている2つのものを比較するサービスです。<br>
-            優劣をつけるものではなく、両者それぞれの良い点を知り、自分の知らない世界を知るきっかけに繋げます。
+            どちらが多いのか疑問に思ったことをアンケートとして作成し回答を集計することで、
+            選択に迷った時の参考にできるようにすることを目的としています。
         </div>
     </div>
 
@@ -53,6 +54,7 @@
                 <div class="p-features__text">
                     <h3 class="c-features__head">1.テーマを探す</h3>
                     <div class="c-features__body">
+                        テーマは2択のお題です。
                         テーマ一覧からタイトルのフリーワード検索ができます。<br>
                         また、テーマ内のタグをクリックすることで、<br>
                         そのタグが登録されている他のテーマの一覧を見ることができます。
@@ -77,7 +79,7 @@
                     <div class="c-features__body">
                         自分が2択のどちらに当てはまるのか、選択し回答することができます。<br>
                         回答したテーマはコメントができるようになっています。<br>
-                        ユーザーのコメントにより、両者の良い点を参考にすることができます。
+                        ユーザーのコメントにより、それぞれの意見を参考にできます。
                     </div>
                 </div>
                 <img src="{{ asset('images/answer_theme.jpg') }}" class="c-features__img">
@@ -87,7 +89,8 @@
                     <h3 class="c-features__head">4.テーマを作る</h3>
                     <div class="c-features__body">
                         ログインすると、新しいテーマを作成できます。<br>
-                        自分が気になる2択をテーマにし、回答を集計することが可能です。
+                        自分が気になる2択をテーマにし、回答を集計します。<br>
+                        テーマを作成したユーザー自身も回答することができます。
                     </div>
                 </div>
                 <img src="{{ asset('images/create_theme.jpg') }}" class="c-features__img">
