@@ -14,7 +14,7 @@
         "laravel/socialite": "^5.1",
         "laravel/tinker": "^2.5",
         "laravel/ui": "1.*",
-        "league/flysystem-aws-s3-v2": "^1.0"
+        "league/flysystem-aws-s3-v3": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

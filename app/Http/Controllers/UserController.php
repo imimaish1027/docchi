@@ -55,7 +55,7 @@ class UserController extends Controller
 
         if ($request->pic) {
             $image = $request->file('pic');
-            $path = Storage::disk('s3')->put('/users', $image, 'public');
+            $path = Storage::disk('s3')->putFile('/users', $image, 'public');
             $user->pic = Storage::disk('s3')->url($path);
         }
 

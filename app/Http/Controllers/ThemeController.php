@@ -194,11 +194,11 @@ class ThemeController extends Controller
         $theme->fill($request->validated())->save();
 
         $image_a = $request->file('pic_a');
-        $path = Storage::disk('s3')->put('/themes', $image_a, 'public/selects');
+        $path = Storage::disk('s3')->putFile('/themes', $image_a, 'public/selects');
         $theme->pic_a = Storage::disk('s3')->url($path);
 
         $image_b = $request->file('pic_b');
-        $path = Storage::disk('s3')->put('/themes', $image_b, 'public/selects');
+        $path = Storage::disk('s3')->putFile('/themes', $image_b, 'public/selects');
         $theme->pic_b = Storage::disk('s3')->url($path);
 
         $request->tags->each(function ($tagName) use ($theme) {
@@ -247,13 +247,13 @@ class ThemeController extends Controller
 
         if (isset($request->pic_a)) {
             $image_a = $request->file('pic_a');
-            $path = Storage::disk('s3')->put('/themes', $image_a, 'public/selects');
+            $path = Storage::disk('s3')->putFile('/themes', $image_a, 'public/selects');
             $theme->pic_a = Storage::disk('s3')->url($path);
         }
 
         if (isset($request->pic_b)) {
             $image_b = $request->file('pic_b');
-            $path = Storage::disk('s3')->put('/themes', $image_b, 'public/selects');
+            $path = Storage::disk('s3')->putFile('/themes', $image_b, 'public/selects');
             $theme->pic_b = Storage::disk('s3')->url($path);
         }
 
