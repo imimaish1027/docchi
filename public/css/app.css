@@ -12512,7 +12512,7 @@ a:active {
 
 .c-contact__textarea {
   height: 120px;
-  max-width: 100%;
+  width: 100%;
   padding: 8px;
   border: solid 1px #A2A2A2;
   border-radius: 0.25rem;
