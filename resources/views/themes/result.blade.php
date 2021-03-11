@@ -26,7 +26,7 @@
         <div class="p-post__user--answer">
           <a href="{{ route('users.show', ['id' => $theme->user->id]) }}" class="c-post__user__img c-avatar">
             @isset( $theme->user->pic )
-            <img src="{{ asset('/storage/users/'.$theme->user->pic) }}" class="c-post__user__img c-avatar">
+            <img src="{{ $theme->user->pic }}" class="c-post__user__img c-avatar">
             @endisset
             @empty( $theme->user->pic )
             <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-post__avatar">
@@ -60,7 +60,7 @@
             あなたの回答
           </div>
           <div class="p-answer__area p-answer__area--a">
-            <img src="{{ asset('/storage/selects/'.$theme->pic_a) }}" class="c-answer__img">
+            <img src="{{ $theme->pic_a }}" class="c-answer__img">
             <p class="c-answer__title c-answer--a">A. {{ $theme->answer_a }}</p>
           </div>
           <p class="c-answer__count c-answer__count--a">{{ $percentage_answer_a ?? 0}}％</p>
@@ -73,7 +73,7 @@
             あなたの回答
           </div>
           <div class="p-answer__area p-answer__area--b">
-            <img src="{{ asset('/storage/selects/'.$theme->pic_b) }}" class="c-answer__img">
+            <img src="{{ $theme->pic_b }}" class="c-answer__img">
             <p class="c-answer__title c-answer--b">B. {{ $theme->answer_b }}</p>
           </div>
           <p class="c-answer__count c-answer__count--b">{{ $percentage_answer_b ?? 0}}％</p>
@@ -95,7 +95,7 @@
               <div class="p-post__comment__user">
                 <a href="{{ route('users.show', ['id' => $theme->user->id]) }}" class="c-post__comment__user__img">
                   @isset( $comment->user->pic )
-                  <img src="{{ asset('/storage/users/'.$comment->user->pic) }}" class="c-avatar">
+                  <img src="{{ $comment->user->pic }}" class="c-avatar">
                   @endisset
                   @empty( $comment->user->pic )
                   <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-avatar">

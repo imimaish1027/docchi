@@ -26,7 +26,7 @@
         <div class="p-post__user--answer">
           <a href="{{ route('users.show', ['id' => $theme->user->id]) }}" class="c-post__user__img c-avatar">
             @isset( $theme->user->pic )
-            <img src="{{ asset('/storage/users/'.$theme->user->pic) }}" class="c-post__user__img c-avatar">
+            <img src="{{ $theme->user->pic }}" class="c-post__user__img c-avatar">
             @endisset
             @empty( $theme->user->pic )
             <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-post__avatar">
@@ -57,7 +57,7 @@
         <div class="p-theme__answer p-theme__answer--which">
           <div class="p-answer__one">
             <div class="p-answer__area p-answer__area--a">
-              <img src="{{ asset('/storage/selects/'.$theme->pic_a) }}" class="c-answer__img">
+              <img src="{{ $theme->pic_a }}" class="c-answer__img">
               <p class="c-answer__title c-answer--a">A. {{ $theme->answer_a }}</p>
             </div>
             @auth
@@ -76,7 +76,7 @@
 
           <div class="p-answer__one">
             <div class="p-answer__area p-answer__area--b">
-              <img src="{{ asset('/storage/selects/'.$theme->pic_b) }}" class="c-answer__img">
+              <img src="{{ $theme->pic_b }}" class="c-answer__img">
               <p class="c-answer__title c-answer--b">B. {{ $theme->answer_b }}</p>
             </div>
             @auth

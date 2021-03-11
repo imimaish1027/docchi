@@ -47,7 +47,7 @@
               <input type="file" name="pic" id="uploadImageA" class="c-form__pic" accept="image/*" @change="onFileChangeA($event)" @change="uploadFileA($event)">
               <p class="c-area__drop__text">クリックorドラッグ&ドロップで<br>画像をアップロード</p>
               @if($user->pic)
-              <img class="c-prev__img" src="{{ asset('/storage/users/'.$user->pic) }}">
+              <img class="c-prev__img" src="{{ $user->pic }}">
               @endif
               <img class="c-prev__img" :src="imageDataA" v-if="imageDataA">
             </label>

@@ -34,7 +34,7 @@
           <li class="p-header__nav__one p-header__dropdown__user dropdown">
             <a class="p-header__nav__one__link p-header__nav__mypage dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               @isset(auth()->user()->pic)
-              <img src="{{ asset('/storage/users/'.auth()->user()->pic) }}" class="c-header__nav__icon c-avatar">
+              <img src="{{ auth()->user()->pic }}" class="c-header__nav__icon c-avatar">
               @endisset
               @empty(auth()->user()->pic)
               <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-header__nav__icon c-avatar">

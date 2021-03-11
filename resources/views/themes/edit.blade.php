@@ -54,7 +54,7 @@
             <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
             <input type="file" name="pic_a" id="uploadImageA" value="{{ $theme->pic_a }}" class="c-form__pic" accept="image/*" @change="onFileChangeA($event)" @change="uploadFileA($event)">
             <p class="c-area__drop__text">クリックorドラッグ&ドロップで<br>画像をアップロード</p>
-            <img class="c-prev__img" src="{{ asset('/storage/selects/'.$theme->pic_a) }}">
+            <img class="c-prev__img" src="{{ $theme->pic_a }}">
             <img class="c-prev__img" :src="imageDataA" v-if="imageDataA">
           </label>
         </div>
@@ -84,7 +84,7 @@
             <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
             <input type="file" name="pic_b" id="uploadImageB" value="{{ $theme->pic_b }}" class="c-form__pic" accept="image/*" @change="onFileChangeA($event)" @change="uploadFileA($event)">
             <p class="c-area__drop__text">クリックorドラッグ&ドロップで<br>画像をアップロード</p>
-            <img class="c-prev__img" src="{{ asset('/storage/selects/'.$theme->pic_b) }}">
+            <img class="c-prev__img" src="{{ $theme->pic_b }}">
             <img class="c-prev__img" :src="imageDataB" v-if="imageDataB">
           </label>
         </div>

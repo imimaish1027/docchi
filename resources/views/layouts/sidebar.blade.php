@@ -1,7 +1,7 @@
 <div class="l-sidebar">
   <div class="p-user__info">
     @isset( $user->pic )
-    <img src="{{ asset('/storage/users/'.$user->pic) }}" class="c-user__img">
+    <img src="{{ $user->pic }}" class="c-user__img">
     @endisset
     @empty( $user->pic )
     <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-user__img">

@@ -40,7 +40,7 @@
           <div class="p-theme__answer p-theme__answer--show">
             <div class="p-theme__list__answer__one">
               <div class="p-list__answer__area p-answer__area--a">
-                <img src="{{ asset('/storage/selects/'.$theme->pic_a) }}" class="c-list__answer__img">
+                <img src="{{ $theme->pic_a }}" class="c-list__answer__img">
                 <p class="c-list__answer__title c-answer--a">{{ $theme->answer_a }}</p>
               </div>
             </div>
@@ -49,7 +49,7 @@
 
             <div class="p-theme__list__answer__one">
               <div class="p-list__answer__area p-answer__area--b">
-                <img src="{{ asset('/storage/selects/'.$theme->pic_b) }}" class="c-list__answer__img">
+                <img src="{{ $theme->pic_b }}" class="c-list__answer__img">
                 <p class="c-list__answer__title c-answer--b">{{ $theme->answer_b }}</p>
               </div>
             </div>
@@ -82,7 +82,7 @@
             <div class="p-post__info">
               <a href="{{ route('users.show', ['id' => $theme->user->id]) }}" class="p-post__info__user">
                 @isset( $theme->user->pic )
-                <img src="{{ asset('/storage/users/'.$theme->user->pic) }}" class="c-post__avatar">
+                <img src="{{ $theme->user->pic }}" class="c-post__avatar">
                 @endisset
                 @empty( $theme->user->pic )
                 <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-post__avatar">

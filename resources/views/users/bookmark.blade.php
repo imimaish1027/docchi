@@ -35,7 +35,7 @@
           <div class="p-theme__answer p-theme__answer--bookmark">
             <div class="p-theme__list__answer__one">
               <div class="p-list__answer__area p-answer__area--a">
-                <img src="{{ asset('/storage/selects/'.$bookmark->theme->pic_a) }}" class="c-list__answer__img">
+                <img src="{{ $bookmark->theme->pic_a }}" class="c-list__answer__img">
                 <p class="c-list__answer__title c-answer--a">{{ $bookmark->theme->answer_a }}</p>
               </div>
             </div>
@@ -44,7 +44,7 @@
 
             <div class="p-theme__list__answer__one">
               <div class="p-list__answer__area p-answer__area--b">
-                <img src="{{ asset('/storage/selects/'.$bookmark->theme->pic_b) }}" class="c-list__answer__img">
+                <img src="{{ $bookmark->theme->pic_b }}" class="c-list__answer__img">
                 <p class="c-list__answer__title c-answer--b">{{ $bookmark->theme->answer_b }}</p>
               </div>
             </div>
@@ -75,7 +75,7 @@
             <div class="p-post__info">
               <a href="{{ route('users.show', ['id' => $bookmark->theme->user->id]) }}" class="p-post__info__user">
                 @isset( $bookmark->theme->user->pic )
-                <img src="{{ asset('/storage/users/'.$bookmark->theme->user->pic) }}" class="c-post__avatar">
+                <img src="{{ $bookmark->theme->user->pic }}" class="c-post__avatar">
                 @endisset
                 @empty( $bookmark->theme->user->pic )
                 <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-post__avatar">
