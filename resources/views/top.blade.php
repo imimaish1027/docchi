@@ -8,30 +8,48 @@
     <img src="{{ asset('images/two_doors.jpg') }}" class="c-jumbotron__img">
     <div class="p-jumbotron__inner">
         <p class="c-jumbotron__text">あなたはどっち？</p>
-        <div class="p-btn__area__double">
-            <form method="GET" action="{{ route('register') }}" class="p-btn__area__top--regiter">
-                @csrf
-                <button type="submit" class="c-form__btn btn">
-                    新規登録
-                </button>
-            </form>
-            <form method="GET" action="{{ route('login') }}" class="p-btn__area__top--login">
-                @csrf
-                <button type="submit" class="c-form__btn btn">
-                    ログイン
-                </button>
-            </form>
-        </div>
+            @guest
+            <div class="p-btn__area__double">
+                <form method="GET" action="{{ route('register') }}" class="p-btn__area__top--regiter">
+                    @csrf
+                    <button type="submit" class="c-form__btn btn">
+                        新規登録
+                    </button>
+                </form>
+                <form method="GET" action="{{ route('login') }}" class="p-btn__area__top--login">
+                    @csrf
+                    <button type="submit" class="c-form__btn btn">
+                        ログイン
+                    </button>
+                </form>
+            </div>
 
-        <div class="p-btn__area">
-            <form method="GET" action="{{ route('login.guest') }}" class="p-btn__area__top--guest">
-                @csrf
-                <button type="submit" class="c-form__btn btn">
-                    ゲストログイン
-                </button>
-            </form>
-            <p class="c-jumbotron__note">※メールアドレスとパスワードを入力せずログインいただけます。</p>
-        </div>
+            <div class="p-btn__area">
+                <form method="GET" action="{{ route('login.guest') }}" class="p-btn__area__top--guest">
+                    @csrf
+                    <button type="submit" class="c-form__btn btn">
+                        ゲストログイン
+                    </button>
+                </form>
+                <p class="c-jumbotron__note">※メールアドレスとパスワードを入力せずログインいただけます。</p>
+            </div>
+            @endguest
+            @auth
+            <div class="p-btn__area__double">
+                <form method="GET" action="{{ route('themes.index') }}" class="p-btn__area__top--regiter">
+                    @csrf
+                    <button type="submit" class="c-form__btn btn">
+                        テーマ一覧
+                    </button>
+                </form>
+                <form method="GET" action="{{ route('themes.create') }}" class="p-btn__area__top--login">
+                    @csrf
+                    <button type="submit" class="c-form__btn btn">
+                        テーマ作成
+                    </button>
+                </form>
+            </div>
+            @endauth
     </div>
 </div>
 
