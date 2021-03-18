@@ -13,6 +13,7 @@ use App\Http\Requests\ThemeRequest;
 use App\Http\Requests\ThemeEditRequest;
 use Illuminate\Support\Facades\Auth;
 use Storage;
+use AWS;
 
 class ThemeController extends Controller
 {
@@ -43,6 +44,22 @@ class ThemeController extends Controller
  
         $themes = $themes->paginate(10);
         $users = User::all();
+
+        foreach ($themes as $theme) {
+            $client = AWS::createClient('cloudfront');
+            $theme->pic_a = $client->getSignedUrl([
+                'url' => $theme->pic_a,
+                'expires' => time() + 60,
+                'private_key' => base_path('pk-APKAIPKH6ZPAE6OVR2JA.pem'),
+                'key_pair_id' => config('aws.key_pair_id')
+            ]);
+            $theme->pic_b = $client->getSignedUrl([
+                'url' => $theme->pic_b,
+                'expires' => time() + 60,
+                'private_key' => base_path('pk-APKAIPKH6ZPAE6OVR2JA.pem'),
+                'key_pair_id' => config('aws.key_pair_id')
+            ]);
+        }
 
         return view('themes.index', ['themes' => $themes, 'users' => $users, 'keyword' => $keyword])->with('sortBy', $request->sort);
     }
