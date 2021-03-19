@@ -24,6 +24,18 @@ class UserController extends Controller
             return redirect('/themes');
         }
         $user = User::where('id', $user_id)->first();
+        if (isset($user->pic)) {
+            $path = url($user->pic);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path);
+            $client = AWS::createClient('cloudfront');
+            $user->pic = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+        }
+
         $themes = Theme::with('user', 'answers', 'comments', 'bookmarks', 'tags')->where('user_id', $user_id)->paginate(5);
         foreach ($themes as $theme) {
             $path_a = url($theme->pic_a);
@@ -52,6 +64,18 @@ class UserController extends Controller
     public function answer($user_id)
     {
         $user = User::where('id', $user_id)->first();
+        if (isset($user->pic)) {
+            $path = url($user->pic);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path);
+            $client = AWS::createClient('cloudfront');
+            $user->pic = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+        }
+
         $answers = Answer::with('theme.user', 'theme.answers', 'theme.comments', 'theme.bookmarks', 'theme.tags')->where('user_id', $user_id)->paginate(5);
         foreach ($answers as $answer) {
             $path_a = url($answer->theme->pic_a);
@@ -82,7 +106,20 @@ class UserController extends Controller
         if (!ctype_digit($user_id)) {
             return redirect('/themes');
         }
+
         $user = User::find($user_id);
+        if (isset($user->pic)) {
+            $path = url($user->pic);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path);
+            $client = AWS::createClient('cloudfront');
+            $user->pic = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+        }
+
         $this->authorize('view', $user);
 
         return view('users.edit', ['user' => $user]);
@@ -93,7 +130,19 @@ class UserController extends Controller
         if (!ctype_digit($user_id)) {
             return redirect('/themes');
         }
+
         $user = User::find($user_id);
+        if (isset($user->pic)) {
+            $path = url($user->pic);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path);
+            $client = AWS::createClient('cloudfront');
+            $user->pic = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+        }
 
         if ($request->pic) {
             $image = $request->file('pic');
@@ -112,8 +161,21 @@ class UserController extends Controller
         if (!ctype_digit($user_id)) {
             return redirect('/themes');
         }
+
         $user = User::where('id', $user_id)->first();
+        if (isset($user->pic)) {
+            $path = url($user->pic);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path);
+            $client = AWS::createClient('cloudfront');
+            $user->pic = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+        }
         $this->authorize('view', $user);
+
         $bookmarks = Bookmark::with('theme.user', 'theme.answers', 'theme.comments', 'theme.bookmarks', 'theme.tags')->where('user_id', $user_id)->orderBy("created_at", "DESC")->paginate(5);
         foreach ($bookmarks as $bookmark) {
             $path_a = url($bookmark->theme->pic_a);
@@ -144,7 +206,19 @@ class UserController extends Controller
         if (!ctype_digit($user_id)) {
             return redirect('/themes');
         }
+
         $user = User::find($user_id);
+        if (isset($user->pic)) {
+            $path = url($user->pic);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path);
+            $client = AWS::createClient('cloudfront');
+            $user->pic = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+        }
         $this->authorize('view', $user);
 
         return view('users.emailEdit', ['user' => $user]);
@@ -153,6 +227,17 @@ class UserController extends Controller
     public function emailUpdate(EmailRequest $request, $user_id)
     {
         $user = User::find($user_id);
+        if (isset($user->pic)) {
+            $path = url($user->pic);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path);
+            $client = AWS::createClient('cloudfront');
+            $user->pic = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+        }
 
         $user->fill($request->validated())->save();
 
@@ -164,7 +249,19 @@ class UserController extends Controller
         if (!ctype_digit($user_id)) {
             return redirect('/themes');
         }
+
         $user = User::find($user_id);
+        if (isset($user->pic)) {
+            $path = url($user->pic);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path);
+            $client = AWS::createClient('cloudfront');
+            $user->pic = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+        }
         $this->authorize('view', $user);
 
         return view('users.passEdit', ['user' => $user]);
@@ -178,6 +275,17 @@ class UserController extends Controller
         ]);
 
         $user = User::find($user_id);
+        if (isset($user->pic)) {
+            $path = url($user->pic);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path);
+            $client = AWS::createClient('cloudfront');
+            $user->pic = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+        }
         $user->password = Hash::make($request->password);
 
         $user->save();
@@ -192,7 +300,19 @@ class UserController extends Controller
         if (!ctype_digit($user_id)) {
             return redirect('/themes');
         }
+
         $user = User::find($user_id);
+        if (isset($user->pic)) {
+            $path = url($user->pic);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path);
+            $client = AWS::createClient('cloudfront');
+            $user->pic = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+        }
         $this->authorize('view', $user);
 
         return view('users.withdraw', ['user' => $user]);
@@ -201,6 +321,17 @@ class UserController extends Controller
     public function destroy($user_id)
     {
         $user = User::find($user_id);
+        if (isset($user->pic)) {
+            $path = url($user->pic);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path);
+            $client = AWS::createClient('cloudfront');
+            $user->pic = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+        }
         $user->delete();
 
         return redirect()->route('themes.index')->with('success_message', '退会が完了しました。');
