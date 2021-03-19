@@ -14,6 +14,8 @@ use App\Bookmark;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Storage;
+use AWS;
+
 class UserController extends Controller
 {
     public function show($user_id)
@@ -23,6 +25,26 @@ class UserController extends Controller
         }
         $user = User::where('id', $user_id)->first();
         $themes = Theme::with('user', 'answers', 'comments', 'bookmarks', 'tags')->where('user_id', $user_id)->paginate(5);
+        foreach ($themes as $theme) {
+            $path_a = url($theme->pic_a);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path_a);
+            $client = AWS::createClient('cloudfront');
+            $theme->pic_a = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+
+            $path_b = url($theme->pic_b);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path_b);
+            $theme->pic_b = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+        }
 
         return view('users.show', ['user' => $user, 'themes' => $themes]);
     }
@@ -31,6 +53,26 @@ class UserController extends Controller
     {
         $user = User::where('id', $user_id)->first();
         $answers = Answer::with('theme.user', 'theme.answers', 'theme.comments', 'theme.bookmarks', 'theme.tags')->where('user_id', $user_id)->paginate(5);
+        foreach ($answers as $answer) {
+            $path_a = url($answer->theme->pic_a);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path_a);
+            $client = AWS::createClient('cloudfront');
+            $answer->theme->pic_a = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+
+            $path_b = url($answer->theme->pic_b);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path_b);
+            $answer->theme->pic_b = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+        }
 
         return view('users.answer', ['user' => $user, 'answers' => $answers]);
     }
@@ -73,6 +115,26 @@ class UserController extends Controller
         $user = User::where('id', $user_id)->first();
         $this->authorize('view', $user);
         $bookmarks = Bookmark::with('theme.user', 'theme.answers', 'theme.comments', 'theme.bookmarks', 'theme.tags')->where('user_id', $user_id)->orderBy("created_at", "DESC")->paginate(5);
+        foreach ($bookmarks as $bookmark) {
+            $path_a = url($bookmark->theme->pic_a);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path_a);
+            $client = AWS::createClient('cloudfront');
+            $bookmark->theme->pic_a = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+
+            $path_b = url($bookmark->theme->pic_b);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path_b);
+            $bookmark->theme->pic_b = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+        }
 
         return view('users.bookmark', ['user' => $user, 'bookmarks' => $bookmarks]);
     }

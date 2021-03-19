@@ -6,6 +6,7 @@ use App\Tag;
 use App\Theme;
 use App\User;
 use Illuminate\Http\Request;
+use AWS;
 
 class TagController extends Controller
 {
@@ -49,6 +50,26 @@ class TagController extends Controller
         }
 
         $themes = $themes->paginate(10);
+        foreach ($themes as $theme) {
+            $path_a = url($theme->pic_a);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path_a);
+            $client = AWS::createClient('cloudfront');
+            $theme->pic_a = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+
+            $path_b = url($theme->pic_b);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path_b);
+            $theme->pic_b = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+        }
 
         return view('tags.show', ['themes' => $themes, 'users' => $users, 'selected_tag' => $selected_tag])->with('sortBy', $request->sort);
     }

@@ -25,10 +25,10 @@
         <div class="c-post__date">{{ $theme['created_at']->format('Y-m-d') }}</div>
         <div class="p-post__user--answer">
           <a href="{{ route('users.show', ['id' => $theme->user->id]) }}" class="c-post__user__img c-avatar">
-            @isset( $theme->user->pic )
-            <img src="{{ $theme->user->pic }}" class="c-post__user__img c-avatar">
+            @isset( $post_user->pic )
+            <img src="{{ $post_user->pic }}" class="c-post__user__img c-avatar">
             @endisset
-            @empty( $theme->user->pic )
+            @empty( $post_user->pic )
             <img src="{{ asset('images/no-avatar.jpeg') }}" class="c-post__avatar">
             @endempty
           </a>

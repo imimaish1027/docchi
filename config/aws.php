@@ -22,5 +22,8 @@ return [
   'ua_append' => [
     'L5MOD/' . AwsServiceProvider::VERSION,
   ],
-  'key_pair_id' => env('AWS_CLOUDFRONT_KEY_PAIR_ID', ''),
+  'bucket_url' => env('AWS_BUCKET_URL', ''),
+  'cloudfront_url' => env('AWS_CLOUDFRONT_URL', ''),
+  'cloudfront_private_key' => env('AWS_CLOUDFRONT_PRIVATE_KEY', ''),
+  'cloudfront_key_pair_id' => env('AWS_CLOUDFRONT_KEY_PAIR_ID', ''),
 ];

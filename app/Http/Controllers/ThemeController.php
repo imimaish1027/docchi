@@ -43,22 +43,41 @@ class ThemeController extends Controller
         }
  
         $themes = $themes->paginate(10);
-        $users = User::all();
 
         foreach ($themes as $theme) {
+            $path_a = url($theme->pic_a);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path_a);
             $client = AWS::createClient('cloudfront');
             $theme->pic_a = $client->getSignedUrl([
-                'url' => $theme->pic_a,
+                'url' => $url,
                 'expires' => time() + 60,
-                'private_key' => base_path('pk-APKAIPKH6ZPAE6OVR2JA.pem'),
-                'key_pair_id' => config('aws.key_pair_id')
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
             ]);
+
+            $path_b = url($theme->pic_b);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path_b);
             $theme->pic_b = $client->getSignedUrl([
-                'url' => $theme->pic_b,
+                'url' => $url,
                 'expires' => time() + 60,
-                'private_key' => base_path('pk-APKAIPKH6ZPAE6OVR2JA.pem'),
-                'key_pair_id' => config('aws.key_pair_id')
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
             ]);
+        }
+
+        $users = User::all();
+        foreach ($users as $user) {
+            if(isset($user->pic)) {
+                $path = url($user->pic);
+                $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path);
+                $client = AWS::createClient('cloudfront');
+                $user->pic = $client->getSignedUrl([
+                    'url' => $url,
+                    'expires' => time() + 60,
+                    'private_key' => base_path(config('aws.cloudfront_private_key')),
+                    'key_pair_id' => config('aws.cloudfront_key_pair_id')
+                ]);
+            }
         }
 
         return view('themes.index', ['themes' => $themes, 'users' => $users, 'keyword' => $keyword])->with('sortBy', $request->sort);
@@ -68,13 +87,42 @@ class ThemeController extends Controller
     {
         $auth_user = Auth::user();
         $theme = Theme::find($theme_id);
+        $path_a = url($theme->pic_a);
+        $url_a = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path_a);
+        $client = AWS::createClient('cloudfront');
+        $theme->pic_a = $client->getSignedUrl([
+            'url' => $url_a,
+            'expires' => time() + 60,
+            'private_key' => base_path(config('aws.cloudfront_private_key')),
+            'key_pair_id' => config('aws.cloudfront_key_pair_id')
+        ]);
+
+        $path_b = url($theme->pic_b);
+        $url_b = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path_b);
+        $theme->pic_b = $client->getSignedUrl([
+            'url' => $url_b,
+            'expires' => time() + 60,
+            'private_key' => base_path(config('aws.cloudfront_private_key')),
+            'key_pair_id' => config('aws.cloudfront_key_pair_id')
+        ]);
+
         $post_user = User::where('id', $theme->user_id)->first();
+        if(isset($post_user->pic)) {
+            $path = url($post_user->pic);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path);
+            $post_user->pic = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+        }
 
         $answer_a_subject = $theme->answer_a;
         $answer_b_subject = $theme->answer_b;
         $answer_subject = json_encode([$answer_b_subject, $answer_a_subject]);
 
-        if ($auth_user && DB::table('answers')->where('user_id', $auth_user->id)->where('theme_id', $theme->id)->exists()) {
+        if($auth_user && DB::table('answers')->where('user_id', $auth_user->id)->where('theme_id', $theme->id)->exists()) {
             $answer_flg = Answer::where('user_id', $auth_user->id)->where('theme_id', $theme_id)->first();
 
             $count_answer_a = DB::table('answers')->where('theme_id', $theme->id)->where('answer', 1)->count();
@@ -90,9 +138,9 @@ class ThemeController extends Controller
             $count_comment = Comment::where('theme_id', $theme_id)->count();
 
             $auth_user = Auth::user();
-            if ($auth_user) {
+            if($auth_user) {
                 $user_choice = Answer::where('user_id', $auth_user->id)->where('theme_id', $theme_id)->first();
-                if ($user_choice) {
+                if($user_choice) {
                     $choice_number = $user_choice->answer;
                 } else {
                     $choice_number = 0;
@@ -101,8 +149,8 @@ class ThemeController extends Controller
                 $choice_number = 0;
             }
 
-            if ($answer_flg) {
-                if ($auth_user->id === $answer_flg->user_id) {
+            if($answer_flg) {
+                if($auth_user->id === $answer_flg->user_id) {
                     return view('themes.result', [
                         'theme' => $theme,
                         'post_user' => $post_user,
@@ -144,7 +192,36 @@ class ThemeController extends Controller
     public function result($theme_id)
     {
         $theme = Theme::find($theme_id);
+        $path_a = url($theme->pic_a);
+        $url_a = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path_a);
+        $client = AWS::createClient('cloudfront');
+        $theme->pic_a = $client->getSignedUrl([
+            'url' => $url_a,
+            'expires' => time() + 60,
+            'private_key' => base_path(config('aws.cloudfront_private_key')),
+            'key_pair_id' => config('aws.cloudfront_key_pair_id')
+        ]);
+
+        $path_b = url($theme->pic_b);
+        $url_b = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path_b);
+        $theme->pic_b = $client->getSignedUrl([
+            'url' => $url_b,
+            'expires' => time() + 60,
+            'private_key' => base_path(config('aws.cloudfront_private_key')),
+            'key_pair_id' => config('aws.cloudfront_key_pair_id')
+        ]);
+
         $post_user = User::where('id', $theme->user_id)->first();
+        if(isset($post_user->pic)) {
+            $path = url($post_user->pic);
+            $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path);
+            $post_user->pic = $client->getSignedUrl([
+                'url' => $url,
+                'expires' => time() + 60,
+                'private_key' => base_path(config('aws.cloudfront_private_key')),
+                'key_pair_id' => config('aws.cloudfront_key_pair_id')
+            ]);
+        }
 
         $answer_a_subject = $theme->answer_a;
         $answer_b_subject = $theme->answer_b;
@@ -166,9 +243,9 @@ class ThemeController extends Controller
         }
 
         $auth_user = Auth::user();
-        if ($auth_user) {
+        if($auth_user) {
             $user_choice = Answer::where('user_id', $auth_user->id)->where('theme_id', $theme_id)->first();
-            if ($user_choice) {
+            if($user_choice) {
                 $choice_number = $user_choice->answer;
             } else {
                 $choice_number = 0;
@@ -230,7 +307,7 @@ class ThemeController extends Controller
 
     public function edit(Theme $theme, $id)
     {
-        if (!ctype_digit($id)) {
+        if(!ctype_digit($id)) {
             return redirect('/themes/create');
         }
 
@@ -245,7 +322,7 @@ class ThemeController extends Controller
 
     public function update(ThemeEditRequest $request, $id)
     {
-        if (!ctype_digit($id)) {
+        if(!ctype_digit($id)) {
             return redirect('/themes/create');
         }
 
@@ -262,13 +339,13 @@ class ThemeController extends Controller
 
         $theme->fill($request->validated())->save();
 
-        if (isset($request->pic_a)) {
+        if(isset($request->pic_a)) {
             $image_a = $request->file('pic_a');
             $path = Storage::disk('s3')->putFile('/themes', $image_a, 'public');
             $theme->pic_a = Storage::disk('s3')->url($path);
         }
 
-        if (isset($request->pic_b)) {
+        if(isset($request->pic_b)) {
             $image_b = $request->file('pic_b');
             $path = Storage::disk('s3')->putFile('/themes', $image_b, 'public');
             $theme->pic_b = Storage::disk('s3')->url($path);
@@ -276,7 +353,7 @@ class ThemeController extends Controller
 
         $theme->save();
 
-        if ($request->input('tag')) {
+        if($request->input('tag')) {
             $tag = new Tag;
             $tag->name = $request->input('tag');
             $tag->save();
@@ -287,7 +364,7 @@ class ThemeController extends Controller
 
     public function destroy($id)
     {
-        if (!ctype_digit($id)) {
+        if(!ctype_digit($id)) {
             return redirect('/themes/create');
         }
 
