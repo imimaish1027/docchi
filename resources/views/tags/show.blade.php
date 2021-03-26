@@ -37,10 +37,21 @@
       @foreach($themes as $theme)
 
       <li class="p-theme__one p-theme__one__index">
-        <a href="{{ route('themes.show', ['id' => $theme->id]) }}" class="c-theme__link">
-          <p class="c-theme__one__title">{{ $theme->title }}</p>
-        </a>
-        <a href="{{ route('themes.show', ['id' => $theme->id]) }}" class="p-theme__answer p-theme__answer--index">
+        @if(auth()->user() && $theme->answers->contains('user_id', auth()->user()->id))
+        <div class="c-theme__one__title">
+          <a href="{{ route('themes.result', ['id' => $theme->id]) }}" class="c-theme__link">
+            {{ $theme->title }}
+          </a>
+        </div>
+        @else
+        <div class="c-theme__one__title">
+          <a href="{{ route('themes.show', ['id' => $theme->id]) }}" class="c-theme__link">
+            {{ $theme->title }}
+          </a>
+        </div>
+        @endif
+
+        <div class="p-theme__answer p-theme__answer--index">
           <div class="p-theme__list__answer__one">
             <div class="p-list__answer__area p-answer__area--a">
               <img src="{{ $theme->pic_a }}" class="c-list__answer__img">
@@ -56,7 +67,8 @@
               <p class="c-list__answer__title c-answer--b">{{ $theme->answer_b }}</p>
             </div>
           </div>
-        </a>
+        </div>
+
         <ul class="p-tag__group">
           @foreach($theme->tags as $tag)
 
