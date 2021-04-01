@@ -132,8 +132,8 @@ class UserController extends Controller
         }
 
         $user = User::find($user_id);
-        if (isset($user->pic)) {
-            $path = url($user->pic);
+        if (isset($request->pic)) {
+            $path = url($request->pic);
             $url = str_replace(config('aws.bucket_url'), config('aws.cloudfront_url'), $path);
             $client = AWS::createClient('cloudfront');
             $user->pic = $client->getSignedUrl([
@@ -144,7 +144,7 @@ class UserController extends Controller
             ]);
         }
 
-        if ($request->pic) {
+        if (isset($request->pic)) {
             $image = $request->file('pic');
             $path = Storage::disk('s3')->putFile('/users', $image, 'public');
             $user->pic = Storage::disk('s3')->url($path);
